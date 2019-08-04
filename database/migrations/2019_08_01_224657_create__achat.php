@@ -15,7 +15,7 @@ class CreateAchat extends Migration
     {
         Schema::create('Achat', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->int('num');
+            $table->integer('num');
             $table->DateTime('date');
             $table->string('fournisseur');
             $table->timestamps();
