@@ -229,9 +229,9 @@
                 <ul class="metismenu" id="menu">
                     <li><a href="{{ url('/home') }}"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Page principale</span></a>
                     </li>
-                    <li><a href="{{ url('/users') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
+                    <li><a href="{{ url('Users/index') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
+                    <li><a href="{{ url('Fournisseurs/index') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>
                     </li>
