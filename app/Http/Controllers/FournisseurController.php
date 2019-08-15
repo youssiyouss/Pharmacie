@@ -49,10 +49,11 @@ class FournisseurController extends Controller
         $x->email = $request->input('email');
         $x->save();
       return redirect('fournisseurs');
-
-
+    }
     //supprimer un fournisseur
-    public function destroy(){
-
+    public function destroy(Request $request , $id){
+        $x = Fournisseur::find($id);
+        $x->delete();
+      return redirect('fournisseurs');
     }
 }
