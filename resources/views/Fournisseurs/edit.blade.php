@@ -5,11 +5,12 @@
   <div class="row">
     <div class="col-md-12">
 
-      <form action="{{ URL('fournisseurs')}}" method="post">
-        {{ csrf_field() }}
+      <form action="{{ url('fournisseurs/'.$frnsrs->id)}}" method="post">
+          <input type="hidden" name="_method" value="PUT">
+           {{ csrf_field() }}
         <div class="form-group">
           <label for="">Nom:</label>
-          <input type="text" name="nom" class="form-control" value="{{ $frnsrs->nom}}">
+          <input type="text" name="nom" class="form-control" value="{{ $frnsrs->nom }}">
         </div>
         <div class="form-group">
           <label for="">Adresse:</label>
@@ -25,7 +26,8 @@
         </div>
 
         <div class="form-group">
-          <input type="submit" class="form-control btn btn-danger" value="Modifier">
+          <input type="submit" class="form-control btn btn-danger" value="Enregistrer">
+
         </div>
       </form>
     </div>
