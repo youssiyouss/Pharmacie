@@ -231,7 +231,7 @@
                     </li>
                     <li><a href="{{ url('Users/index') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
                     </li>
-                    <li><a href="{{ url('Fournisseurs/index') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
+                    <li><a href="{{ url('fournisseurs') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>
                     </li>

@@ -21,8 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users','HomeController@users')->name('users');
 
 Route::get('fournisseurs','FournisseurController@index');
-Route::get('fournisseurs/creer','FournisseurController@create');
+Route::get('fournisseurs/create','FournisseurController@create');
 Route::post('fournisseurs','FournisseurController@store');
-Route::get('fournisseurs/{id}/editer','FournisseurController@edit');
+Route::get('fournisseurs/{id}/edit','FournisseurController@edit');
 Route::put('fournisseurs/{id}','FournisseurController@update');
 Route::delete('fournisseurs/{id}','FournisseurController@destroy');

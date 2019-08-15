@@ -10,12 +10,17 @@ class FournisseurController extends Controller
 {
     // lister les fournisseurs
     public function index(){
-
+        $listFournisseurs = Fournisseur::all();
+          return view('Fournisseurs.index',['frnsrs'=> $listFournisseurs]);
     }
+
+
     //Affichefr un formulaire pour creer un fournisseur
     public function create(){
         return view('Fournisseurs.create');
     }
+
+
     //Enregistrer un fournisseur
     public function store(Request $request){
         $four = new Fournisseur();
@@ -23,12 +28,18 @@ class FournisseurController extends Controller
         $four->adresse = $request->input('adresse');
         $four->tel = $request->input('tel');
         $four->email = $request->input('email');
-        $four->save();
+          $four->save();
+        return redirect('fournisseurs');
     }
-    //Recuperer un fournisseur puis le metre dans le formulaire
-    public function edit(){
 
+
+    //Recuperer un fournisseur puis le metre dans le formulaire
+    public function edit($id){
+        $x = Fournisseur::find($id);
+        return view('Fournisseurs.edit', ['frnsrs'=> $x]);
     }
+
+
     //modifier un fournisseur
     public function update(){
 
