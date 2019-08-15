@@ -50,7 +50,6 @@ class FournisseurController extends Controller
         $x->save();
       return redirect('fournisseurs');
     }
-
     //supprimer un fournisseur
     public function destroy(Request $request , $id){
         $x = Fournisseur::find($id);
