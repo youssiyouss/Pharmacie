@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('TabUsers')
+@section('')
 
 
 @endsection
