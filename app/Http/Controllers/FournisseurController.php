@@ -49,7 +49,7 @@ class FournisseurController extends Controller
         $x->email = $request->input('email');
         $x->save();
       return redirect('fournisseurs');
-    }
+
 
     //supprimer un fournisseur
     public function destroy(){

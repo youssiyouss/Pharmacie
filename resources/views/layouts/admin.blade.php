@@ -213,6 +213,7 @@
                                         </li>
                                         <li><a href="#"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
+
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="icon-power"></i> <span>Logout</span>
