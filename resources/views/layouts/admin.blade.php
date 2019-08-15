@@ -212,7 +212,15 @@
                                         </li>
                                         <li><a href="#"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="#"><i class="icon-power"></i> <span>Logout</span></a>
+                                        <li><a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="icon-power"></i>
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                         </li>
                                     </ul>
                                 </div>
