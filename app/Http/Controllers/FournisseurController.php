@@ -23,12 +23,12 @@ class FournisseurController extends Controller
 
     //Enregistrer un fournisseur
     public function store(Request $request){
-        $four = new Fournisseur();
-        $four->nom = $request->input('nom');
-        $four->adresse = $request->input('adresse');
-        $four->tel = $request->input('tel');
-        $four->email = $request->input('email');
-          $four->save();
+        $x = new Fournisseur();
+        $x->nom = $request->input('nom');
+        $x->adresse = $request->input('adresse');
+        $x->tel = $request->input('tel');
+        $x->email = $request->input('email');
+          $x->save();
         return redirect('fournisseurs');
     }
 
@@ -41,12 +41,20 @@ class FournisseurController extends Controller
 
 
     //modifier un fournisseur
-    public function update(){
-
+    public function update(Request $request , $id){
+        $x = Fournisseur::find($id);
+        $x->nom = $request->input('nom');
+        $x->adresse = $request->input('adresse');
+        $x->tel = $request->input('tel');
+        $x->email = $request->input('email');
+        $x->save();
+      return redirect('fournisseurs');
     }
 
     //supprimer un fournisseur
-    public function destroy(){
-
+    public function destroy(Request $request , $id){
+        $x = Fournisseur::find($id);
+        $x->delete();
+      return redirect('fournisseurs');
     }
 }

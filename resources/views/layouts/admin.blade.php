@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
+    <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Gestionnaire de Pharmacie</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
 </head>
@@ -22,7 +23,7 @@
         <!-- header -->
         <div class="header">
             <div class="nav-header">
-                <div class="brand-logo"><a href="index.html"><b><img src="../../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a>
+                <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a>
                 </div>
                 <div class="nav-control">
                     <div class="hamburger"><span class="line"></span> <span class="line"></span> <span class="line"></span>
@@ -212,16 +213,15 @@
                                         </li>
                                         <li><a href="#"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="icon-power"></i>
-                                        {{ __('Logout') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                        </li>
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="icon-power"></i> <span>Logout</span>
+                                            </a>
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                             @csrf
+                                          </form>
+                                      </li>
                                     </ul>
                                 </div>
                             </div>
@@ -269,9 +269,7 @@
         <!-- #/ content body -->
         <!-- footer -->
         <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; <a href="https://ule.merkulov.design">Ule</a> 2019, by <a href="https://1.envato.market/tf-merkulove" target="_blank">merkulove</a></p>
-            </div>
+
         </div>
         <!-- #/ footer -->
     </div>

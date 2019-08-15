@@ -28,10 +28,15 @@
             <td>{{ $frnsrs->tel}}</td>
             <td>{{ $frnsrs->email}}</td>
             <td>
-                <a href="" class="btn btn-primary">Details</a>
-                <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-default">Modifier</a>
-                <a href="" class="btn btn-danger">Supprimer</a>
-            </td>
+                <form action="{{ url('fournisseurs/'.$frnsrs->id)}}" method="post">
+                  {{ csrf_field() }}
+                  {{ method_field('DELETE') }}
+                  <a href="" class="btn btn-primary">Details</a>
+                  <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-default">Modifier</a>
+                  <button type="submit" class="btn btn-danger">Supprimer</button>
+
+                </form>
+           </td>
           </tr>
           @endforeach
         </body>
