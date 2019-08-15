@@ -23,27 +23,12 @@ class FournisseurController extends Controller
 
     //Enregistrer un fournisseur
     public function store(Request $request){
-<<<<<<< HEAD
-<<<<<<< HEAD
         $x = new Fournisseur();
         $x->nom = $request->input('nom');
         $x->adresse = $request->input('adresse');
         $x->tel = $request->input('tel');
         $x->email = $request->input('email');
           $x->save();
-=======
-=======
->>>>>>> 50df99005c829ee6d8f831471c92379bfa1a56d2
-        $four = new Fournisseur();
-        $four->nom = $request->input('nom');
-        $four->adresse = $request->input('adresse');
-        $four->tel = $request->input('tel');
-        $four->email = $request->input('email');
-          $four->save();
-<<<<<<< HEAD
->>>>>>> 50df99005c829ee6d8f831471c92379bfa1a56d2
-=======
->>>>>>> 50df99005c829ee6d8f831471c92379bfa1a56d2
         return redirect('fournisseurs');
     }
 
@@ -56,8 +41,6 @@ class FournisseurController extends Controller
 
 
     //modifier un fournisseur
-<<<<<<< HEAD
-<<<<<<< HEAD
     public function update(Request $request , $id){
         $x = Fournisseur::find($id);
         $x->nom = $request->input('nom');
@@ -66,14 +49,6 @@ class FournisseurController extends Controller
         $x->email = $request->input('email');
         $x->save();
       return redirect('fournisseurs');
-=======
-    public function update(){
-
->>>>>>> 50df99005c829ee6d8f831471c92379bfa1a56d2
-=======
-    public function update(){
-
->>>>>>> 50df99005c829ee6d8f831471c92379bfa1a56d2
     }
 
     //supprimer un fournisseur
