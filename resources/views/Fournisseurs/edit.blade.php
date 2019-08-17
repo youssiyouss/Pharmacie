@@ -10,19 +10,39 @@
            {{ csrf_field() }}
         <div class="form-group">
           <label for="">Nom:</label>
-          <input type="text" name="nom" class="form-control" value="{{ $frnsrs->nom }}">
+          <input type="text" name="nom" class="form-control  @if($errors->get('nom')) is-invalid @endif" value="{{ $frnsrs->nom }}">
+          @if($errors->get('nom'))
+             @foreach($errors->get('nom') as $message)
+               <li>{{ $message }}</li>
+             @endforeach
+          @endif
         </div>
         <div class="form-group">
           <label for="">Adresse:</label>
-          <input type="text" name="adresse" class="form-control" value="{{ $frnsrs->adresse}}">
+          <input type="text" name="adresse" class="form-control @if($errors->get('adresse')) is-invalid @endif" value="{{ $frnsrs->adresse}}">
+          @if($errors->get('adresse'))
+             @foreach($errors->get('adresse') as $message)
+               <li>{{ $message }}</li>
+             @endforeach
+          @endif
         </div>
         <div class="form-group">
           <label for="">Numero Telephone:</label>
-          <input type="number" name="tel" class="form-control" value="{{ $frnsrs->tel}}">
+          <input type="number" name="tel" class="form-control @if($errors->get('tel')) is-invalid @endif" value="{{ $frnsrs->tel}}">
+          @if($errors->get('tel'))
+             @foreach($errors->get('tel') as $message)
+               <li>{{ $message }}</li>
+             @endforeach
+          @endif
         </div>
         <div class="form-group">
           <label for="">Email:</label>
-          <input type="email" name="email" class="form-control" value="{{ $frnsrs->email}}">
+          <input type="email" name="email" class="form-control @if($errors->get('email')) is-invalid @endif" value="{{ $frnsrs->email}}">
+          @if($errors->get('email'))
+             @foreach($errors->get('email') as $message)
+               <li>{{ $message }}</li>
+             @endforeach
+          @endif
         </div>
 
         <div class="form-group">

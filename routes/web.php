@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users','HomeController@users')->name('users');
 
+// Route::get('fournisseurs/{id}','FournisseurController@show');
 Route::get('fournisseurs','FournisseurController@index');
 Route::get('fournisseurs/create','FournisseurController@create');
 Route::post('fournisseurs','FournisseurController@store');

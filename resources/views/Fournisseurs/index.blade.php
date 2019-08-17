@@ -6,7 +6,14 @@
    <div class="row">
      <div class="col-md-12">
 
-       <h1>La listes des fournisseurs :</h1>
+         @if(session()->has('success'))
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                  <h5> {{session()->get('success')}} </h5>
+            </div>
+         @endif
+
+       <h3><u><i>La listes des fournisseurs :</i></u></h3>
        <div class="pull-right">
          <a href="{{ url('fournisseurs/create')}}" class="btn btn-success">Ajout Fournisseur</a>
        </div>
@@ -31,8 +38,10 @@
                 <form action="{{ url('fournisseurs/'.$frnsrs->id)}}" method="post">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
-                  <a href="" class="btn btn-primary">Details</a>
-                  <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-default">Modifier</a>
+
+
+                  <!-- <a href="{{ url('fournisseurs/'.$frnsrs->id)}}" class="btn btn-default">Details</a> -->
+                  <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-primary">Modifier</a>
                   <button type="submit" class="btn btn-danger">Supprimer</button>
 
                 </form>
