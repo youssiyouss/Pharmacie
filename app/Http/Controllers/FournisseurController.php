@@ -26,6 +26,7 @@ class FournisseurController extends Controller
     //   $x = Fournisseur::find($id);
     //   return view('Fournisseurs.detail',['frnsrs'=> $x]);
     // }
+  
     //Enregistrer un fournisseur
     public function store(FourniRequest $request){
         $x = new Fournisseur();
@@ -47,7 +48,8 @@ class FournisseurController extends Controller
 
 
     //modifier un fournisseur
-    public function update(FourniRequest $request , $id){
+
+    public function update(Request $request , $id){
         $x = Fournisseur::find($id);
         $x->nom = $request->input('nom');
         $x->adresse = $request->input('adresse');

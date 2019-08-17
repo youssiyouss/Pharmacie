@@ -14,7 +14,6 @@
          @endif
 
        <h3><u><i>La listes des fournisseurs :</i></u></h3>
-
        <div class="pull-right">
          <a href="{{ url('fournisseurs/create')}}" class="btn btn-success">Ajout Fournisseur</a>
        </div>
@@ -40,8 +39,9 @@
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
 
-                  <!-- <a href="{{ url('fournisseurs/'.$frnsrs->id)}}" class="btn btn-primary">Details</a> -->
-                  <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-default">Modifier</a>
+
+                  <!-- <a href="{{ url('fournisseurs/'.$frnsrs->id)}}" class="btn btn-default">Details</a> -->
+                  <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-primary">Modifier</a>
                   <button type="submit" class="btn btn-danger">Supprimer</button>
 
                 </form>
