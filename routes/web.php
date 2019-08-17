@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users','HomeController@users')->name('users');
+<<<<<<< HEAD
+
+=======
+Route::get('fournisseurs/{id}','FournisseurController@show');
+>>>>>>> GestionPharmaciens
+Route::get('fournisseurs','FournisseurController@index');
+Route::get('fournisseurs/create','FournisseurController@create');
+Route::post('fournisseurs','FournisseurController@store');
+Route::get('fournisseurs/{id}/edit','FournisseurController@edit');
+Route::put('fournisseurs/{id}','FournisseurController@update');
+Route::delete('fournisseurs/{id}','FournisseurController@destroy');
