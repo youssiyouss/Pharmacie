@@ -10,21 +10,6 @@
            {{ csrf_field() }}
         <div class="form-group">
           <label for="">Nom:</label>
-<<<<<<< HEAD
-          <input type="text" name="nom" class="form-control" value="{{ $frnsrs->nom }}">
-        </div>
-        <div class="form-group">
-          <label for="">Adresse:</label>
-          <input type="text" name="adresse" class="form-control" value="{{ $frnsrs->adresse}}">
-        </div>
-        <div class="form-group">
-          <label for="">Numero Telephone:</label>
-          <input type="number" name="tel" class="form-control" value="{{ $frnsrs->tel}}">
-        </div>
-        <div class="form-group">
-          <label for="">Email:</label>
-          <input type="email" name="email" class="form-control" value="{{ $frnsrs->email}}">
-=======
           <input type="text" name="nom" class="form-control  @if($errors->get('nom')) is-invalid @endif" value="{{ $frnsrs->nom }}">
           @if($errors->get('nom'))
              @foreach($errors->get('nom') as $message)
@@ -58,7 +43,6 @@
                <li>{{ $message }}</li>
              @endforeach
           @endif
->>>>>>> GestionPharmaciens
         </div>
 
         <div class="form-group">

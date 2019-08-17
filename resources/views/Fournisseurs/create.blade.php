@@ -1,10 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<<<<<<< HEAD
-=======
 
->>>>>>> GestionPharmaciens
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -13,21 +10,6 @@
         {{ csrf_field() }}
         <div class="form-group">
           <label for="">Nom:</label>
-<<<<<<< HEAD
-          <input type="text" name="nom" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="">Adresse:</label>
-          <input type="text" name="adresse" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="">Numero Telephone:</label>
-          <input type="number" name="tel" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="">Email:</label>
-          <input type="email" name="email" class="form-control">
-=======
           <input type="text" name="nom" class="form-control @if($errors->get('nom')) is-invalid @endif" value="{{ old('nom')}}">
            @if($errors->get('nom'))
               @foreach($errors->get('nom') as $message)
@@ -61,7 +43,6 @@
                <li>{{ $message }}</li>
              @endforeach
           @endif
->>>>>>> GestionPharmaciens
         </div>
 
         <div class="form-group">
