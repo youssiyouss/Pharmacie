@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnDeletedAtFournisseurs extends Migration
+class AddColumnDeletedAtAchats extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddColumnDeletedAtFournisseurs extends Migration
      */
     public function up()
     {
-        Schema::table('fournisseurs', function (Blueprint $table) {
+        Schema::table('Achats', function (Blueprint $table) {
             $table->DateTime('deleted_at')->nullable();
         });
     }
@@ -25,8 +25,8 @@ class AddColumnDeletedAtFournisseurs extends Migration
      */
     public function down()
     {
-        Schema::table('fournisseurs', function (Blueprint $table) {
-           $table->dropColumn('deleted_at');
-        }); 
+        Schema::table('Achats', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 }

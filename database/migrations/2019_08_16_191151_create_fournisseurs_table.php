@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAchat extends Migration
+class CreateFournisseursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateAchat extends Migration
      */
     public function up()
     {
-        Schema::create('Achat', function (Blueprint $table) {
+        Schema::create('fournisseurs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('num');
-            $table->DateTime('date');
-            $table->string('fournisseur');
+            $table->string('nom');
+            $table->string('adresse');
+            $table->string('tel');
+            $table->string('email');
             $table->timestamps();
-
         });
     }
 
@@ -30,6 +30,6 @@ class CreateAchat extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Achat');
+        Schema::dropIfExists('fournisseurs');
     }
 }
