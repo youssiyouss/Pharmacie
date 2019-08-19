@@ -25,8 +25,13 @@ class VenteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('Ventes.create');
+    { 
+        $lotid = DB::table('Lots')
+            ->select('Lots.id')
+            ->where('qt_stock','>','0')
+            ->get();
+            return view('Ventes.create', ['lotid' => $lotid]);
+        //return view('Ventes.create');
     }
 
     /**
@@ -48,6 +53,7 @@ class VenteController extends Controller
        //Diminuer la quatitée en stock du lot
        DB::table('Lots')->decrement('qt_stock', $qt);
        //redirection
+       session()->flash('success','Le fournisseur a été ajouter avec succés!');
        return redirect('vente');
 
     }

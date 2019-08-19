@@ -7,6 +7,12 @@
      <div class="col-md-12">
 
        <h4>Les ventes :</h4>
+          @if(session()->has('success'))
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                  <h5> {{session()->get('success')}} </h5>
+            </div>
+         @endif
        <div class="pull-right">
          <a href="{{ url('vente/create') }}" class="btn btn-success">Nouvelle vente</a>
        </div>

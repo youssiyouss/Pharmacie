@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Achat;
+use App\Lot;
 
 class AchatController extends Controller
 {
@@ -26,6 +27,10 @@ class AchatController extends Controller
      */
     public function create()
     {
+        $four = DB::table('Fournisseurs')
+            ->select('Fournisseurs.*')
+            ->get();
+            return view('Achats.create', ['four' => $four]);
         return view('Achats.create');
     }
 
@@ -40,7 +45,19 @@ class AchatController extends Controller
         $ach = new Achat();
         $ach->date = $request->input('date');
         $ach->fournisseur = $request->input('numf');
+        $ach->qt_achat = $request->input('qtachat');
         $ach->save();
+        $id = $ach->id;
+        $lot = new Lot();
+        $lot->medoc = $request->input('med');
+        $lot->achat = $id;
+        $lot->date_fab = $request->input('datefab');
+        $lot->prix = $request->input('prix');
+        $lot->qt_stock = $request->input('qtachat');
+        $lot->save();
+
+
+
 
         return redirect('achat');
 
@@ -56,7 +73,6 @@ class AchatController extends Controller
     {
         $achat = DB::table('Achats')
             ->join('Fournisseurs', 'fournisseur', '=', 'Fournisseurs.id')
-            
             ->select('Achats.*', 'Fournisseurs.nom','Fournisseurs.adresse','Fournisseurs.tel','Fournisseurs.email')
             ->where('Achats.id','=',$id)
             ->get();

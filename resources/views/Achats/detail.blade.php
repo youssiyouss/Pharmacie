@@ -28,6 +28,11 @@
         <td>{{ $a->date }}</td>
         
       </tr>
+      <tr >
+        <td>Quantité Achat</td>
+        <td>{{ $a->qt_achat }}</td>
+        
+      </tr>
       <tr>
         <td>Nom Fournisseur</td>
         <td>{{ $a->nom }}</td>
@@ -41,13 +46,13 @@
       </tr>
 
       <tr>
-        <td>Téléphone</td>
+        <td>Téléphone du Fournisseur</td>
         <td>{{ $a->tel }}</td>
         
       </tr>
 
       <tr>
-        <td>Email</td>
+        <td>Email du Fournisseur</td>
         <td>{{ $a->email }}</td>
         
       </tr>

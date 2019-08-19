@@ -15,11 +15,11 @@ class CreateLotsTable extends Migration
     {
         Schema::create('Lots', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('achat');
+            
             $table->string('medoc');
             $table->DateTime('date_fab');
             $table->double('prix');
-            $table->integer('qt_achte');
+            
             $table->integer('qt_stock');
             $table->timestamps();
         });

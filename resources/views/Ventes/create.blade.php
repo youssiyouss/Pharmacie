@@ -9,7 +9,17 @@
         {{ csrf_field() }}
         <div class="form-group">
           <label for="">Lot:</label>
-          <input type="number" name="lot" min="1" class="form-control" required>
+          
+          <input list="browsers" name="lot" class="form-control" required>
+
+<datalist id="browsers">
+
+@foreach($lotid as $l)
+    <option value="{{ $l->id }}">
+    @endforeach
+
+</datalist>
+  
         </div>
         <div class="form-group">
           <label for="">Date:</label>
@@ -19,6 +29,7 @@
           <label for="">Quantité:</label>
           <input type="number" name="qt" min="1"  class="form-control" required>
         </div>
+        
        
         <div class="form-group">
           <input type="submit"  class="btn btn-success" value="Valider">
