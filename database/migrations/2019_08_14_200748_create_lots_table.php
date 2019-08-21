@@ -13,13 +13,14 @@ class CreateLotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Lots', function (Blueprint $table) {
+        Schema::create('lots', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
+            $table->integer('num');
+            $table->integer('achat');
             $table->string('medoc');
             $table->DateTime('date_fab');
             $table->double('prix');
-            
+            $table->integer('qt_achte');
             $table->integer('qt_stock');
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class CreateLotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Lots');
+        Schema::dropIfExists('lots');
     }
 }
