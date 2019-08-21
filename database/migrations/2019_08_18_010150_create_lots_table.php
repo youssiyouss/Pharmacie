@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLot extends Migration
+class CreateLotsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateLot extends Migration
      */
     public function up()
     {
-        Schema::create('Lot', function (Blueprint $table) {
+        Schema::create('Lots', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('num');
-            $table->integer('achat');
+            
             $table->string('medoc');
             $table->DateTime('date_fab');
             $table->double('prix');
-            $table->integer('qt_achte');
+            
             $table->integer('qt_stock');
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ class CreateLot extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Lot');
+        Schema::dropIfExists('Lots');
     }
 }

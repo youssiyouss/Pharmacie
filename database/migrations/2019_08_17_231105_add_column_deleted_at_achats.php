@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAchat extends Migration
+class AddColumnDeletedAtAchats extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateAchat extends Migration
      */
     public function up()
     {
-        Schema::create('Achat', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('num');
-            $table->DateTime('date');
-            $table->string('fournisseur');
-            $table->timestamps();
-
+        Schema::table('Achats', function (Blueprint $table) {
+            $table->DateTime('deleted_at')->nullable();
         });
     }
 
@@ -30,6 +25,8 @@ class CreateAchat extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Achat');
+        Schema::table('Achats', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 }
