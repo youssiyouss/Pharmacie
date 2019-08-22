@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicament extends Migration
+class CreateMedicaments extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,6 @@ class CreateMedicament extends Migration
             $table->bigIncrements('id');
             $table->string('nom');
             $table->double('dosage');
-            $table->string('tel');
             $table->string('forme');
             $table->string('famille');
             $table->timestamps();
