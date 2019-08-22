@@ -10,16 +10,24 @@
 	<div class="row"> 
 	<div class=" col-md-12 ">                      
 	<p class="text-muted">{{$medicament->nom}}</p>
-                
+    
+    <div class="card" style="width: 18rem;">
+       <img class="card-img-top" src="{{ asset('storage/'.$medicament->photo) }}" alt="Card image cap">
+         <div class="card-body">
+                       <h5 class="card-title">{{$medicament->nom}}</h5>
+                               
+         </div>
+	</div> 
+
                        
-                          </div>
-                        </div>
-                  </div>  
+     </div>
+     </div>
+</div>  
 
              
 
 	
-		<h4>comment utiliser ce medicament</h4>	
+		
 	<ul>
 			<li>
 				<div>

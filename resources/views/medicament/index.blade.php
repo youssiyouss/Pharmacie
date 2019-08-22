@@ -57,7 +57,7 @@
 								{{csrf_field()}}
 								{{method_field('DELETE')}}
 
-								<a href="{{url('medicaments/show')}}" class="btn btn-primary">detail</a>
+								<a href="{{url('medicaments/'.$listeM->id)}}" class="btn btn-primary">detail</a>
 							<a href="{{url('medicaments/'.$listeM->id.'/edit')}}" class="btn btn-default">modifier</a>
 							<button type="submit" class="btn btn-danger">supprimer</button>
 							</form>

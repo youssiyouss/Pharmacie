@@ -20,8 +20,8 @@ Route::get('medicaments/create','MedController@create');
 Route::post('medicaments','MedController@store');
 Route::get('medicaments/{id}/edit','MedController@edit');
 Route::put('medicaments/{id}','MedController@update');
-Route::delete('medicaments/{id}','MedController@destroy');*/
-Route::post('medicaments/{id}','MedController@show');
+Route::delete('medicaments/{id}','MedController@destroy');
+Route::post('medicaments/{id}','MedController@show');*/
 Route::resource('medicaments','MedController');
 
 Auth::routes();

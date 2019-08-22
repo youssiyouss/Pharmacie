@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use auth;
 use Illuminate\Http\Request;
-use App\medicament;
+use App\Medicament;
 use App\Http\Requests\medRequest;
 use Illuminate\Http\UploadedFile;
 class MedController extends Controller
@@ -13,7 +13,7 @@ class MedController extends Controller
     //lister les medicament
     public function index(){
     	//$listeMed = medicament::where('user_id',auth::user()->id)->get();
-    	$listeMed = medicament::all();
+    	$listeMed = Medicament::all();
     	return view('medicament.index',['medicaments' => $listeMed]);
 
     }
@@ -23,7 +23,7 @@ class MedController extends Controller
     }
     //enregistrer un medicament
     public function store(medRequest $request){
-    $medicament = new medicament();
+    $medicament = new Medicament();
     $medicament->nom = $request->input('nom');
     $medicament->dosage = $request->input('dosage');
     $medicament->forme = $request->input('forme');
@@ -44,14 +44,14 @@ class MedController extends Controller
     //recuperer un medicament puis l'inserer dans un formulaire
     public function edit($id){
     	
-    	$medicament = medicament::find($id);
+    	$medicament = Medicament::find($id);
     	return view('medicament.edit',['medicament' => $medicament]);
 
     }
     //modifier un medicament
     public function update(medRequest $request, $id){
 
-    	$medicament = medicament::find($id);
+    	$medicament = Medicament::find($id);
 
     	$medicament->nom = $request->input('nom');
     	$medicament->dosage = $request->input('dosage');
@@ -71,7 +71,7 @@ class MedController extends Controller
     }
     //afficher les details de chaque medicament
     public function show( $id){
-        $x = medicament::find($id);
+        $x = Medicament::find($id);
     	return view('medicament.show',['medicament' => $x]);
 
     
@@ -83,7 +83,7 @@ class MedController extends Controller
     //supprimer un medicament
     public function destroy(Request $request, $id){
     	
-    	$medicament = medicament::find($id);
+    	$medicament = Medicament::find($id);
     	$medicament->delete();
     	session()->flash('success', 'le medicament est supprimer de la liste');
     	return redirect('medicaments');

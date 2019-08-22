@@ -50,6 +50,10 @@
 					@endforeach
 					@endif
 				</div>
+				<div class="form-groupe">
+					<label for="">image</label>
+					<input name="photo" class="form-control" type="file" accept="image/*" style="height: auto;">
+				</div>
 
 				<div class="form-groupe">
 					
