@@ -10,11 +10,11 @@
         
         <div class="form-group">
           <label for="">Date Achat:</label>
-          <input type="date" name="date" class="form-control" required>
+          <input type="date" name="date" class="form-control" value="{{ old('date') }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group has-error">
           <label for="">Numéro du fournisseur:</label>
-          <input list="browsers" name="numf" class="form-control" required>
+          <input list="browsers" name="numf" class="form-control" value="{{ old('numf') }}" required>
 
 <datalist id="browsers">
 
@@ -24,26 +24,31 @@
     @endforeach
 
 </datalist>
+        @if($errors->get('numf'))
+        @foreach($errors->get('numf') as $message)
+          <li class="alert alert-danger">{{ $message }}</li>
+        @endforeach
+        @endif
               
         </div>
        
-       <div class="form-group">
+       <div class="form-group has-warning">
           <label for="">Nom Médicament:</label>
-          <input type="text" name="med"  class="form-control" required>
+          <input type="text" name="med"  class="form-control" value="{{ old('med') }}" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group has-error">
           <label for="">Date de fabrication:</label>
-          <input type="date" name="datefab" class="form-control" required>
+          <input type="date" name="datefab" class="form-control" value="{{ old('datefab') }}" required>
         </div>
        
-       <div class="form-group">
+       <div class="form-group has-error">
           <label for="">Prix:</label>
-          <input type="number" name="prix" min="1"  class="form-control" required>
+          <input type="number" name="prix" min="1"  class="form-control" value="{{ old('prix') }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group has-error">
           <label for="">Quatitée Achat:</label>
-          <input type="number" name="qtachat" min="1"  class="form-control" required>
+          <input type="number" name="qtachat" min="1"  class="form-control" value="{{ old('qtachat') }}" required>
         </div>
 
         <div class="form-group">

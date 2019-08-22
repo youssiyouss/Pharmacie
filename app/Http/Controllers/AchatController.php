@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Achat;
 use App\Lot;
+use App\Http\Requests\achatRequest;
 
 class AchatController extends Controller
 {
@@ -29,9 +30,10 @@ class AchatController extends Controller
     {
         $four = DB::table('Fournisseurs')
             ->select('Fournisseurs.*')
+            ->where('deleted_at','=',NULL)
             ->get();
             return view('Achats.create', ['four' => $four]);
-        return view('Achats.create');
+        //return view('Achats.create');
     }
 
     /**
@@ -40,7 +42,7 @@ class AchatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(achatRequest $request)
     {
         $ach = new Achat();
         $ach->date = $request->input('date');
@@ -98,7 +100,7 @@ class AchatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(achatRequest $request, $id)
     {
         $a = new Achat();
         $a->date = $request->input('date');

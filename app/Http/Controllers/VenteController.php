@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Vente;
+use App\Http\Requests\venteRequest;
 
 class VenteController extends Controller
 {
@@ -40,7 +41,7 @@ class VenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(venteRequest $request)
     {
        $v = new Vente();
 
@@ -88,7 +89,7 @@ class VenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(venteRequest $request, $id)
     {
         $vente = Vente::find($id);
 
