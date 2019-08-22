@@ -237,7 +237,7 @@
                 <ul class="metismenu" id="menu">
                     <li><a href="{{ url('/home') }}"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Page principale</span></a>
                     </li>
-                    <li><a href="{{ url('Users/index') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
+                    <li><a href="{{ url('pharmaciens') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
                     </li>
                     <li><a href="{{ url('fournisseurs') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
                     </li>
@@ -245,9 +245,9 @@
                     </li>
                     <li><a href="#"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
                     </li>
-                    <li><a href="{{ url('achat') }}"><i class="mdi mdi-diamond"></i> <span class="nav-text">Achats</span></a>
+                    <li><a href="#"><i class="mdi mdi-diamond"></i> <span class="nav-text">Achats</span></a>
                     </li>
-                    <li><a href="{{ url('vente') }}"><i class="mdi mdi-nfc-variant"></i> <span class="nav-text">Ventes</span></a>
+                    <li><a href="#"><i class="mdi mdi-nfc-variant"></i> <span class="nav-text">Ventes</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span></a>
                     </li>

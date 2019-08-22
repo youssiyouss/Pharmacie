@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnDeletedAtVentes extends Migration
+class AddColumnIsAdminUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddColumnDeletedAtVentes extends Migration
      */
     public function up()
     {
-        Schema::table('ventes', function (Blueprint $table) {
-             $table->DateTime('deleted_at')->nullable();
-
-        });
+      Schema::table('users', function (Blueprint $table) {
+          $table->boolean('is_admin')->default(0)->after('password');
+          });
     }
 
     /**
@@ -26,8 +25,8 @@ class AddColumnDeletedAtVentes extends Migration
      */
     public function down()
     {
-        Schema::table('ventes', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
-        });
+      Schema::table('users', function (Blueprint $table) {
+         $table->dropColumn('is_admin');
+         });
     }
 }

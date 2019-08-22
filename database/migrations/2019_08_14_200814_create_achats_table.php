@@ -13,10 +13,11 @@ class CreateAchatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Achats', function (Blueprint $table) {
+        Schema::create('achats', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('num');
             $table->DateTime('date');
-            
+            $table->string('fournisseur');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateAchatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Achats');
+        Schema::dropIfExists('achats');
     }
 }

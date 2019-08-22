@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVentesTable extends Migration
+class AddColumnPhotoPharmacien extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateVentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ventes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            
-            $table->DateTime('date');
-            $table->integer('qt');
-            $table->timestamps();
+        Schema::table('pharmaciens', function (Blueprint $table) {
+            $table->string('photo')->nullable()->after('isadmin');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateVentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventes');
+        Schema::table('pharmaciens', function (Blueprint $table) {
+            $table->dropColumn('photo');
+        });
     }
 }
