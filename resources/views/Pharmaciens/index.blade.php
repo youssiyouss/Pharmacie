@@ -47,7 +47,7 @@
                 <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
-                  <a href="{{ url('pharmaciens/'.$phar->id.'/show')}}" class="btn btn-default">Details</a>
+                  <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default">Details</a>
                   <a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-primary">Modifier</a>
                   <button type="submit" class="btn btn-danger">Supprimer</button>
 

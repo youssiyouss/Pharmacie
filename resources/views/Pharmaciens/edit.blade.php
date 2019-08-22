@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<div class="pull-right">
+  <a href="{{ url('register')}}" class="btn btn-primary">Créer Compte</a>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">

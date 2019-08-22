@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="pull-right">
+  <a href="{{ url('auth/register')}}" class="btn btn-primary">Créer Compte</a>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
-<form action="{{ url('pharmaciens')}}" method="post" enctype="multipart/form-data">
+      <form action="{{ url('pharmaciens')}}" method="post" enctype="multipart/form-data">
     {{ csrf_field()}}
   <div class="form-group">
       <label for="">Nom:</label>
@@ -91,11 +93,8 @@
   </div>
 
   <div class="form-group">
-
       <input type="submit" value="Enregistrer"  class="form-control btn btn-primary">
   </div>
-
-
 </form>
 
     </div>

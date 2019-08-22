@@ -17,7 +17,6 @@ class CreateMedicamentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nom');
             $table->double('dosage');
-            $table->string('tel');
             $table->string('forme');
             $table->string('famille');
             $table->timestamps();

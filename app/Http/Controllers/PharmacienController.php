@@ -45,6 +45,7 @@ class PharmacienController extends Controller
   //permet de recuperer un pharmacien et le mettre dans le formulaire
   public function edit($id){
     $x = Pharmacien::find($id);
+    $this->authorize('update',$x);
     return view('Pharmaciens.edit',['phar'=>$x]);
   }
   //modifier un pharmacien
@@ -58,7 +59,6 @@ class PharmacienController extends Controller
     $x->login = $request->input('login');
     $x->psw = $request->input('psw');
     $x->isadmin = $request->input('isadmin');
-
     if($request->hasFile('photo')){ $x->photo =$request->photo->store('image'); }
       $x->save();
     session()->flash('success','Les données  ont été modifiés avec succés!');

@@ -19,8 +19,8 @@ class CreatePharmaciensTable extends Migration
             $table->string('Prenom');
             $table->string('tel');
             $table->Date('date_nais');
-            $table->string('email');
-            $table->string('login');
+            $table->string('email')->unique();
+            $table->string('login')->unique();
             $table->string('psw');
             $table->BOOLEAN('isadmin');
             $table->timestamps();

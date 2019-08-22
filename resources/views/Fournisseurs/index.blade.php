@@ -39,7 +39,7 @@
                   {{ method_field('DELETE') }}
 
 
-                  <a href="{{ url('fournisseurs/'.$frnsrs->id.'/show')}}" class="btn btn-default">Details</a>
+                  <a href="{{ url('fournisseurs/'.$frnsrs->id)}}" class="btn btn-default">Details</a>
                   <a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-primary">Modifier</a>
                   <button type="submit" class="btn btn-danger">Supprimer</button>
 
