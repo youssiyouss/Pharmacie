@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVente extends Migration
+class CreateAchatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateVente extends Migration
      */
     public function up()
     {
-        Schema::create('Vente', function (Blueprint $table) {
+        Schema::create('achats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('Vid');
-            $table->integer('lot');
+            $table->integer('num');
             $table->DateTime('date');
-            $table->integer('qt');
+            $table->string('fournisseur');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateVente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Vente');
+        Schema::dropIfExists('achats');
     }
 }

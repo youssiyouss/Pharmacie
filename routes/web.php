@@ -27,3 +27,25 @@ Route::resource('medicaments','MedController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Gestion fournisseurs
+// Route::get('fournisseurs/{id}','FournisseurController@show');
+// Route::get('fournisseurs','FournisseurController@index');
+// Route::get('fournisseurs/create','FournisseurController@create');
+// Route::post('fournisseurs','FournisseurController@store');
+// Route::get('fournisseurs/{id}/edit','FournisseurController@edit');
+// Route::get('fournisseurs/{id}/show','FournisseurController@show');
+// Route::put('fournisseurs/{id}','FournisseurController@update');
+// Route::delete('fournisseurs/{id}','FournisseurController@destroy');
+Route::resource('fournisseurs','FournisseurController');
+
+//Gestion pharmaciens
+// Route::get('pharmaciens','PharmacienController@index');
+// Route::get('pharmaciens/create','PharmacienController@create');
+// Route::post('pharmaciens','PharmacienController@store');
+// Route::get('pharmaciens/{id}/edit','PharmacienController@edit');
+// Route::get('pharmaciens/{id}/show','PharmacienController@show');
+// Route::put('pharmaciens/{id}','PharmacienController@update');
+// Route::delete('pharmaciens/{id}','PharmacienController@destroy');
+Route::get('register','Auth\RegisterController@create');
+Route::resource('pharmaciens','PharmacienController');
