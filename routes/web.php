@@ -38,5 +38,22 @@ Route::resource('fournisseurs','FournisseurController');
 // Route::get('pharmaciens/{id}/show','PharmacienController@show');
 // Route::put('pharmaciens/{id}','PharmacienController@update');
 // Route::delete('pharmaciens/{id}','PharmacienController@destroy');
-Route::get('register','Auth\RegisterController@create');
+
+//Route::get('register','Auth\RegisterController@create');
 Route::resource('pharmaciens','PharmacienController');
+
+//vente routes
+Route::get('vente','VenteController@index');
+Route::get('vente/create','VenteController@create');
+Route::post('vente','VenteController@store');
+Route::delete('vente/{id}','VenteController@destroy');
+Route::get('vente/{id}/edit','VenteController@edit');
+Route::put('vente/{id}','VenteController@update');
+//Achat Route
+Route::get('achat','AchatController@index');
+Route::get('achat/create','AchatController@create');
+Route::post('achat','AchatController@store');
+Route::get('achat/{id}/edit','AchatController@edit');
+Route::put('achat/{id}','AchatController@update');
+Route::delete('achat/{id}','AchatController@destroy');
+Route::get('achat/{id}/detail','AchatController@show');

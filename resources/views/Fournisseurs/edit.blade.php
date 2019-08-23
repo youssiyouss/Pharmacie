@@ -46,8 +46,7 @@
         </div>
 
         <div class="form-group">
-          <input type="submit" class="form-control btn btn-danger" value="Enregistrer">
-
+          <input type="submit" class="form-control btn btn-success" value="Enregistrer">
         </div>
       </form>
     </div>
