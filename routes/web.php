@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Gestion mediacaments
 /*Route::get('medicaments','MedController@index');
 Route::get('medicaments/create','MedController@create');
 Route::post('medicaments','MedController@store');
@@ -24,7 +24,12 @@ Route::delete('medicaments/{id}','MedController@destroy');
 Route::post('medicaments/{id}','MedController@show');*/
 Route::resource('medicaments','MedController');
 Auth::routes();
+<<<<<<< HEAD
 Route::get('medicaments/search','MedController@search');
+=======
+
+
+>>>>>>> master
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Gestion fournisseurs
@@ -43,10 +48,9 @@ Route::resource('fournisseurs','FournisseurController');
 // Route::get('pharmaciens/create','PharmacienController@create');
 // Route::post('pharmaciens','PharmacienController@store');
 // Route::get('pharmaciens/{id}/edit','PharmacienController@edit');
-// Route::get('pharmaciens/{id}/show','PharmacienController@show');
+// Route::get('pharmaciens/{id}','PharmacienController@show');
 // Route::put('pharmaciens/{id}','PharmacienController@update');
 // Route::delete('pharmaciens/{id}','PharmacienController@destroy');
-Route::get('register','Auth\RegisterController@create');
 Route::resource('pharmaciens','PharmacienController');
 
 //vente routes
@@ -63,4 +67,17 @@ Route::post('achat','AchatController@store');
 Route::get('achat/{id}/edit','AchatController@edit');
 Route::put('achat/{id}','AchatController@update');
 Route::delete('achat/{id}','AchatController@destroy');
+<<<<<<< HEAD
 Route::get('achat/{id}/detail','AchatController@show');
+=======
+Route::get('achat/{id}/detail','AchatController@show');
+
+//Lot Routes
+Route::get('lot','LotController@index');
+Route::get('lot/{id}','LotController@show');
+
+//Notification routes
+Route::get('notifread/{id}','NotifController@markAsRead');
+Route::get('alerte/{id}','NotifController@displaytNotif');
+Route::get('alerte','NotifController@index');
+>>>>>>> master

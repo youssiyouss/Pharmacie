@@ -25,7 +25,7 @@ class CreateMedicamentsTable extends Migration
             $table->string('mode');
             $table->string('composition');
             $table->string('plus');
-           
+            $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

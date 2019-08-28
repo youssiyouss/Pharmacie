@@ -1,118 +1,160 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="pull-right">
-  <a href="{{ url('register')}}" class="btn btn-primary">Créer Compte</a>
-</div>
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header" align="center">Modification pharmacien:
+          <a href="{{ url('pharmaciens')}}" class="pull-left"><i class="fa fa-chevron-circle-left" style="color :#b7e778;">Retour</i></a>
+        </div>
 
-<form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="PUT">
-    {{ csrf_field()}}
-  <div class="form-group">
-      <label for="">Nom:</label>
-      <input type="text" name="nom" class="form-control @if($errors->get('nom')) is-invalid @endif"  value="{{ $phar->nom }}">
-      @if($errors->get('nom'))
-         @foreach($errors->get('nom') as $message)
-           <li>{{ $message }}</li>
-         @endforeach
-      @endif
-  </div>
+        <div class="card-body">
 
-  <div class="form-group">
-    <label for="">Prénom:</label>
-    <input type="text" name="prenom" class="form-control @if($errors->get('prenom')) is-invalid @endif" value="{{ $phar-> Prenom}}">
-    @if($errors->get('prenom'))
-       @foreach($errors->get('prenom') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+          <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="_method" value="PUT">
+            {{ csrf_field()}}
+              <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">Nom:</label>
 
-  <div class="form-group">
-    <label for="">Numero de téléphone:</label>
-    <input type="number" name="tel" class="form-control @if($errors->get('tel')) is-invalid @endif" value="{{ $phar->tel }}">
-    @if($errors->get('tel'))
-       @foreach($errors->get('tel') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                  <div class="col-md-6">
+                      <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $phar->name }}">
 
-  <div class="form-group">
-    <label for="">Date de naissance:</label>
-    <input type="date" name="date_nais" min="1960-01-01"max="2019-01-01" class="form-control @if($errors->get('date_nais')) is-invalid @endif" value="{{ $phar->date_nais }}">
-    @if($errors->get('date_nais'))
-       @foreach($errors->get('date_nais') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                      @error('name')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="prenom" class="col-md-4 col-form-label text-md-right">Prénom</label>
 
-  <div class="form-group">
-    <label for="">Email:</label>
-    <input type="email" name="email" class="form-control @if($errors->get('email')) is-invalid @endif" value="{{ $phar->email }}">
-    @if($errors->get('email'))
-       @foreach($errors->get('email') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                  <div class="col-md-6">
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="prenom" value="{{ $phar->Prenom }}" required>
 
-  <div class="form-group">
-    <label for="">Nom utilisateur:</label>
-    <input type="text" name="login" class="form-control @if($errors->get('login')) is-invalid @endif" value="{{ $phar->login }}">
-    @if($errors->get('login'))
-       @foreach($errors->get('login') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                      @error('prenom')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div> <div class="form-group row">
+                  <label for="date_nais" class="col-md-4 col-form-label text-md-right">Date de naissance</label>
 
-  <div class="form-group">
-    <label for="">Mot de passe:</label>
-    <input type="password" name="psw" class="form-control @if($errors->get('psw')) is-invalid @endif" value="{{ $phar->psw }}">
-    @if($errors->get('psw'))
-       @foreach($errors->get('psw') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                  <div class="col-md-6">
+                      <input type="Date" class="form-control @error('date_nais') is-invalid @enderror" name="date_nais" value="{{ $phar->date_nais  }}" required>
 
-  <div class="form-group">
-      <label for="">Admin:</label><br>
-      <input type="radio" name="isadmin" value="0" @if($phar->isadmin==0) checked @endif><b>Non</b>
-      <input type="radio" name="isadmin" value="1" @if($phar->isadmin==1) checked @endif ><b>Oui</b>
-      @if($errors->get('isadmin'))
-         @foreach($errors->get('isadmin') as $message)
-           <li>{{ $message }}</li>
-         @endforeach
-      @endif
-  </div>
+                      @error('date_nais')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="tel" class="col-md-4 col-form-label text-md-right">Numéro de telephone:</label>
 
-  <div class="form-group">
-    <label for="">Photo de profile</label>
-    <input type="file" name="photo" class="form-control @if($errors->get('photo')) is-invalid @endif" value="{{ $phar->photo }}">
-    @if($errors->get('photo'))
-       @foreach($errors->get('photo') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
- </div>
+                  <div class="col-md-6">
+                      <input type="telephone" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ $phar->tel }}" required>
 
-  <div class="form-group">
+                      @error('tel')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+               <div class="form-group row">
+                  <label for="photo" class="col-md-4 col-form-label text-md-right">Photo de profile:</label>
 
-      <input type="submit" value="Modifier"  class="form-control btn btn-danger">
-  </div>
+                  <div class="col-md-6">
+                      <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ $phar->photo }}">
+
+                      @error('photo')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
 
 
-</form>
+              <div class="form-group row">
+                  <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
 
+                  <div class="col-md-6">
+                      <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $phar->email }}">
+
+                      @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="password" class="col-md-4 col-form-label text-md-right">Mot de passe: </label>
+
+                  <div class="col-md-6">
+                      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+
+                      @error('password')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="login" class="col-md-4 col-form-label text-md-right">Nom d'utilisateur:</label>
+
+                  <div class="col-md-6">
+                      <input  type="text" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ $phar->login }}">
+
+                      @error('login')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+              @can('isAdmin',Auth::user())
+              <div class="form-group row">
+                  <label for="isadmin" class="col-md-4 col-form-label text-md-right">Statut:</label>
+
+                  <div class="col-md-6">
+                    <input type="radio" name="isadmin" value="0" @if($phar->isadmin==0) checked @endif><b>Non</b>
+                    <input type="radio" name="isadmin" value="1" @if($phar->isadmin==1) checked @endif ><b>Oui</b>
+                      @error('isadmin')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+              @endcan
+              <div class="form-group row mb-0">
+                  <div class="col-md-6 offset-md-4">
+                    <button type="submit" class="btn btn-success "><i class="fa fa-thumbs-o-up" aria-hidden="true"> Enregistrer</i></button>
+                    <a href="{{ url('pharmaciens') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+                </div>
+            </div>
+              </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 
 @endsection

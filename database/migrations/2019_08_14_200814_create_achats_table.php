@@ -15,9 +15,15 @@ class CreateAchatsTable extends Migration
     {
         Schema::create('achats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('num');
             $table->DateTime('date');
+            $table->integer('qt_achat');
+<<<<<<< HEAD:database/migrations/2019_08_17_205945_create_achats_table.php
+            
+             $table->DateTime('deleted_at')->nullable();
+=======
             $table->string('fournisseur');
+            $table->DateTime('deleted_at')->nullable();
+>>>>>>> master:database/migrations/2019_08_14_200814_create_achats_table.php
             $table->timestamps();
         });
     }

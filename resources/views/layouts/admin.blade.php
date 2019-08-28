@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Gestionnaire de Pharmacie</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
 </head>
@@ -23,7 +23,8 @@
         <!-- header -->
         <div class="header">
             <div class="nav-header">
-                <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a>
+                <!-- <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a> -->
+                <div class="brand-logo"><a href="{{ url('/') }}"><b><img src="../assets/images/pt.png" alt=""> </b><span class="brand-title"><i><strong style="color :#b7e778;">Pharma</strong><strong style="color : #9068be;">Tlem</strong></i></span></a>
                 </div>
                 <div class="nav-control">
                     <div class="hamburger"><span class="line"></span> <span class="line"></span> <span class="line"></span>
@@ -51,169 +52,19 @@
                     </ul>
                 </div>
                 <div class="header-right">
+
+                    <div class="col p-0">
+
+                      </div>
                     <ul>
-                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-bell f-s-18" aria-hidden="true"></i><div class="pulse-css"></div></a>
-                            <div class="drop-down animated bounceInDown">
-                                <div class="dropdown-content-heading"><span class="text-left">Recent Notifications</span>
-                                </div>
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/1.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. Dmitry</div>
-                                                    <div class="notification-text">5 members joined today</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/2.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mariam</div>
-                                                    <div class="notification-text">likes a photo of you</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Tasnim</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/4.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Ishrat Jahan</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="text-center"><a href="#" class="more-link">See All</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-comment f-s-18" aria-hidden="true"></i><div class="pulse-css"></div></a>
-                            <div class="drop-down animated bounceInDown">
-                                <div class="dropdown-content-heading"><span class="text-left">2 New Messages</span>
-                                </div>
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li class="notification-unread">
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/1.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Saiul Islam</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="notification-unread">
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/2.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Ishrat Jahan</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Saiul Islam</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/4.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Ishrat Jahan</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="text-center"><a href="#" class="more-link">See All</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="icons">
-                            <a href="javascript:void(0)"> <i class="mdi mdi-crosshairs-gps f-s-18" aria-hidden="true"></i>
-                                <div class="pulse-css"></div>
-                            </a>
-                            <div class="drop-down dropdown-task animated bounceInDown">
-                                <div class="dropdown-content-heading"><span class="text-left">Task Update</span>
-                                </div>
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">85% Complete</small>
-                                                    <div class="notification-heading">Task One</div>
-                                                    <div class="progress">
-                                                        <div style="width: 85%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="85" role="progressbar" class="progress-bar progress-bar-success"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">60% Complete</small>
-                                                    <div class="notification-heading">Task Two</div>
-                                                    <div class="progress">
-                                                        <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-primary"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">25% Complete</small>
-                                                    <div class="notification-heading">Task Three</div>
-                                                    <div class="progress">
-                                                        <div style="width: 25%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" role="progressbar" class="progress-bar progress-bar-warning"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">75% Complete</small>
-                                                    <div class="notification-heading">Task Four</div>
-                                                    <div class="progress">
-                                                        <div style="width: 75%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" class="progress-bar progress-bar-danger"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="text-center"><a href="#" class="more-link">See All</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-account f-s-20" aria-hidden="true"></i></a>
+                        <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 avatar-img w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li><a href="#"><i class="mdi mdi-email"></i> <span>Inbox</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="mdi mdi-settings"></i> <span>Setting</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
 
+                                        <li><span>{{ Auth::user()->login}} </span></li>
+                                        <li><a href="{{ url('pharmaciens/'.Auth::user()->id)}}"><i class="mdi mdi-account f-s-20"></i> <span>Mon profile</span></a>
+                                        </li>
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="icon-power"></i> <span>Logout</span>
@@ -237,24 +88,24 @@
                 <ul class="metismenu" id="menu">
                     <li><a href="{{ url('/home') }}"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Page principale</span></a>
                     </li>
+                    @can('isAdmin',Auth::user())
                     <li><a href="{{ url('pharmaciens') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
                     </li>
+                    @endcan
                     <li><a href="{{ url('fournisseurs') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
                     </li>
                     <li><a href="{{ url('medicaments') }}"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
+                    <li><a href="{{ url('lot') }}"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
                     </li>
                     <li><a href="{{ url('achat') }}"><i class="mdi mdi-diamond"></i> <span class="nav-text">Achats</span></a>
                     </li>
                     <li><a href="{{ url('vente') }}"><i class="mdi mdi-nfc-variant"></i> <span class="nav-text">Ventes</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span></a>
+                    <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
+                            <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
-                    </li>
-                    <li class="nav-label">Extra</li>
-                    <li><a href="#"><i class="mdi mdi-google-pages"></i> <span class="nav-text">Pages</span></a>
                     </li>
                 </ul>
             </div>

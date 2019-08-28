@@ -19,6 +19,7 @@ class CreateFournisseursTable extends Migration
             $table->string('adresse');
             $table->string('tel');
             $table->string('email');
+            $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

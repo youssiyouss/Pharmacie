@@ -24,8 +24,8 @@ class venteRequest extends FormRequest
     public function rules()
     {
         return [
-            'lot' => 'required',
-            'date' => 'required|exists:Fournisseurs,id',
+            'lot' => 'required|exists:Lots,id',
+            'date' => 'required',
             'qt' => 'required',
         ];
     }

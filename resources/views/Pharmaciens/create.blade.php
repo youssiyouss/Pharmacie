@@ -1,105 +1,160 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="pull-right">
-  <a href="{{ url('auth/register')}}" class="btn btn-primary">Créer Compte</a>
-</div>
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <form action="{{ url('pharmaciens')}}" method="post" enctype="multipart/form-data">
-    {{ csrf_field()}}
-  <div class="form-group">
-      <label for="">Nom:</label>
-      <input type="text" name="nom" class="form-control @if($errors->get('nom')) is-invalid @endif"  value=" {{ old('nom') }}">
-      @if($errors->get('nom'))
-         @foreach($errors->get('nom') as $message)
-           <li>{{ $message }}</li>
-         @endforeach
-      @endif
-  </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Creation d'un nouveau pharmacien:</div>
 
-  <div class="form-group">
-    <label for="">Prénom:</label>
-    <input type="text" name="prenom" class="form-control @if($errors->get('prenom')) is-invalid @endif" value=" {{ old('prenom') }}">
-    @if($errors->get('prenom'))
-       @foreach($errors->get('prenom') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url('pharmaciens')}}" enctype="multipart/form-data">
+                        @csrf
 
-  <div class="form-group">
-    <label for="">Numero de téléphone:</label>
-    <input type="text" name="tel" pattern="[0-9]+|+[0-9]+" class="form-control @if($errors->get('tel')) is-invalid @endif" value=" {{ old('tel') }}">
-    @if($errors->get('tel'))
-       @foreach($errors->get('tel') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Nom:</label>
 
-  <div class="form-group">
-    <label for="">Date de naissance:</label>
-    <input type="date" name="date_nais" min="1960-01-01"max="2019-01-01" class="form-control @if($errors->get('date_nais')) is-invalid @endif" value=" {{ old('date_nais') }}">
-    @if($errors->get('date_nais'))
-       @foreach($errors->get('date_nais') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-  <div class="form-group">
-    <label for="">Email:</label>
-    <input type="email" name="email" class="form-control @if($errors->get('email')) is-invalid @endif" value=" {{ old('email') }}">
-    @if($errors->get('email'))
-       @foreach($errors->get('email') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="prenom" class="col-md-4 col-form-label text-md-right">Prénom</label>
 
-  <div class="form-group">
-    <label for="">Nom utilisateur:</label>
-    <input type="text" name="login" class="form-control @if($errors->get('login')) is-invalid @endif" value=" {{ old('login') }}">
-    @if($errors->get('login'))
-       @foreach($errors->get('login') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
 
-  <div class="form-group">
-    <label for="">Mot de passe:</label>
-    <input type="password" name="psw" class="form-control @if($errors->get('psw')) is-invalid @endif" value=" {{ old('psw') }}">
-    @if($errors->get('psw'))
-       @foreach($errors->get('psw') as $message)
-         <li>{{ $message }}</li>
-       @endforeach
-    @endif
-  </div>
+                                @error('prenom')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="date_nais" class="col-md-4 col-form-label text-md-right">Date de naissance</label>
 
-  <div class="form-group">
-      <label for="">Admin:</label><br>
-      <input type="radio" name="isadmin" value="0" checked value=" {{ old('isadmin') }}"><b>Non</b>
-      <input type="radio" name="isadmin" value="1" value=" {{ old('isadmin') }}"><b>Oui</b>
+                            <div class="col-md-6">
+                                <input type="Date" class="form-control @error('date_nais') is-invalid @enderror" name="date_nais" value="{{ old('date_nais') }}" required autocomplete="date_nais" autofocus>
+
+                                @error('date_nais')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tel" class="col-md-4 col-form-label text-md-right">Numéro de telephone:</label>
+
+                            <div class="col-md-6">
+                                <input type="telephone" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
+
+                                @error('tel')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="photo" class="col-md-4 col-form-label text-md-right">Photo de profile:</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}">
+
+                                @error('photo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
 
-  </div>
-  <div class="form-group">
-    <label for="">Photo de profile</label>
-    <input class="form-control" type="file" name="photo">
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-  </div>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-  <div class="form-group">
-      <input type="submit" value="Enregistrer"  class="form-control btn btn-primary">
-  </div>
-</form>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="login" class="col-md-4 col-form-label text-md-right">Nom d'utilisateur:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login">
+
+                                @error('login')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="isadmin" class="col-md-4 col-form-label text-md-right">Statut:</label>
+
+                            <div class="col-md-6">
+                                <input type="radio" name="isadmin" value="0" value=" {{ old('isadmin') }}"><b>Non</b>
+                                <input type="radio" name="isadmin" value="1" value=" {{ old('isadmin') }}"><b>Oui</b>
+                                @error('isadmin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                  <i class="fa fa-check-circle-o" aria-hidden="true">
+                                    {{ __('Enregistrer') }}
+                                  </i>
+                                </button>
+                                <a href="{{ url('pharmaciens') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-
 @endsection
