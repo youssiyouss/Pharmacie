@@ -47,6 +47,12 @@
       </tr>
 
       <tr >
+        <td>Date de peremption Lot</td>
+        <td>{{ $a->date_per }}</td>
+        
+      </tr>
+
+      <tr >
         <td>Prix</td>
         <td>{{ $a->prix }} DA</td>
         

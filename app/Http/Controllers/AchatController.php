@@ -45,7 +45,7 @@ class AchatController extends Controller
     public function store(achatRequest $request)
     {
         $ach = new Achat();
-        $ach->date = $request->input('date');
+        $ach->date = now();
         $ach->fournisseur = $request->input('numf');
         $ach->qt_achat = $request->input('qtachat');
         $ach->save();
@@ -55,6 +55,7 @@ class AchatController extends Controller
         $lot->achat = $id;
         $lot->nbr_medoc_lot = $request->input('indiv');
         $lot->date_fab = $request->input('datefab');
+        $lot->date_per = $request->input('dateper');
         $lot->prix = $request->input('prix');
         $lot->qt_stock = $request->input('qtachat')* $request->input('indiv');
         $lot->save();
@@ -77,7 +78,7 @@ class AchatController extends Controller
         $achat = DB::table('Achats')
             ->join('Fournisseurs', 'fournisseur', '=', 'Fournisseurs.id')
              ->join('Lots', 'Achats.id', '=', 'Lots.achat')
-            ->select('Achats.*', 'Fournisseurs.nom','Fournisseurs.adresse','Fournisseurs.tel','Fournisseurs.email','Lots.id','Lots.date_fab','Lots.prix','Lots.qt_stock','Lots.nbr_medoc_lot')
+            ->select('Achats.*', 'Fournisseurs.nom','Fournisseurs.adresse','Fournisseurs.tel','Fournisseurs.email','Lots.id','Lots.date_fab','Lots.prix','Lots.qt_stock','Lots.nbr_medoc_lot','Lots.date_per')
             ->where('Achats.id','=',$id)
             ->get();
             return view('Achats.detail', ['achat' => $achat]);

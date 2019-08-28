@@ -8,10 +8,10 @@
       <form action="{{ url('achat') }}" method="POST">
         {{ csrf_field() }}
         
-        <div class="form-group">
+        <!--div class="form-group">
           <label for="">Date Achat:</label>
           <input type="date" name="date" class="form-control" value="{{ old('date') }}" required>
-        </div>
+        </div-->
         <div class="form-group has-error">
           <label for="">Numéro du fournisseur:</label>
           <input list="browsers" name="numf" class="form-control" value="{{ old('numf') }}" required>
@@ -40,6 +40,11 @@
         <div class="form-group has-error">
           <label for="">Date de fabrication:</label>
           <input type="date" name="datefab" class="form-control" value="{{ old('datefab') }}" required>
+        </div>
+
+        <div class="form-group has-error">
+          <label for="">Date de péremption:</label>
+          <input type="date" name="dateper" class="form-control" value="{{ old('dateper') }}" required>
         </div>
        
        <div class="form-group has-error">
