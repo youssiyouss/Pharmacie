@@ -8,6 +8,9 @@ use App\Http\Requests\FourniRequest;
 
 class FournisseurController extends Controller
 {
+    public function __construct(){
+      $this->middleware('auth');
+    }
     // lister les fournisseurs
     public function index(){
       $listFournisseurs = Fournisseur::all();
@@ -21,6 +24,11 @@ class FournisseurController extends Controller
 
     // Afficher fournisseur
     public function show($id){
+      // $x = DB::table('fournisseurs')
+      //     ->join('achats', 'fournisseurs.id', '=', 'achats.fournisseur')
+      //     ->select('fournisseurs.*', 'achats.id','achats.date','achats.qt_achat')
+      //     ->where('fournisseurs.id','=',$id)
+      //     ->get();
       $x = Fournisseur::find($id);
       return view('Fournisseurs.detail',['frnsrs'=> $x]);
     }

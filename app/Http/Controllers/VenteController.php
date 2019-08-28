@@ -9,6 +9,10 @@ use App\Http\Requests\venteRequest;
 
 class VenteController extends Controller
 {
+    public function __construct(){
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +30,7 @@ class VenteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
         $lotid = DB::table('Lots')
             ->select('Lots.id')
             ->where('qt_stock','>','0')

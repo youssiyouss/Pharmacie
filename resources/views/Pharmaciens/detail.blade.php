@@ -5,41 +5,32 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <head>
-
-      <h1>Pharmacien Numero : {{ $phar->id}}</h1>
-      </head>
         <body>
-           <table align="center" class="form-group">
-           <tr>
 
-              <td>
-                <div class="row">
-                  <div class="card" style="width: 18rem;">
-                      <img class="card-img-top" src="{{ asset('storage/'.$phar->photo) }}" alt="Card image cap">
-                        <div class="card-body">
-                          <h6 class="card-title">{{ $phar->nom}} {{ $phar->Prenom}}</h6>
-                       </div>
-                 </div>
+            <div class="card">
+              <div class="text-center"><img class="rounded-circle m-t-15 w-75px" src="{{ asset('storage/'.$phar->photo) }}" alt="Card image cap" style="width: 35rem;"></div>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                         <h4 class="m-t-15 m-b-2">{{ $phar->name}} {{ $phar->Prenom}}</h4>
+                         <p class="text-muted"> @if( $phar->isadmin==1) Admin @else Pharmacien @endif</p>
+                                    <div class="row">
+                                       <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">id:</span> <span class="pull-right">{{ $phar->id}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Nom:</span> <span class="pull-right">{{ $phar->name}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Prénom:</span> <span class="pull-right">{{ $phar->Prenom}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Numero de Telephone:</span> <span class="pull-right"> {{ $phar->tel}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Date de naissance:</span> <span class="pull-right">{{ $phar->date_nais}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Email:</span> <span class="pull-right">{{ $phar->email}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Login:</span> <span class="pull-right">{{ $phar->login}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date d'inscription:</span> <span class="pull-right">{{ $phar->created_at}}</span></div>
+                                       <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date dérniere modification:</span> <span class="pull-right">{{ $phar->updated_at}}</span></div>
+                                       <div class="col-12 p-t-10 p-b-10"><a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"> Modifier</i></a></div>
+                                    </div>
+                </div>
+            </div>
+          </div>
 
-              </div>
-            </td>
-             <td>
-               <tr> <td><i><h4><u>id</u></h4></i></td><td>: {{ $phar->id}}</td> </tr>
-               <tr> <td><i><h4><u>Nom</u></h4></i></td> <td>: {{ $phar->nom}}</td> </tr>
-               <tr> <td><i><h4><u>Prénom</u></h4></i></td> <td>: {{ $phar->Prenom}}</td> </tr>
-               <tr> <td><i><h4><u>Numero de Telephone</u></h4></i></td><td> : {{ $phar->tel}} </td></tr>
-               <tr> <td><i><h4><u>Date de naissance</u></h4></i></td><td>: {{ $phar->date_nais}}</td></tr>
-               <tr> <td><i><h4><u>email</u></h4></i></td><td> : {{ $phar->email}}</td></tr>
-               <tr> <td><i><h4><u>Login</u></h4></i></td><td>: {{ $phar->login}}</td></tr>
-               <tr> <td><i><h4><u>Mot de passe</u></h4></i></td><td>: {{ $phar->psw}}</td></tr>
-               <tr> <td><i><h4><u>Statut</u></h4></i></td><td>: {{ $phar->isadmin}}</td></tr>
-               <tr> <td><i><h4><u>Date d'ajout</u></h4></i></td><td> : {{ $phar->created_at}}</td></tr>
-               <tr> <td><i><h4><u>Derniere modification</u></h4></i></td><td> :  {{ $phar->updated_at}}</td></tr>
 
-             </td>
-           </tr>
-        </table>
       </body>
     </div>
   </div>

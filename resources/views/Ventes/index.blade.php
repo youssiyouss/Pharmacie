@@ -40,8 +40,7 @@
                   {{ method_field('DELETE') }}
                   <a href="#" class="btn btn-primary">Details</a>
                   <a href="{{ url('vente/'.$v->id.'/edit') }}" class="btn btn-info">Modifier</a>
-                  <button type="submit" class="btn btn-danger">Supprimer</button>
-
+                  <button type="submit" class="btn btn-light">Supprimer</button>
                 </form>
            </td>
           </tr>

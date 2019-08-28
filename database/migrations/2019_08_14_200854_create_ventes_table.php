@@ -15,10 +15,10 @@ class CreateVentesTable extends Migration
     {
         Schema::create('ventes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('Vid');
             $table->integer('lot');
             $table->DateTime('date');
             $table->integer('qt');
+            $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

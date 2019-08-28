@@ -15,7 +15,7 @@ class UpdateLotsTable extends Migration
     {
         Schema::table('lots', function (Blueprint $table) {
           $table->unsignedBigInteger('achat')->unsigned()->index()->change();
-          $table->foreign('achat')->references('id')->on('achats');
+          $table->foreign('achat')->references('id')->on('achats')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

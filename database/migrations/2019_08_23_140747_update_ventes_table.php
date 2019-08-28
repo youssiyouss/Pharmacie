@@ -15,7 +15,7 @@ class UpdateVentesTable extends Migration
     {
         Schema::table('ventes', function (Blueprint $table) {
           $table->unsignedBigInteger('lot')->unsigned()->index()->change();
-          $table->foreign('lot')->references('id')->on('lots');
+          $table->foreign('lot')->references('id')->on('lots')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

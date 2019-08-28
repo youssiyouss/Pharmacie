@@ -19,6 +19,7 @@ class CreateMedicamentsTable extends Migration
             $table->double('dosage');
             $table->string('forme');
             $table->string('famille');
+            $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

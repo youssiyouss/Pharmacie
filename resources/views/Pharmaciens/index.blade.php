@@ -5,58 +5,74 @@
  <div class="container">
    <div class="row">
      <div class="col-md-12">
-       @if(session()->has('success'))
-          <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                <h5> {{session()->get('success')}} </h5>
-          </div>
-       @endif
+             @if(session()->has('success'))
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                      <h5> {{session()->get('success')}} </h5>
+                </div>
+             @endif
 
-       <h3><u><i>La listes des Pharmaciens :</i></u></h3>
-       <div class="pull-right">
-         <a href="{{ url('pharmaciens/create')}}" class="btn btn-success">Ajout Pharmacien</a>
-       </div>
-       <table class="table">
-         <head>
-           <tr>
-             <th>Nom:</th>
-             <th>Prenom:</th>
-             <th>Numero de Telephone:</th>
-             <th>Date de naissance:</th>
-             <th>email:</th>
-             <th>Statu:</th>
+<div class="col-lg-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="active-member">
+                                    <div class="table-responsive">
 
-           </tr>
-         </head>
-        <body>
-          @foreach($phar as $phar)
+                                      <div class="pull-right">
 
-          <tr>
-            <td>{{ $phar->nom}}</td>
-            <td>{{ $phar->Prenom}}</td>
-            <td>{{ $phar->tel}}</td>
-            <td>{{ $phar->date_nais}}</td>
-            <td>{{ $phar->email}}</td>
-            <td>@if($phar->isadmin==true)
-                    Admin
-                @else
-                    Pharmacien
-                @endif
-              </td>
-            <td>
-                <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-primary">Details</a>
-                  <a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-info">Modifier</a>
-                  <button type="submit" class="btn btn-danger">Supprimer</button>
+                                              @can('create',Auth::user())
+                                                <a href="{{ url('pharmaciens/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Ajouter </i></a>
+                                              @endcan
 
-                </form>
-           </td>
-          </tr>
-          @endforeach
-        </body>
-       </table>
+                                     </div>
+                                        <table class="table table-xs">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pharmaciens </th>
+                                                    <th>Date de naissance</th>
+                                                    <th>Numero Telephone</th>
+                                                    <th>email</th>
+                                                    <th>Statu</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               @foreach($phar as $phar)
+                                                <tr>
+                                                    <td>
+                                                        <img src="{{ asset('storage/'.$phar->photo) }}" class="pull-left m-r-10 avatar-img w-40px rounded-circle" alt="">{{ $phar->name}}_{{ $phar->Prenom}}</td>
+                                                    <td><span>{{ $phar->date_nais}}</span>
+                                                    </td>
+                                                    <td>{{ $phar->tel}}</td>
+                                                    <td><span>{{ $phar->email}}</span></td>
+                                                    <td><i class="text-success f-s-12 m-r-10"></i>@if($phar->isadmin==true) Admin @else Pharmacien
+                                                        @endif</td>
+                                                    <td>
+                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post">
+                                                          {{ csrf_field() }}
+                                                          {{ method_field('DELETE') }}
+                                                            <li class="icons">
+                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+                                                              @can('delete',$phar)
+                                                              <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i></button>
+                                                              @endcan
+                                                           </li>
+                                                          <!-- <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-primary">Details</a>
+                                                          <a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-info">Modifier</a>
+                                                          <button type="submit" class="btn btn-danger">Supprimer</button> -->
+
+                                                        </form>
+                                                   </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
      </div>
    </div>
  </div>

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Gestion fournisseurs
@@ -35,11 +36,9 @@ Route::resource('fournisseurs','FournisseurController');
 // Route::get('pharmaciens/create','PharmacienController@create');
 // Route::post('pharmaciens','PharmacienController@store');
 // Route::get('pharmaciens/{id}/edit','PharmacienController@edit');
-// Route::get('pharmaciens/{id}/show','PharmacienController@show');
+// Route::get('pharmaciens/{id}','PharmacienController@show');
 // Route::put('pharmaciens/{id}','PharmacienController@update');
 // Route::delete('pharmaciens/{id}','PharmacienController@destroy');
-
-//Route::get('register','Auth\RegisterController@create');
 Route::resource('pharmaciens','PharmacienController');
 
 //vente routes

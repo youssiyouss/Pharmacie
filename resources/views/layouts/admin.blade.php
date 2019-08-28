@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Gestionnaire de Pharmacie</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
 </head>
@@ -23,7 +23,8 @@
         <!-- header -->
         <div class="header">
             <div class="nav-header">
-                <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a>
+                <!-- <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a> -->
+                <div class="brand-logo"><a href="{{ url('/') }}"><b><img src="../assets/images/pt.png" alt=""> </b><span class="brand-title"><i><strong style="color :#b7e778;">Pharma</strong><strong style="color : #9068be;">Tlem</strong></i></span></a>
                 </div>
                 <div class="nav-control">
                     <div class="hamburger"><span class="line"></span> <span class="line"></span> <span class="line"></span>
@@ -203,17 +204,14 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-account f-s-20" aria-hidden="true"></i></a>
+                        <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 avatar-img w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li><a href="#"><i class="mdi mdi-email"></i> <span>Inbox</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="mdi mdi-settings"></i> <span>Setting</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
 
+                                        <li><span>{{ Auth::user()->login}} </span></li>
+                                        <li><a href="{{ url('pharmaciens/'.Auth::user()->id)}}"><i class="mdi mdi-account f-s-20"></i> <span>Mon profile</span></a>
+                                        </li>
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="icon-power"></i> <span>Logout</span>
@@ -237,8 +235,10 @@
                 <ul class="metismenu" id="menu">
                     <li><a href="{{ url('/home') }}"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Page principale</span></a>
                     </li>
+                    @can('isAdmin',Auth::user())
                     <li><a href="{{ url('pharmaciens') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
                     </li>
+                    @endcan
                     <li><a href="{{ url('fournisseurs') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>

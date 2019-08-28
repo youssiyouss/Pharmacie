@@ -3,39 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pharmacien;
+use App\User;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\PharmaRequest;
 use Illuminate\Http\UploadedFile;
 
 class PharmacienController extends Controller
 {
+  public function __construct(){
+    $this->middleware('auth');
+  }
+
   //lister les pharmaciens
   public function index(){
-    $x = Pharmacien::all();
-    return view('Pharmaciens.index',['phar'=>$x]);
+     if(Auth::user()->isadmin)
+       $x = User::all();
+     else {
+       $x = User::where('id',Auth::user()->id)->get();
+     }
+
+     return view('Pharmaciens.index',['phar'=>$x]);
 
   }
   //afficher le formulaire de creation d'un pharmacien
   public function create(){
+
     return View('Pharmaciens.create');
   }
 
   // Afficher Pharmacien
   public function show($id){
-    $x = Pharmacien::find($id);
-    return view('Pharmaciens.detail',['phar'=> $x]);
+    $x = User::find($id);
+      return view('Pharmaciens.detail',['phar'=> $x]);
+
   }
 
   //enregistrer un pharmacien
   public function store(PharmaRequest $request){
-    $x = new Pharmacien();
-    $x->nom= $request->input('nom');
+    $x = new User();
+    $x->user_id=Auth::user()->id;
+    $x->name= $request->input('name');
     $x->prenom = $request->input('prenom');
     $x->tel = $request->input('tel');
     $x->date_nais = $request->input('date_nais');
     $x->email = $request->input('email');
     $x->login = $request->input('login');
-    $x->psw = $request->input('psw');
+    $x->password = Hash::make($request->input('password'));
     $x->isadmin = $request->input('isadmin');
     if($request->hasFile('photo')){ $x->photo =$request->photo->store('image'); }
       $x->save();
@@ -44,21 +58,21 @@ class PharmacienController extends Controller
   }
   //permet de recuperer un pharmacien et le mettre dans le formulaire
   public function edit($id){
-    $x = Pharmacien::find($id);
+    $x = User::find($id);
     $this->authorize('update',$x);
     return view('Pharmaciens.edit',['phar'=>$x]);
   }
   //modifier un pharmacien
   public function update(PharmaRequest $request , $id){
-    $x = Pharmacien::find($id);
-    $x->nom = $request->input('nom');
+    $x = User::find($id);
+    $x->user_id=Auth::user()->id;
+    $x->name = $request->input('name');
     $x->prenom = $request->input('prenom');
     $x->tel = $request->input('tel');
     $x->date_nais = $request->input('date_nais');
     $x->email = $request->input('email');
     $x->login = $request->input('login');
-    $x->psw = $request->input('psw');
-    $x->isadmin = $request->input('isadmin');
+    $x->password = Hash::make($request->input('password'));
     if($request->hasFile('photo')){ $x->photo =$request->photo->store('image'); }
       $x->save();
     session()->flash('success','Les données  ont été modifiés avec succés!');
@@ -66,7 +80,8 @@ class PharmacienController extends Controller
   }
   //supprimer un pharmacien
   public function destroy(Request $request , $id){
-    $x = Pharmacien::find($id);
+    $x = User::find($id);
+    $this->authorize('delete',$x);
     $x->delete();
     return redirect('pharmaciens');
   }
