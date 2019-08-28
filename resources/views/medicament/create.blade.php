@@ -23,9 +23,24 @@
 					@endif
 
 				</div>
+
+				<div class="form-groupe @if($errors->get('prix')) has-error @endif">
+					<label for="">prix</label>
+					<input type="number" name="prix" class="form-control" value="{{old('prix')}}">
+
+					@if($errors->get('prix'))
+					@foreach($errors->get('prix') as $message)
+					<li>{{ $message }}</li>
+					@endforeach
+					@endif
+
+				</div>
+				
+
+
 				<div class="form-groupe @if($errors->get('dosage')) has-error @endif">
 					<label for="">dosage</label>
-					<input type="text" name="dosage" class="form-control" value="{{old('dosage')}}">
+					<input type="number" name="dosage" class="form-control" value="{{old('dosage')}}">
 
 					@if($errors->get('dosage'))
 					@foreach($errors->get('dosage') as $message)
@@ -34,8 +49,22 @@
 					@endif
 				</div>
 				<div class="form-groupe @if($errors->get('forme')) has-error @endif">
-					<label for="">forme</label>
-					<input type="text" name="forme" class="form-control" value="{{old('form')}}">
+					
+						
+						
+<p>forme du medicament</p>
+<p>
+	<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé scrable<br>
+<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé enrobé<br>
+<input type="checkbox" name="forme" value="Gellule"> Gellule<br>
+<input type="checkbox" name="forme" value="Sirop">Sirop<br>
+<input type="checkbox" name="forme" value="Sirop">Sollution buvable<br>
+<input type="checkbox" name="forme" value="Sirop">Sollution en gouttes<br>
+<input type="checkbox" name="forme" value="Sirop">Sollution injectable<br>
+<input type="checkbox" name="forme" value="Sirop">Suppositoire<br>
+</p>
+					
+					
 					@if($errors->get('forme'))
 					@foreach($errors->get('forme') as $message)
 					<li>{{ $message }}</li>
@@ -51,14 +80,63 @@
 					@endforeach
 					@endif
 				</div>
+
+				<div class="form-groupe @if($errors->get('resume')) has-error @endif">
+					<label for="">information</label>
+					<textarea type="text" name="resume" class="form-control" value="{{old('resume')}}"></textarea>
+					@if($errors->get('resume'))
+					@foreach($errors->get('resume') as $message)
+					<li>{{ $message }}</li>
+					@endforeach
+					@endif
+
+				</div>
+				<div class="form-groupe @if($errors->get('mode')) has-error @endif">
+					<label for="">mode d'administration</label>
+					<textarea type="text" name="mode" class="form-control" value="{{old('mode')}}"></textarea>
+
+					@if($errors->get('mode'))
+					@foreach($errors->get('mode') as $message)
+					<li>{{ $message }}</li>
+					@endforeach
+					@endif
+
+				</div>
+				
+				<div class="form-groupe @if($errors->get('composition')) has-error @endif">
+					<label for="">composition</label>
+					<textarea type="text" name="composition" class="form-control" value="{{old('composition')}}"></textarea>
+
+					@if($errors->get('composition'))
+					@foreach($errors->get('composition') as $message)
+					<li>{{ $message }}</li>
+					@endforeach
+					@endif
+
+				</div>
+				<div class="form-groupe @if($errors->get('plus')) has-error @endif">
+					<label for="">plus d'information</label>
+					<textarea type="text" name="plus" class="form-control" value="{{old('plus')}}"></textarea>
+
+					@if($errors->get('plus'))
+					@foreach($errors->get('plus') as $message)
+					<li>{{ $message }}</li>
+					@endforeach
+					@endif
+
+				</div>
+
 				<div class="form-groupe">
 					<label for="">image</label>
 					<input name="photo" class="form-control" type="file" accept="image/*" style="height: auto;">
 				</div>
+				
 
 				<div class="form-groupe">
 					
 					<input type="submit" class="form-control btn btn-primary" value="enregistrer">
+					
+
 				</div>
 				
 			</form>
