@@ -31,7 +31,7 @@
                                                   </thead>
                                                   <tbody>
                                                      @foreach($frnsrs as $frnsrs)
-                                                      <tr>
+                                                      <tr class="col-md-2">
                                                           <td><span>{{ $frnsrs->nom}}</span>
                                                           </td>
                                                           <td><span>{{ $frnsrs->adresse}}</span>
