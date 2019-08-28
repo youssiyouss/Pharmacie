@@ -42,7 +42,6 @@ class PharmacienController extends Controller
   //enregistrer un pharmacien
   public function store(PharmaRequest $request){
     $x = new User();
-    $x->user_id=Auth::user()->id;
     $x->name= $request->input('name');
     $x->prenom = $request->input('prenom');
     $x->tel = $request->input('tel');
@@ -65,7 +64,6 @@ class PharmacienController extends Controller
   //modifier un pharmacien
   public function update(PharmaRequest $request , $id){
     $x = User::find($id);
-    $x->user_id=Auth::user()->id;
     $x->name = $request->input('name');
     $x->prenom = $request->input('prenom');
     $x->tel = $request->input('tel');

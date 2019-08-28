@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                         <h4 class="m-t-15 m-b-2">{{ $phar->name}} {{ $phar->Prenom}}</h4>
+                         <h4 class="m-t-15 m-b-2 bg-primary">{{ $phar->name}} {{ $phar->Prenom}}</h4>
                          <p class="text-muted"> @if( $phar->isadmin==1) Admin @else Pharmacien @endif</p>
                                     <div class="row">
                                        <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">id:</span> <span class="pull-right">{{ $phar->id}}</span></div>

@@ -8,7 +8,7 @@
       <body>
 
         <div class="card">
-          <div class="text-center">Fournisseur Numero : {{ $frnsrs->id}}</div>
+          <div class="text-center bg-primary" >Fournisseur Numero : {{ $frnsrs->id}}</div>
 
         </div>
         <div class="card-body">
