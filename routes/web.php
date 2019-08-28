@@ -17,15 +17,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/users','HomeController@users')->name('users');
 
-Route::get('fournisseurs','FournisseurController@index');
-Route::get('fournisseurs/create','FournisseurController@create');
-Route::post('fournisseurs','FournisseurController@store');
-Route::get('fournisseurs/{id}/edit','FournisseurController@edit');
-Route::put('fournisseurs/{id}','FournisseurController@update');
-Route::delete('fournisseurs/{id}','FournisseurController@destroy');
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Gestion fournisseurs
+// Route::get('fournisseurs/{id}','FournisseurController@show');
+// Route::get('fournisseurs','FournisseurController@index');
+// Route::get('fournisseurs/create','FournisseurController@create');
+// Route::post('fournisseurs','FournisseurController@store');
+// Route::get('fournisseurs/{id}/edit','FournisseurController@edit');
+// Route::get('fournisseurs/{id}/show','FournisseurController@show');
+// Route::put('fournisseurs/{id}','FournisseurController@update');
+// Route::delete('fournisseurs/{id}','FournisseurController@destroy');
+Route::resource('fournisseurs','FournisseurController');
+
+//Gestion pharmaciens
+// Route::get('pharmaciens','PharmacienController@index');
+// Route::get('pharmaciens/create','PharmacienController@create');
+// Route::post('pharmaciens','PharmacienController@store');
+// Route::get('pharmaciens/{id}/edit','PharmacienController@edit');
+// Route::get('pharmaciens/{id}','PharmacienController@show');
+// Route::put('pharmaciens/{id}','PharmacienController@update');
+// Route::delete('pharmaciens/{id}','PharmacienController@destroy');
+Route::resource('pharmaciens','PharmacienController');
 
 //vente routes
 Route::get('vente','VenteController@index');
@@ -34,7 +48,6 @@ Route::post('vente','VenteController@store');
 Route::delete('vente/{id}','VenteController@destroy');
 Route::get('vente/{id}/edit','VenteController@edit');
 Route::put('vente/{id}','VenteController@update');
-
 //Achat Route
 Route::get('achat','AchatController@index');
 Route::get('achat/create','AchatController@create');

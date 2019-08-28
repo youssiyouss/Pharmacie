@@ -12,12 +12,12 @@
        </div>
        <table class="table">
          <head>
-         
+
            <tr>
              <th>ID</th>
              <th>Date</th>
              <th>Num fournisseur</th>
-             
+
            </tr>
          </head>
         <body>
@@ -27,7 +27,7 @@
             <td>{{ $a->id }}</td>
             <td>{{ $a->date }}</td>
             <td>{{ $a->fournisseur }}</td>
-            
+
             <td>
                 <form action="{{ url('achat/'.$a->id) }}" method="post">
                   {{ csrf_field() }}

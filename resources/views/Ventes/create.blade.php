@@ -11,7 +11,12 @@
        
         <div class="form-group has-error">
           <label for="">Lot:</label>
+<<<<<<< HEAD
           <input list="browsers" name="lot" class="form-control" value="{{ old('lot') }}" required>
+=======
+
+          <input list="browsers" name="lot" class="form-control" required>
+>>>>>>> master
 
 <datalist id="browsers">
 
@@ -21,12 +26,16 @@
     @endforeach
 
 </datalist>
+<<<<<<< HEAD
         @if($errors->get('lot'))
         @foreach($errors->get('lot') as $message)
           <li class="alert alert-danger">{{ $message }}</li>
         @endforeach
         @endif
               
+=======
+
+>>>>>>> master
         </div>
        
        
@@ -35,6 +44,7 @@
           <label for="">Date:</label>
           <input type="date" name="date" class="form-control" value="{{ old('date') }}" required>
         </div>
+<<<<<<< HEAD
        
         <div class="form-group has-error">
           <label for="">Quatitée:</label>
@@ -44,6 +54,11 @@
           <li class="alert alert-danger">{{ $message }}</li>
         @endforeach
         @endif
+=======
+        <div class="form-group">
+          <label for="">Quantité:</label>
+          <input type="number" name="qt" min="1"  class="form-control" required>
+>>>>>>> master
         </div>
 
 
