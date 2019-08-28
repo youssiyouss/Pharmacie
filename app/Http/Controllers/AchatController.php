@@ -57,9 +57,10 @@ class AchatController extends Controller
         $lot = new Lot();
         $lot->medoc = $request->input('med');
         $lot->achat = $id;
+        $lot->nbr_medoc_lot = $request->input('indiv');
         $lot->date_fab = $request->input('datefab');
         $lot->prix = $request->input('prix');
-        $lot->qt_stock = $request->input('qtachat');
+        $lot->qt_stock = $request->input('qtachat')* $request->input('indiv');
         $lot->save();
 
 
@@ -79,7 +80,8 @@ class AchatController extends Controller
     {
         $achat = DB::table('Achats')
             ->join('Fournisseurs', 'fournisseur', '=', 'Fournisseurs.id')
-            ->select('Achats.*', 'Fournisseurs.nom','Fournisseurs.adresse','Fournisseurs.tel','Fournisseurs.email')
+             ->join('Lots', 'Achats.id', '=', 'Lots.achat')
+            ->select('Achats.*', 'Fournisseurs.nom','Fournisseurs.adresse','Fournisseurs.tel','Fournisseurs.email','Lots.id','Lots.date_fab','Lots.prix','Lots.qt_stock','Lots.nbr_medoc_lot')
             ->where('Achats.id','=',$id)
             ->get();
             return view('Achats.detail', ['achat' => $achat]);
@@ -124,7 +126,12 @@ class AchatController extends Controller
     {
         $a = Achat::find($id);
         $a->delete();
-
+        $l = DB::table('Lots')
+            ->select('Lots.*')
+            ->where('Lots.id','=',$id)
+            ->delete();
+            
+       
         return redirect('achat');
     }
 }

@@ -13,10 +13,10 @@ class UpdateLotsTable extends Migration
      */
     public function up()
     {
-        Schema::table('lots', function (Blueprint $table) {
-          $table->unsignedBigInteger('achat')->unsigned()->index()->change();
-          $table->foreign('achat')->references('id')->on('achats')->onDelete('cascade')->onUpdate('cascade');
-        });
+        Schema::table('Lots', function (Blueprint $table) {
+             $table->integer('nbr_medoc_lot')->after('prix');
+    
+});
     }
 
     /**
@@ -26,8 +26,8 @@ class UpdateLotsTable extends Migration
      */
     public function down()
     {
-        Schema::table('lots', function (Blueprint $table) {
-          $table->dropForeign('lots_achat_id_foreign');
-        });
+        Schema::table('Lots', function (Blueprint $table) {
+            $table->dropColumn('nbr_medoc_lot');
+            });
     }
 }

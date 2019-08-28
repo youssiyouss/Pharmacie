@@ -54,7 +54,7 @@
                 <div class="header-right">
 
                     <div class="col p-0">
-                          
+
                       </div>
                     <ul>
                         <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 avatar-img w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
@@ -96,13 +96,14 @@
                     </li>
                     <li><a href="#"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
+                    <li><a href="{{ url('lot') }}"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
                     </li>
                     <li><a href="{{ url('achat') }}"><i class="mdi mdi-diamond"></i> <span class="nav-text">Achats</span></a>
                     </li>
                     <li><a href="{{ url('vente') }}"><i class="mdi mdi-nfc-variant"></i> <span class="nav-text">Ventes</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span></a>
+                    <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
+                            <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
                     </li>

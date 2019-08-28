@@ -46,6 +46,12 @@
           <label for="">Prix:</label>
           <input type="number" name="prix" min="1"  class="form-control" value="{{ old('prix') }}" required>
         </div>
+
+        <div class="form-group has-error">
+          <label for="">Quantitée individuelle des Lots:</label>
+          <input type="number" name="indiv" min="1"  class="form-control" value="{{ old('indiv') }}" required>
+        </div>
+
         <div class="form-group has-error">
           <label for="">Quatitée Achat:</label>
           <input type="number" name="qtachat" min="1"  class="form-control" value="{{ old('qtachat') }}" required>
