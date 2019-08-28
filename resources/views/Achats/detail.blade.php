@@ -33,25 +33,6 @@
         <td>{{ $a->qt_achat }}</td>
 
       </tr>
-
-       <tr >
-        <td>Quantité au stock du Lot</td>
-        <td>{{ $a->qt_stock }}</td>
-
-      </tr>
-
-      <tr >
-        <td>Date de fabrication Lot</td>
-        <td>{{ $a->date_fab }}</td>
-
-      </tr>
-
-      <tr >
-        <td>Prix</td>
-        <td>{{ $a->prix }} DA</td>
-
-      </tr>
-
       <tr>
         <td>Nom Fournisseur</td>
         <td>{{ $a->nom }}</td>

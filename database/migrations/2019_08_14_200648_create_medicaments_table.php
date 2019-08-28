@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -16,9 +17,14 @@ class CreateMedicamentsTable extends Migration
         Schema::create('medicaments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
+             $table->string('prix');
             $table->double('dosage');
             $table->string('forme');
             $table->string('famille');
+            $table->string('resume');
+            $table->string('mode');
+            $table->string('composition');
+            $table->string('plus');
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
