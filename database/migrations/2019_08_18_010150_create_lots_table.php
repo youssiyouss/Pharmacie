@@ -19,7 +19,6 @@ class CreateLotsTable extends Migration
             $table->string('medoc');
             $table->DateTime('date_fab');
             $table->double('prix');
-            
             $table->integer('qt_stock');
             $table->timestamps();
         });

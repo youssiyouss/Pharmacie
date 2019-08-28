@@ -18,6 +18,7 @@ class CreateVentesTable extends Migration
             
             $table->DateTime('date');
             $table->integer('qt');
+             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

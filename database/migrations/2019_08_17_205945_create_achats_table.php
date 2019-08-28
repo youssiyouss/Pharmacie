@@ -16,7 +16,9 @@ class CreateAchatsTable extends Migration
         Schema::create('Achats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->DateTime('date');
+            $table->integer('qt_achat');
             
+             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

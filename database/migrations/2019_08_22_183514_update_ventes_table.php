@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnDeletedAtAchats extends Migration
+class UpdateVentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddColumnDeletedAtAchats extends Migration
      */
     public function up()
     {
-        Schema::table('Achats', function (Blueprint $table) {
-            $table->DateTime('deleted_at')->nullable();
-        });
+         Schema::table('Ventes', function (Blueprint $table) {
+    $table->unsignedBigInteger('lot')->after('date');
+    $table->foreign('lot')->references('id')->on('Lots')->onDelete('cascade');
+});  
     }
 
     /**
@@ -25,8 +26,6 @@ class AddColumnDeletedAtAchats extends Migration
      */
     public function down()
     {
-        Schema::table('Achats', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
-        });
+        $table->dropForeign('vente_lots_id_foreign');
     }
 }

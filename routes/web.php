@@ -43,3 +43,12 @@ Route::get('achat/{id}/edit','AchatController@edit');
 Route::put('achat/{id}','AchatController@update');
 Route::delete('achat/{id}','AchatController@destroy');
 Route::get('achat/{id}/detail','AchatController@show');
+
+//Lot Routes
+Route::get('lot','LotController@index');
+Route::get('lot/{id}','LotController@show');
+
+//Notification routes
+Route::get('notifread/{id}','NotifController@markAsRead');
+Route::get('alerte/{id}','NotifController@displaytNotif');
+Route::get('alerte','NotifController@index');

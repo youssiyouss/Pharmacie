@@ -52,51 +52,36 @@
                 </div>
                 <div class="header-right">
                     <ul>
-                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-bell f-s-18" aria-hidden="true"></i><div class="pulse-css"></div></a>
+                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-bell f-s-18" aria-hidden="true"></i>
+                            @if(auth()->user()->unreadNotifications->count() > 0)
+                            <span class="badge badge-danger"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                             <div class="drop-down animated bounceInDown">
-                                <div class="dropdown-content-heading"><span class="text-left">Recent Notifications</span>
+                                <div class="dropdown-content-heading"><span class="text-left">Nouvelles Notifications</span>
                                 </div>
                                 <div class="dropdown-content-body">
+                                    
+                                         @foreach(auth()->user()->unreadNotifications as $notification)
                                     <ul>
                                         <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/1.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. Dmitry</div>
-                                                    <div class="notification-text">5 members joined today</div>
+                                            <a href="{{ url( 'notifread/'.$notification->id ) }}">
+                                                <!--img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/1.jpg" alt=""-->
+                                                <div class="notification-content"><small class="notification-timestamp pull-right"> {{ $notification->created_at }} </small>
+                                                    <!--div class="notification-heading">Mr. Dmitry</div-->
+                                                    <div class="notification-text"> {{ $notification->data['alerte']['title'] }} </div>
                                                 </div>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/2.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mariam</div>
-                                                    <div class="notification-text">likes a photo of you</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/3.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Tasnim</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="../../assets/images/avatar/4.jpg" alt="">
-                                                <div class="notification-content"><small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Ishrat Jahan</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="text-center"><a href="#" class="more-link">See All</a>
+                                        @endforeach
+                                           
+                                  
+                                        
+                                        @if(auth()->user()->unreadNotifications->count() > 0)
+                                        <li class="text-center"><a href="{{ url('alerte') }}" class="more-link">See All</a>
                                         </li>
                                     </ul>
+                                    @endif
+                                    
+                                    
                                 </div>
                             </div>
                         </li>
@@ -243,13 +228,14 @@
                     </li>
                     <li><a href="#"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
+                    <li><a href="{{ url('lot') }}"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
                     </li>
                     <li><a href="{{ url('achat') }}"><i class="mdi mdi-diamond"></i> <span class="nav-text">Achats</span></a>
                     </li>
                     <li><a href="{{ url('vente') }}"><i class="mdi mdi-nfc-variant"></i> <span class="nav-text">Ventes</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span></a>
+                    <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
+                            <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
                     </li>
