@@ -5,23 +5,34 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <head>
+      <body>
 
-      <h1>Fournisseur Numero : {{ $frnsrs->id}}</h1>
-      </head>
-        <body>
-         <table align="center">
-          <tr> <td><i><h4><u>id</u></h4></i></td><td>: {{ $frnsrs->id}}</td> </tr>
-          <tr> <td><i><h4><u>Nom</u></h4></i></td> <td>: {{ $frnsrs->nom}}</td> </tr>
-          <tr> <td><i><h4><u>Adresse</u></h4></i></td><td>: {{ $frnsrs->adresse}}</td></tr>
-          <tr> <td><i><h4><u>Numero de Telephone</u></h4></i></td><td> : {{ $frnsrs->tel}} </td></tr>
-          <tr> <td><i><h4><u>email</u></h4></i></td><td> : {{ $frnsrs->email}}</td></tr>
-          <tr> <td><i><h4><u>Date d'ajout</u></h4></i></td><td> : {{ $frnsrs->created_at}}</td></tr>
-          <tr> <td><i><h4><u>Derniere modification</u></h4></i></td><td> :  {{ $frnsrs->updated_at}}</td></tr>
+        <div class="card">
+          <div class="text-center bg-primary" >Fournisseur Numero : {{ $frnsrs->id}}</div>
 
-        </table>
-      </body>
-    </div>
+        </div>
+        <div class="card-body">
+            <div class="text-center">
+                     <h4 class="m-t-15 m-b-2">{{ $frnsrs->nom}}</h4>
+                              <div class="row">
+                                   <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">id:</span> <span class="pull-right">{{ $frnsrs->id}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Nom:</span> <span class="pull-right">{{ $frnsrs->nom}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Numero de Telephone:</span> <span class="pull-right"> {{ $frnsrs->tel}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Email:</span> <span class="pull-right">{{ $frnsrs->email}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date d'ajout:</span> <span class="pull-right">{{ $frnsrs->created_at}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date dérniere modification:</span> <span class="pull-right">{{ $frnsrs->updated_at}}</span></div>
+                                   <!-- <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Nombre d'achat:</span> <span class="pull-right">{{ $frnsrs->fournisseur}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date:</span> <span class="pull-right">{{ $frnsrs->date}}</span></div>
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Quantité d'achats:</span> <span class="pull-right">{{ $frnsrs->qt_achat}}</span></div> -->
+
+                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><a href="{{ url('achat/'.$frnsrs->id.'/detail')}}" class="pull-left f-w-600"><span class="pull-left f-w-600 fa fa-list-ul"> Afficher list achats:</span></a></div>
+                                   <div class="col-12 p-t-10 p-b-10"><a href="{{ url('fournisseurs/'.$frnsrs->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"> Modifier</i></a></div>
+
+                                </div>
+            </div>
+        </div>
+        </body>
+      </div>
   </div>
 </div>
 @endsection

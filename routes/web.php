@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Gestion mediacaments
 /*Route::get('medicaments','MedController@index');
 Route::get('medicaments/create','MedController@create');
 Route::post('medicaments','MedController@store');
@@ -25,6 +25,7 @@ Route::post('medicaments/{id}','MedController@show');*/
 Route::resource('medicaments','MedController');
 
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -44,8 +45,32 @@ Route::resource('fournisseurs','FournisseurController');
 // Route::get('pharmaciens/create','PharmacienController@create');
 // Route::post('pharmaciens','PharmacienController@store');
 // Route::get('pharmaciens/{id}/edit','PharmacienController@edit');
-// Route::get('pharmaciens/{id}/show','PharmacienController@show');
+// Route::get('pharmaciens/{id}','PharmacienController@show');
 // Route::put('pharmaciens/{id}','PharmacienController@update');
 // Route::delete('pharmaciens/{id}','PharmacienController@destroy');
-Route::get('register','Auth\RegisterController@create');
 Route::resource('pharmaciens','PharmacienController');
+
+//vente routes
+Route::get('vente','VenteController@index');
+Route::get('vente/create','VenteController@create');
+Route::post('vente','VenteController@store');
+Route::delete('vente/{id}','VenteController@destroy');
+Route::get('vente/{id}/edit','VenteController@edit');
+Route::put('vente/{id}','VenteController@update');
+//Achat Route
+Route::get('achat','AchatController@index');
+Route::get('achat/create','AchatController@create');
+Route::post('achat','AchatController@store');
+Route::get('achat/{id}/edit','AchatController@edit');
+Route::put('achat/{id}','AchatController@update');
+Route::delete('achat/{id}','AchatController@destroy');
+Route::get('achat/{id}/detail','AchatController@show');
+
+//Lot Routes
+Route::get('lot','LotController@index');
+Route::get('lot/{id}','LotController@show');
+
+//Notification routes
+Route::get('notifread/{id}','NotifController@markAsRead');
+Route::get('alerte/{id}','NotifController@displaytNotif');
+Route::get('alerte','NotifController@index');

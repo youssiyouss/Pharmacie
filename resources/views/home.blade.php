@@ -4,51 +4,9 @@
 <div class="container">
                 <div class="row page-titles">
                     <div class="col p-0">
-                        <h4>Hello, <span>Welcome here</span></h4>
-                    </div>
-                    <div class="col p-0">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4>Download <span class="pull-right"><i class="ion-android-download f-s-30 text-primary"></i></span></h4>
-                                <h6 class="m-t-20 f-s-14">50% Complete</h6>
-                                <div class="progress m-t-0 h-7px">
-                                    <div role="progressbar" class="progress-bar bg-primary wow animated progress-animated w-50pc h-7px"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4>Upload <span class="pull-right"><i class="ion-android-upload f-s-30 text-success"></i></span></h4>
-                                <h6 class="m-t-20 f-s-14">90% Complete</h6>
-                                <div class="progress m-t-0 h-7px">
-                                    <div role="progressbar" class="progress-bar bg-success wow animated progress-animated w-90pc h-7px"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <h4>Salut  <span>{{Auth::user()->login}}!</span></h4>
+                    </div>                    
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4>Ticket <span class="pull-right"><i class="ion-android-list f-s-30 text-danger"></i></span></h4>
-                                <h6 class="m-t-20 f-s-14">65% Ticket Checked</h6>
-                                <div class="progress m-t-0 h-7px">
-                                    <div role="progressbar" class="progress-bar bg-danger wow animated progress-animated w-65pc h-7px"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-7">
@@ -113,33 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body p-0">
-                                <a href="#">
-                                    <div class="card-bg-img-1">
-                                        <div class="card-img-overlay dark-overlay-5 text-white">
-                                            <div class="position-absolute left-20 bottom-20"><span class="label label-primary label-rounded">News</span>
-                                                <h4 class="text-white m-t-20 m-b-10">The science<br>behind the dress</h4>
-                                                <div><span class="f-s-16"><i class="ti-comment m-r-10 f-s-13"></i>74</span> <span class="p-l-10 p-r-10">|</span> <span class="f-s-16"><i class="ti-heart m-r-10 f-s-13"></i>210</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center"><i class="icon ion-ios-paper-outline f-s-75 text-success"></i>
-                                    <h4 class="m-b-2">Knowledge Base</h4>
-                                    <p class="p-l-30 p-r-30 m-t-15 m-b-30">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</p><a href="#" class="btn btn-sm btn-success btn-block m-t-15">Browse Article</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-xl-12">

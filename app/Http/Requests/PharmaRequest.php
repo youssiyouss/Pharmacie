@@ -24,13 +24,14 @@ class PharmaRequest extends FormRequest
     public function rules()
     {
         return [
-          'nom' => 'required|string',
-          'prenom'=>'required|string',
+          'name' => 'required|string|max:255',
+          'prenom'=>'required|string|max:255',
           'tel' => 'required|numeric|distinct',
-          'email' => 'required|email|distinct',
-          'login'=>'required|distinct|string|min:4',
-          'psw'=>'required|string|min:4',
-          'photo'=>'mimes:jpeg,bmp,png,jpg'
+          'date_nais' => 'required|date',
+          'photo'=>'mimes:jpeg,bmp,png,jpg', //|max:2048
+          'login'=>'required|string|min:4',
+          'email' =>'required|string|email|max:255',
+          'password' => 'required|string|min:8|confirmed',
 
         ];
     }
