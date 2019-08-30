@@ -1,5 +1,5 @@
 <?php
-
+use App\Vente;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 //Gestion mediacaments
 /*Route::get('medicaments','MedController@index');
 Route::get('medicaments/create','MedController@create');
@@ -23,14 +28,7 @@ Route::put('medicaments/{id}','MedController@update');
 Route::delete('medicaments/{id}','MedController@destroy');
 Route::post('medicaments/{id}','MedController@show');*/
 Route::resource('medicaments','MedController');
-Auth::routes();
-<<<<<<< HEAD
 Route::get('medicaments/search','MedController@search');
-=======
-
-
->>>>>>> master
-Route::get('/home', 'HomeController@index')->name('home');
 
 //Gestion fournisseurs
 // Route::get('fournisseurs/{id}','FournisseurController@show');
@@ -67,9 +65,6 @@ Route::post('achat','AchatController@store');
 Route::get('achat/{id}/edit','AchatController@edit');
 Route::put('achat/{id}','AchatController@update');
 Route::delete('achat/{id}','AchatController@destroy');
-<<<<<<< HEAD
-Route::get('achat/{id}/detail','AchatController@show');
-=======
 Route::get('achat/{id}/detail','AchatController@show');
 
 //Lot Routes
@@ -80,4 +75,16 @@ Route::get('lot/{id}','LotController@show');
 Route::get('notifread/{id}','NotifController@markAsRead');
 Route::get('alerte/{id}','NotifController@displaytNotif');
 Route::get('alerte','NotifController@index');
->>>>>>> master
+
+//Statistiques Routes
+
+//Route::get('VenteMontuelle','StatistiqueController@index');
+Route::get('VenteMontuelle',function(){
+  //$vente=array();
+      $vente= DB::table('ventes')
+          ->select('lot', DB::raw('sum(qt) as produit'))
+          ->groupBy('lot')
+          ->get();
+
+      return response()->json(["Test"=>$vente]);
+});

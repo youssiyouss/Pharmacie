@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.bundle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+
 </head>
 
 <body class="v-light vertical-nav fix-header fix-sidebar">

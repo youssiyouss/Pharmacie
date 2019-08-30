@@ -95,7 +95,7 @@
       </div>
     </div>
 
-    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/hero_1.jpg');">
+    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
       <div class="container">
         <div class="row">
           <div class="order-lg-2 align-self-center">
