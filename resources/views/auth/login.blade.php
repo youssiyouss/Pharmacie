@@ -31,7 +31,7 @@
       						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
       					</div>
                   <label>
-                    <input type="checkbox" id="checkbox" style="cursor:pointer;">
+                    <input type="checkbox" id="checkbox" style="cursor:pointer; margin: 10px;">
                     <a class="alert-link" href="#">
                          Afficher le mot de passe
                     </a>
