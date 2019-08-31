@@ -1,5 +1,10 @@
 <?php
-use App\Vente;
+use App\Lot;
+use App\User;
+use App\Medicament;
+use App\Fournisseur;
+
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +25,29 @@ Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
 
+Route::any('/search_User',function(){
+    $q = Input::get ( 'search' );
+    $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
+  return view('searchUser')->with(['medicaments' => $medicaments]);
+});
+
+Route::any('/search',function(){
+    $q = Input::get ( 'search' );
+
+    $users = User::where('name','LIKE','%'.$q.'%')->orWhere('prenom','LIKE','%'.$q.'%')->orWhere('login','LIKE','%'.$q.'%')->get();
+    $fournisseurs = Fournisseur::where('nom','LIKE','%'.$q.'%')->orWhere('adresse','LIKE','%'.$q.'%')->get();
+    $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
+    $lots = Lot::where('medoc','LIKE','%'.$q.'%')->get();
+
+    // return view('search')->withDetails($user)->withQuery ( $q );
+    return view('search')->with([
+        'users' => $users,
+        'fournisseurs' => $fournisseurs,
+        'medicaments' => $medicaments,
+        'lots' => $lots,
+       ]);
+
+});
 
 //Gestion mediacaments
 /*Route::get('medicaments','MedController@index');
