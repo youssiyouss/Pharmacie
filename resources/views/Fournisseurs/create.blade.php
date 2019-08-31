@@ -2,51 +2,76 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <form action="{{ URL('fournisseurs')}}" method="POST">
-        {{ csrf_field() }}
-        <div class="form-group">
-          <label for="">Nom:</label>
-          <input type="text" name="nom" class="form-control @if($errors->get('nom')) is-invalid @endif" value="{{ old('nom')}}">
-           @if($errors->get('nom'))
-              @foreach($errors->get('nom') as $message)
-                <li>{{ $message }}</li>
-              @endforeach
-           @endif
-        </div>
-        <div class="form-group">
-          <label for="">Adresse:</label>
-          <input type="text" name="adresse" class="form-control @if($errors->get('adresse')) is-invalid @endif" value="{{ old('adresse')}}">
-          @if($errors->get('adresse'))
-             @foreach($errors->get('adresse') as $message)
-               <li>{{ $message }}</li>
-             @endforeach
-          @endif
-        </div>
-        <div class="form-group">
-          <label for="">Numero Telephone:</label>
-          <input type="number" name="tel" class="form-control @if($errors->get('tel')) is-invalid @endif" value="{{ old('tel')}}">
-          @if($errors->get('tel'))
-             @foreach($errors->get('tel') as $message)
-               <li>{{ $message }}</li>
-             @endforeach
-          @endif
-        </div>
-        <div class="form-group">
-          <label for="">Email:</label>
-          <input type="email" name="email" class="form-control @if($errors->get('email')) is-invalid @endif" value="{{ old('email')}}">
-          @if($errors->get('email'))
-             @foreach($errors->get('email') as $message)
-               <li>{{ $message }}</li>
-             @endforeach
-          @endif
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Creation d'un nouveau fournisseur:</div>
 
-        </div>
+                <div class="card-body">
+                  <form action="{{ URL('fournisseurs')}}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="form-group row">
+                        <label for="name" class="col-md-4 col-form-label text-md-right">Nom:</label>
 
-        <div class="form-group">
-          <input type="submit" class="form-control" value="Créer Fournisseur">
-        </div>
+                        <div class="col-md-6">
+                            <input  type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
+
+                            @error('nom')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-md-4 col-form-label text-md-right">Adresse:</label>
+
+                        <div class="col-md-6">
+                            <input  type="text" class="form-control @error('adresse') is-invalid @enderror" name="adresse" value="{{ old('adresse') }}" required autocomplete="adresse" autofocus>
+
+                            @error('adresse')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tel" class="col-md-4 col-form-label text-md-right">Numero Telephone:</label>
+
+                        <div class="col-md-6">
+                            <input  type="number" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="adresse" autofocus>
+
+                            @error('tel')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
+
+                        <div class="col-md-6">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fa fa-check-circle-o" aria-hidden="true">
+                                {{ __('Enregistrer') }}
+                              </i>
+                            </button>
+                            <a href="{{ url('fournisseurs') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+                        </div>
+                    </div>
       </form>
     </div>
   </div>

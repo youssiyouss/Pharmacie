@@ -33,6 +33,7 @@
 		<div class="container-login100" style="background-image: url('../Login_v16/images/pills.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
+					  <img src="../assets/images/pt.png" width="36" height="36" >
             <i><strong style="color :#b7e778;">Pharma</strong><strong style="color : #9068be;">Tlem</strong></i></span>
         @yield('content')
 			</div>
@@ -41,7 +42,6 @@
 
 
 	<div id="dropDownSelect1"></div>
-
 <!--===============================================================================================-->
 	<script src="../Login_v16/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

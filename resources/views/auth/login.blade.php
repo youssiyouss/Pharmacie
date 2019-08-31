@@ -27,8 +27,15 @@
                                       <strong>{{ $message }}</strong>
                                   </span>
                   @enderror
+
       						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
       					</div>
+                  <label>
+                    <input type="checkbox" id="checkbox" style="cursor:pointer;">
+                    <a class="alert-link" href="#">
+                         Afficher le mot de passe
+                    </a>
+                  </label>
 
       					<div class="container-login100-form-btn m-t-32">
       						<button type="submit"  class="login100-form-btn">
@@ -42,6 +49,22 @@
                                {{ __('Forgot Your Password?') }}
                        </a>
                 @endif
+
+
+              	<script src="../Login_v16/vendor/jquery/jquery.min.js"></script>
+                <script type="text/javascript">
+                  	$(document).ready(function() {
+                  		var checkbox = $("#checkbox");
+                  		var password = $("#password");
+                  		checkbox.click(function() {
+                  			if(checkbox.prop("checked")) {
+                  				password.attr("type", "text");
+                  			} else {
+                  				password.attr("type", "password");
+                  			}
+                  		});
+                  	});
+                  </script>
               </div>
 
 @endsection
