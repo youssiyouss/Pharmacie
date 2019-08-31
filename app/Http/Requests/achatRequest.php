@@ -24,7 +24,7 @@ class achatRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required',
+            
             'numf' => 'required|exists:Fournisseurs,id',
             'med' => 'required',
             'datefab' => 'required',
