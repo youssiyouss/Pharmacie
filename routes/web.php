@@ -19,9 +19,11 @@ use Illuminate\Support\Facades\Input;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('medi', 'HomeController@medi')->name('medicament');
+Route::get('soin', 'HomeController@soin')->name('soins&santé');
+Route::get('produit', 'HomeController@produit')->name('produit');
 
 Route::any('/search_User',function(){
     $q = Input::get ( 'search' );

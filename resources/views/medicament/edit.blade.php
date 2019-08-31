@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
 
 <div class="container">
@@ -208,7 +206,5 @@
 <input type="checkbox" name="forme" value="Sirop">Sollution injectable<br>
 <input type="checkbox" name="forme" value="Sirop">Suppositoire<br>
 </p> -->
-
-
 
 @endsection
