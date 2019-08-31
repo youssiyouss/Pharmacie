@@ -46,16 +46,23 @@
 				<div class="form-groupe @if($errors->get('forme')) has-error @endif">
 											
 <p>forme du medicament</p>
-<p>
-	<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé scrable<br>
-<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé enrobé<br>
-<input type="checkbox" name="forme" value="Gellule"> Gellule<br>
-<input type="checkbox" name="forme" value="Sirop">Sirop<br>
-<input type="checkbox" name="forme" value="Sirop">Sollution buvable<br>
-<input type="checkbox" name="forme" value="Sirop">Sollution en gouttes<br>
-<input type="checkbox" name="forme" value="Sirop">Sollution injectable<br>
-<input type="checkbox" name="forme" value="Sirop">Suppositoire<br>
-</p>
+<input list="browsers" name="forme" class="form-control" value="{{ old('forme') }}" required>
+
+<datalist id="browsers">
+
+
+    <option value="Comprimé">
+    <option value="Gellule">
+    <option value="Gel">
+    <option value="Pomade">
+    <option value="sirop">
+    <option value="sollution applicable">
+    <option value="sollution en goutte">
+    <option value="suspention injectable">
+    <option value="suppositoire">
+    
+
+</datalist>
 					@if($errors->get('forme'))
 					@foreach($errors->get('forme') as $message)
 					<li>{{ $message }}</li>
