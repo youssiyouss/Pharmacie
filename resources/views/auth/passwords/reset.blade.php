@@ -300,7 +300,7 @@ form {
                               <input class="input100" id="password-confirm" type="password" name="password_confirmation" placeholder="Comfirmer Mot de passe" required autocomplete="new-password">
                               <span class="focus-input100" data-placeholder="&#xe82a;"></span>
 															<label>
-																<input type="checkbox" id="checkbox" style="cursor:pointer;">
+																<input type="checkbox" id="checkbox" style="cursor:pointer; margin: 10px;">
 																	 Afficher le mot de passe
 																</label>
                           </div>
