@@ -60,32 +60,15 @@
                <div class="col-md-6">
                    <input list="formes" class="form-control @error('forme') is-invalid @enderror" name="form" value="{{$medicament -> forme}}">
 									 <datalist id="formes">
-									     <option value="SOLUTION BUV">
-									 		 <option value="COMP.PELLI.SEC">
-											 <option value="COMP.PELLI">
-											 <option value="COMP.SEC">
-											 <option value="COMP.SECABLE">
-											 <option value="SIROP">
-											 <option value="COMP">
-											 <option value="SOL.INJ">
-										   <option value="GLES">
-											 <option value="SOL.BUV.GTTES">
-											 <option value="CP.ORODISPERSIBLE">
-											 <option value="SOLUTION SUBLINGUALE D'UN MELANGE D'EXTRAITS ALLERGENIQUE POUR IMMUNOTHERAPIE SPECIFIQUE">
-										   <option value="SOL INJ  IV OU PERIDURALE">
-											 <option value="POUDRE POUR SOL INJ OU POUR PERF IV ">
-											 <option value="LIQUIDE POUR INHALATION PAR VAPEUR">
-											 <option value="LIQUIDE POUR INHALATION PAR VAPEUR">
-											 <option value="PDRE.SOL.INJ">
-											 <option value="GAZ POUR INHA">
-											 <option value="BOUTEILLE">
-											 <option value="SOL. P. INHAL">
-											 <option value="EMULSION INJECTABLE EN SURINGUE Pré-remplie">
-											 <option value="SOL.INJ. USAGE DENTAIRE">
-											 <option value="SUPPO.">
-											 <option value="GELULE">
-											 <option value="CREME">
-											 <option value="GLES">
+										 <option value="Comprimé">
+										 <option value="Gellule">
+										 <option value="Gel">
+										 <option value="Pomade">
+										 <option value="sirop">
+										 <option value="sollution applicable">
+										 <option value="sollution en goutte">
+										 <option value="suspention injectable">
+										 <option value="suppositoire">
 									 </datalist>
                    @error('forme')
                        <span class="invalid-feedback" role="alert">
@@ -196,15 +179,5 @@
 </div>
 </div>
 
-		<!-- <p>
-	<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé scrable<br>
-<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé enrobé<br>
-<input type="checkbox" name="forme" value="Gellule"> Gellule<br>
-<input type="checkbox" name="forme" value="Sirop">Sirop<br>
-<input type="checkbox" name="forme" value="Sirop">Sollution buvable<br>
-<input type="checkbox" name="forme" value="Sirop">Sollution en gouttes<br>
-<input type="checkbox" name="forme" value="Sirop">Sollution injectable<br>
-<input type="checkbox" name="forme" value="Sirop">Suppositoire<br>
-</p> -->
 
 @endsection
