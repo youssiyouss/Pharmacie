@@ -3,23 +3,7 @@
 
 
 @section('content')
-<!--Start Search Bar-->
-<div class="container">
-    <div class="row search-bar">
-        <div class="col-md-8 col-md-offset-2">
-        	<form action="{{'medicaments/search'}}" method="get" class="">
-            <div class="input-group">
-            	
-                <input type="Search" name="search" class="form-control" placeholder="rechercher..." autocomplete="on">
-                <span class="input-group-prepend">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> </button>
-                    </span> 
-            </div><!-- /input-group -->
-            </form>
-        </div>
-    </div>
-</div>
-<!--End Search Bar-->
+
 
 
 <div class="container">

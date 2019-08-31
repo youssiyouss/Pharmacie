@@ -14,9 +14,11 @@ use App\Vente;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('medi', 'HomeController@medi')->name('medicament');
+Route::get('soin', 'HomeController@soin')->name('soins&santé');
+Route::get('produit', 'HomeController@produit')->name('produit');
 
 
 //Gestion mediacaments
