@@ -72,7 +72,7 @@
                                                     </table>
            @endif
            @else
-                                              <h5>Désole; Aucun Medicament trouvée </h5>
+                                              <h5>Désole! Aucun Medicament trouvée </h5>
          @endif
 
                                                </div>

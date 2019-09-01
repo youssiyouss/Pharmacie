@@ -1,9 +1,11 @@
 <?php
 use App\Lot;
 use App\User;
+use App\Achat;
 use App\Medicament;
 use App\Fournisseur;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,7 @@ Route::any('/search',function(){
        ]);
 
 });
+
 
 //Gestion mediacaments
 /*Route::get('medicaments','MedController@index');
@@ -96,6 +99,9 @@ Route::get('achat/{id}/edit','AchatController@edit');
 Route::put('achat/{id}','AchatController@update');
 Route::delete('achat/{id}','AchatController@destroy');
 Route::get('achat/{id}/detail','AchatController@show');
+Route::get('achat/{id}/listAchat','AchatController@ListeAchat');
+Route::get('achat/{id}/listDetail','AchatController@ListeDetail');
+
 
 //Lot Routes
 Route::get('lot','LotController@index');

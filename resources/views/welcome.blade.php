@@ -148,7 +148,7 @@
         </div>
         <div class="row mt-5">
           <div class="col-12 text-center">
-            <a href="{{url('produit')}}" class="btn btn-primary px-4 py-3">View All Products</a>
+            <a href="{{url('produit')}}" class="btn btn-primary px-4 py-3">Voir tout les produits</a>
           </div>
         </div>
       </div>

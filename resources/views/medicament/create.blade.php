@@ -35,7 +35,7 @@
 					@endif
 
 				</div>
-				
+
 
 
 				<div class="form-groupe @if($errors->get('dosage')) has-error @endif">
@@ -100,7 +100,7 @@
 					@endif
 
 				</div>
-				
+
 				<div class="form-groupe @if($errors->get('composition')) has-error @endif">
 					<label for="">composition</label>
 					<textarea type="text" name="composition" class="form-control" value="{{old('composition')}}"></textarea>
@@ -128,17 +128,17 @@
 					<label for="">image</label>
 					<input name="photo" class="form-control" type="file" accept="image/*" style="height: auto;">
 				</div>
-				
+
 
 				<div class="form-groupe">
-					
+
 					<input type="submit" class="form-control btn btn-primary" value="enregistrer">
-					
+
 
 				</div>
-				
+
 			</form>
-			
+
 		</div>
 	</div>
 </div>

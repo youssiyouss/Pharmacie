@@ -58,7 +58,7 @@
                <label class="col-md-4 col-form-label text-md-right">Forme:</label>
 
                <div class="col-md-6">
-                   <input list="formes" class="form-control @error('forme') is-invalid @enderror" name="form" value="{{$medicament -> forme}}">
+                   <input list="formes" class="form-control @error('forme') is-invalid @enderror" name="forme" value="{{$medicament -> forme}}">
 									 <datalist id="formes">
 										 <option value="Comprimé">
 										 <option value="Gellule">
@@ -179,5 +179,18 @@
 </div>
 </div>
 
+<<<<<<< HEAD
+		<!-- <p>
+	<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé scrable<br>
+<input type="checkbox" name="forme" value="Comprimé enrobé">Comprimé enrobé<br>
+<input type="checkbox" name="forme" value="Gellule"> Gellule<br>
+<input type="checkbox" name="forme" value="Sirop">Sirop<br>
+<input type="checkbox" name="forme" value="Sirop">Sollution buvable<br>
+<input type="checkbox" name="forme" value="Sirop">Sollution en gouttes<br>
+<input type="checkbox" name="forme" value="Sirop">Sollution injectable<br>
+<input type="checkbox" name="forme" value="Sirop">Suppositoire<br>
+</p> -->
+=======
+>>>>>>> master
 
 @endsection

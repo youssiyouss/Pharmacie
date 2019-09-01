@@ -7,7 +7,7 @@
 
     @foreach($achat as $a)
       <div class="container">
-  <h2>Détails Achat:</h2>
+
   <h5 class="bg-primary">détail sur l'Achats le Fournisseur et Lot :</h5>
   <table class="table table-borderless" >
     <thead>
@@ -35,13 +35,13 @@
       <tr >
         <td>Date de peremption Lot</td>
         <td>{{ $a->date_per }}</td>
-        
+
       </tr>
 
       <tr >
         <td>Prix</td>
         <td>{{ $a->prix }} DA</td>
-        
+
       </tr>
       <tr>
         <td>Nom Fournisseur</td>

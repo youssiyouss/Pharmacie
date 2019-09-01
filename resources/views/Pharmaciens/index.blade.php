@@ -38,8 +38,8 @@
                                             <tbody>
                                                @foreach($phar as $phar)
                                                 <tr>
-                                                    <td>
-                                                        <img src="{{ asset('storage/'.$phar->photo) }}" class="pull-left m-r-10 avatar-img w-40px rounded-circle" alt="">{{ $phar->name}}_{{ $phar->Prenom}}</td>
+                                                    <td><span><img src="{{ asset('storage/'.$phar->photo) }}" class="pull-left m-r-10 avatar-img w-40px rounded-circle" alt="">{{ $phar->name}}_{{ $phar->Prenom}}</span>
+                                                    </td>
                                                     <td><span>{{ $phar->date_nais}}</span>
                                                     </td>
                                                     <td>{{ $phar->tel}}</td>
