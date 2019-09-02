@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.bundle.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+
 </head>
 
 <body class="v-light vertical-nav fix-header fix-sidebar">
@@ -34,14 +37,15 @@
             <div class="header-content">
                 <div class="header-left">
                     <ul>
-                        <li class="icons position-relative"><a href="javascript:void(0)"><i class="icon-magnifier f-s-16"></i></a>
+                        <li class="icons position-relative"><a href="url{{'/search'}}"><i class="icon-magnifier f-s-16"></i></a>
                             <div class="drop-down animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <div class="header-search" id="header-search">
-                                        <form action="#">
+                                        <form action="/search" method="get">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search">
-                                                <div class="input-group-append"><span class="input-group-text"><i class="icon-magnifier"></i></span>
+                                                <input type="search" name="search" class="form-control" placeholder="Recherche">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text"><i class="icon-magnifier"></i></span>
                                                 </div>
                                             </div>
                                         </form>
@@ -57,7 +61,7 @@
 
                       </div>
                     <ul>
-                        <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 avatar-img w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
+                        <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 img-responsive w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <ul>

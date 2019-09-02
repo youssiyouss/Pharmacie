@@ -63,32 +63,32 @@ class VenteController extends Controller
 
        //Diminuer la quatitée en stock du lot
        DB::table('Lots')->where('Lots.id','=',$v->lot)->decrement('qt_stock', $qt);
-      
-   
+
+
         //Send Notifications
        //Medicaments aux stocks minimum
         $medocs = DB::table('Lots')->select('Lots.*')->where('qt_stock','<=' ,50)->get();
-            
+
             if ($medocs->count()  != 0) {
-                
+
                 $user = auth()->User();
             $alerte = collect(['title'=>'Médicaments aux stocks minimum ', 'var' =>'1' ,'nombre liste' => $medocs->count(),'url'=>'achat/create']);
             Notification::send($user,new InvoicePaid($alerte));
             }
         //Stocks en rupture
             $medocz = DB::table('Lots')->select('Lots.*')->where('qt_stock','=' ,0)->get();
-            
+
             if ($medocz->count()  != 0) {
-                
+
                 $user = auth()->User();
             $alerte = collect(['title'=>'Médicaments en ruptures ', 'var' =>'2' ,'nombre liste' => $medocz->count(),'url'=>'achat/create']);
             Notification::send($user,new InvoicePaid($alerte));
             }
-            
-               
-       
+
+
+
        //redirection
-       session()->flash('success','Le fournisseur a été ajouter avec succés!');
+       session()->flash('success','la Ventea été effectué avec succées !');
        return redirect('vente');
 
     }
@@ -122,7 +122,7 @@ class VenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function update(venteRequest $request, $id)
     {
         $vente = Vente::find($id);
@@ -132,6 +132,7 @@ class VenteController extends Controller
         $vente->qt = $request->input('qt');
         $vente->save();
 
+        session()->flash('success','La vente a été modifiée avec succées!');
         return redirect('vente');
     }
 

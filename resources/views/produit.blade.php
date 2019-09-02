@@ -4,7 +4,7 @@
 
 @section('content')
       <div class="container">
-        
+
 
         <div class="row">
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
@@ -96,7 +96,3 @@
         </div>
       </div>
 @endsection
-
-
-    
-        

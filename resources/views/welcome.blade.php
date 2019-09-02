@@ -33,8 +33,8 @@
       <div class="search-wrap">
         <div class="container">
           <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-          <form action="#" method="post">
-            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          <form action="/search_User" method="get">
+            <input type="search" name="search" class="form-control" placeholder="Veuillez entrer le nom / la forme / la famille du medicament souahaité; puis tapez entrer">
           </form>
         </div>
       </div>
@@ -84,7 +84,7 @@
       </div>
     </div>
 
-    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/hero_1.jpg');">
+    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
       <div class="container">
         <div class="row">
           <div class="order-lg-2 align-self-center">
@@ -105,6 +105,7 @@
     <div class="site-section">
        @yield('content')
      
+
     <div class="site-section">
       <div class="container">
         <div class="row">
