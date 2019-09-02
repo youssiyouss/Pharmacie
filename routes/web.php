@@ -19,10 +19,12 @@ use Illuminate\Support\Facades\Input;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('acceuil', 'HomeController@acceuil')->name('acceuil');
+
 Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
