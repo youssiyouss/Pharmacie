@@ -11,7 +11,14 @@ class StatistiqueController extends Controller
   }
 
 
-  public function index(){
-  return view('Statistiques.VenteMontuelle');
-}
+  public function VenteMontuelle(){
+
+    return view('Statistiques.VenteMontuelle');
+  }
+
+
+  public function Histo(){
+
+    return view('Statistiques.historique');
+  }
 }

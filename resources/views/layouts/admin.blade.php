@@ -11,8 +11,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
-    <script src="../node_modules/chart.js/dist/Chart.bundle.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+    <script src="../node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
 </head>
 
@@ -109,7 +110,7 @@
                     <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
                             <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
+                    <li><a href="{{ url('VenteMontuelle')}}"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
                     </li>
                 </ul>
             </div>

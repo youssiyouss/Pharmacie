@@ -27,6 +27,7 @@ Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
 
+//Les bares de recherchers front and backend
 Route::any('/search_User',function(){
     $q = Input::get ( 'search' );
     $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
@@ -41,7 +42,6 @@ Route::any('/search',function(){
     $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
     $lots = Lot::where('medoc','LIKE','%'.$q.'%')->get();
 
-    // return view('search')->withDetails($user)->withQuery ( $q );
     return view('search')->with([
         'users' => $users,
         'fournisseurs' => $fournisseurs,
@@ -115,12 +115,5 @@ Route::get('alerte','NotifController@index');
 //Statistiques Routes
 
 //Route::get('VenteMontuelle','StatistiqueController@index');
-Route::get('VenteMontuelle',function(){
-  //$vente=array();
-      $vente= DB::table('ventes')
-          ->select('lot', DB::raw('sum(qt) as produit'))
-          ->groupBy('lot')
-          ->get();
-
-      return response()->json(["Test"=>$vente]);
-});
+Route::get('VenteMontuelle','StatistiqueController@VenteMontuelle');
+Route::get('historique','StatistiqueController@Histo');
