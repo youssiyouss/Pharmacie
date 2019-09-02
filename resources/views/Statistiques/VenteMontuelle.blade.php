@@ -33,7 +33,7 @@
 
                                   <h4 class="card-title">Nombre d'achat par Mois</h4>
 
-                                  <canvas id="Dailysales" style="height:350vh; width:250vw"></canvas>
+                                  <canvas id="Dailysales" style="height:250vh; width:250vw"></canvas>
 
                               </div>
                           </div>

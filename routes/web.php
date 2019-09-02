@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('acceuil', 'HomeController@acceuil')->name('acceuil');
 Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
@@ -34,7 +35,7 @@ Route::any('/search_User',function(){
   return view('searchUser')->with(['medicaments' => $medicaments]);
 });
 
-Route::any('/search',function(){
+Route::any('search',function(){
     $q = Input::get ( 'search' );
 
     $users = User::where('name','LIKE','%'.$q.'%')->orWhere('prenom','LIKE','%'.$q.'%')->orWhere('login','LIKE','%'.$q.'%')->get();

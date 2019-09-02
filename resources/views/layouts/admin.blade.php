@@ -110,7 +110,7 @@
                     <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
                             <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
-                    <li><a href="{{ url('VenteMontuelle')}}"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
+                    <li><a href="{{ url('historique')}}"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
                     </li>
                 </ul>
             </div>
