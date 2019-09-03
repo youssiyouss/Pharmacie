@@ -1,9 +1,11 @@
 <?php
 use App\Lot;
 use App\User;
+use App\Achat;
 use App\Medicament;
 use App\Fournisseur;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
@@ -16,25 +18,26 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('acceuil', 'HomeController@acceuil')->name('acceuil');
 Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
+Route::get('about', 'HomeController@about')->name('about');
 
-//
+
+//Contacts
 Route::get('contact', 'HomeController@contact')->name('contact');
 Route::post('contact', ['as'=>'contact.store','uses'=>'ContactController@contactPost']);
 Route::get('messages', 'ContactController@message');
 Route::get('messages/{id}', 'ContactController@display');
 Route::delete('message/{id}','ContactController@destroy');
 
-
-
-
+//Les bares de recherchers front and backend
 
 Route::any('/search_User',function(){
     $q = Input::get ( 'search' );
@@ -42,7 +45,7 @@ Route::any('/search_User',function(){
   return view('searchUser')->with(['medicaments' => $medicaments]);
 });
 
-Route::any('/search',function(){
+Route::any('search',function(){
     $q = Input::get ( 'search' );
 
     $users = User::where('name','LIKE','%'.$q.'%')->orWhere('prenom','LIKE','%'.$q.'%')->orWhere('login','LIKE','%'.$q.'%')->get();
@@ -50,7 +53,6 @@ Route::any('/search',function(){
     $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
     $lots = Lot::where('medoc','LIKE','%'.$q.'%')->get();
 
-    // return view('search')->withDetails($user)->withQuery ( $q );
     return view('search')->with([
         'users' => $users,
         'fournisseurs' => $fournisseurs,
@@ -59,6 +61,7 @@ Route::any('/search',function(){
        ]);
 
 });
+
 
 //Gestion mediacaments
 /*Route::get('medicaments','MedController@index');
@@ -108,6 +111,9 @@ Route::get('achat/{id}/edit','AchatController@edit');
 Route::put('achat/{id}','AchatController@update');
 Route::delete('achat/{id}','AchatController@destroy');
 Route::get('achat/{id}/detail','AchatController@show');
+Route::get('achat/{id}/listAchat','AchatController@ListeAchat');
+Route::get('achat/{id}/listDetail','AchatController@ListeDetail');
+
 
 //Lot Routes
 Route::get('lot','LotController@index');
@@ -121,12 +127,5 @@ Route::get('alerte','NotifController@index');
 //Statistiques Routes
 
 //Route::get('VenteMontuelle','StatistiqueController@index');
-Route::get('VenteMontuelle',function(){
-  //$vente=array();
-      $vente= DB::table('ventes')
-          ->select('lot', DB::raw('sum(qt) as produit'))
-          ->groupBy('lot')
-          ->get();
-
-      return response()->json(["Test"=>$vente]);
-});
+Route::get('historiqueAnnuelle','StatistiqueController@histoAnnee');
+Route::get('historiqueMensuelle','StatistiqueController@histoMois');

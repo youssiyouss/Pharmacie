@@ -14,7 +14,26 @@ class AchatController extends Controller
       public function __construct(){
         $this->middleware('auth');
       }
-      
+
+
+      public function ListeAchat($id){
+        $achats = DB::table('achats')
+            ->select('achats.*')
+            ->where('achats.fournisseur','=',$id)
+            ->get();
+
+        return view('Fournisseurs.listAchat')->with(['achat' => $achats]);
+      }
+
+      public function ListeDetail($id){
+        $achat = DB::table('Achats')
+            ->join('Fournisseurs', 'fournisseur', '=', 'Fournisseurs.id')
+             ->join('Lots', 'Achats.id', '=', 'Lots.achat')
+            ->select('Achats.*','Fournisseurs.nom','Fournisseurs.adresse','Fournisseurs.tel','Fournisseurs.email','Lots.id','Lots.medoc','Lots.date_fab','Lots.prix','Lots.qt_stock','Lots.nbr_medoc_lot','Lots.date_per')
+            ->where('Achats.id','=',$id)
+            ->get();
+        return view('Fournisseurs.listDetail')->with(['achat' => $achat]);
+      }
         /**
      * Display a listing of the resource.
      *
@@ -42,6 +61,7 @@ class AchatController extends Controller
             ->get();  
             return view('Achats.create', ['four' => $four, 'med' => $med]);
         //return view('Achats.create');
+
     }
 
     /**
@@ -70,10 +90,8 @@ class AchatController extends Controller
         $lot->qt_stock = $request->input('qtachat')* $request->input('indiv');
         $lot->save();
 
-
-
-
         return redirect('achat')->with('success', 'Achat effectué!');
+
 
     }
 
@@ -159,8 +177,8 @@ class AchatController extends Controller
             ->select('Lots.*')
             ->where('Lots.id','=',$id)
             ->delete();
-            
-       
+
+
         return redirect('achat');
     }
 }

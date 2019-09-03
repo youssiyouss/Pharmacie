@@ -34,7 +34,7 @@
         <div class="container">
           <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
           <form action="/search_User" method="get">
-            <input type="search" name="search" class="form-control" placeholder="Veuillez entrer le nom / la forme / la famille du medicament souahaité; puis tapez entrer">
+            <input type="search" name="search" class="form-control" placeholder="Veuillez entrer le nom / la forme / la famille du medicament souahaité, Puis tapez entrer">
           </form>
         </div>
       </div>
@@ -50,7 +50,7 @@
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="active"><a href="{{url('/')}}">Home</a></li>
+                <li><a href="{{url('acceuil')}}">Home</a></li>
                 <li class="has-children">
                   <a href="#">Nos Produits</a>
                   <ul class="dropdown">
@@ -58,8 +58,8 @@
                     <li><a href="{{url('soin')}}">Soins et Santé</a></li>
                   </ul>
                 </li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="{{url('contact')}}">Contact</a></li>
+                <li><a href="{{url('about')}}">About</a></li>
               </ul>
             </nav>
           </div>
@@ -91,10 +91,6 @@
             <div class="text-center">
             <h1><i><strong style="color :#b7e778;">Pharma</strong><strong style="color : #9068be;">Tlem</strong></i></h1>
             <h2 class="sub-title"><b>Adopter le bon traitement </b></h2>
-              <!-- <p>
-                style="color: #212529; background-color: #b7e778; border-color: #9068be;"
-                <a href="#" class="btn btn-primary px-5 py-3">Shop Now</a>
-              </p> -->
             </div>
           </div>
         </div>
@@ -102,183 +98,9 @@
     </div>
 
 
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">Popular Products</h2>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
-            <a href="http://localhost:8000/medicaments/12"> <img src="frontEnd/images/product_01.png" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/12">Bioderma</a></h3>
-            <p class="price"> 1200</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="http://localhost:8000/medicaments/10"> <img src="frontEnd/images/spasfon.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/10">Spasfon</a></h3>
-            <p class="price">340</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="http://localhost:8000/medicaments/7"> <img src="frontEnd/images/maxilase.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/7">Maxilase</a></h3>
-            <p class="price">120</p>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-
-            <a href="http://localhost:8000/medicaments/6"> <img src="frontEnd/images/humex.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/6">Humex</a></h3>
-            <p class="price"><del>450</del> &mdash; 230</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="http://localhost:8000/medicaments/13"> <img src="frontEnd/images/mustela.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/13">Mustela</a></h3>
-            <p class="price">1380</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
-            <a href="http://localhost:8000/medicaments/2"> <img src="frontEnd/images/doliprane.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/2">Doliprane</a></h3>
-            <p class="price"><del>75</del> &mdash; 60</p>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col-12 text-center">
-            <a href="{{url('produit')}}" class="btn btn-primary px-4 py-3">View All Products</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">New Products</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 owl-carousel">
-
-              <div class="text-center item mb-4">
-                <a href="http://localhost:8000/medicaments/11"> <img src="frontEnd/images/avene.jpg" alt="Image"></a>
-                <h3 class="text-dark"><a href="http://localhost:8000/medicaments/11">avene</a></h3>
-                <p class="price">2340</p>
-              </div>
-
-              <div class="text-center item mb-4">
-                <a href="http://localhost:8000/medicaments/12"> <img src="frontEnd/images/product_01.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="http://localhost:8000/medicaments/12">bioderma</a></h3>
-                <p class="price">1200</p>
-              </div>
-
-              <div class="text-center item mb-4">
-                <a href="http://localhost:8000/medicaments/14"> <img src="frontEnd/images/nuxe.jpg" alt="Image"></a>
-                <h3 class="text-dark"><a href="http://localhost:8000/medicaments/14">nuxe</a></h3>
-                <p class="price">1400</p>
-              </div>
-
-              <div class="text-center item mb-4">
-                <a href="shop-single.html"> <img src="frontEnd/images/dexeryl.jpg" alt="Image"></a>
-                <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-                <p class="price">950.00</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">Testimonials</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 no-direction owl-carousel">
-
-              <div class="testimony">
-                <blockquote>
-                  <img src="frontEnd/images/person_1.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat unde.&rdquo;</p>
-                </blockquote>
-
-                <p>&mdash; Kelly Holmes</p>
-              </div>
-
-              <div class="testimony">
-                <blockquote>
-                  <img src="frontEnd/images/person_2.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
-                    obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
-                    unde.&rdquo;</p>
-                </blockquote>
-
-                <p>&mdash; Rebecca Morando</p>
-              </div>
-
-              <div class="testimony">
-                <blockquote>
-                  <img src="frontEnd/images/person_3.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
-                    obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
-                    unde.&rdquo;</p>
-                </blockquote>
-
-                <p>&mdash; Lucas Gallone</p>
-              </div>
-
-              <div class="testimony">
-                <blockquote>
-                  <img src="frontEnd/images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
-                    obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
-                    unde.&rdquo;</p>
-                </blockquote>
-
-                <p>&mdash; Andrew Neel</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section bg-secondary bg-image" style="background-image: url('frontEnd/images/bg_2.jpg');">
-      <div class="container">
-        <div class="row align-items-stretch">
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('frontEnd/images/bg_1.jpg');">
-              <div class="banner-1-inner align-self-center">
-                <h2>Pharma Products</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio voluptatem.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-6 mb-5 mb-lg-0">
-            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('frontEnd/images/bg_2.jpg');">
-              <div class="banner-1-inner ml-auto  align-self-center">
-                <h2>Rated by Experts</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio voluptatem.
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="site-section">
+       @yield('content')
+     </div>
 
 
     <footer class="site-footer">
@@ -287,29 +109,26 @@
           <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
             <div class="block-7">
-              <h3 class="footer-heading mb-4">About Us</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
-                sed dolorum excepturi iure eaque, aut unde.</p>
+              <h3 class="footer-heading mb-4">Quick Links</h3>
+              <ul class="list-unstyled">
+                <li><a href="{{url('medi')}}">Medicaments</a></li>
+                <li><a href="{{url('soin')}}">Soins &amp; Santé</a></li>
+                <li><a href="{{url('about')}}">About Us</a></li>
+              </ul>
             </div>
 
           </div>
           <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
-            <h3 class="footer-heading mb-4">Quick Links</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">Supplements</a></li>
-              <li><a href="#">Vitamins</a></li>
-              <li><a href="#">Diet &amp; Nutrition</a></li>
-              <li><a href="#">Tea &amp; Coffee</a></li>
-            </ul>
+
           </div>
 
           <div class="col-md-6 col-lg-3">
             <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <h3 class="footer-heading mb-4">Info Contact</h3>
               <ul class="list-unstyled">
-                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">emailaddress@domain.com</li>
+                <li class="address">203 cite Essalihin imama, Tlemcen, Algeria</li>
+                <li class="phone"><a href="tel://043366042">043366042</a></li>
+                <li class="email">pharmaTlem@gmail.com</li>
               </ul>
             </div>
 

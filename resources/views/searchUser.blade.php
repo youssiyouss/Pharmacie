@@ -47,7 +47,7 @@
 
          @if(count($medicaments) > 0)
            @if (isset($medicaments))
-                                                    <table class="table table-xs">
+                                                <table class="table table-xs">
                                                         <thead>
                                                            <tr>
                                                              <th>nom</th>
@@ -60,7 +60,8 @@
                                                        <tbody>
                                                           @foreach($medicaments as $listeM)
                                                            <tr class="col-md-2">
-                                                               <td><span>{{$listeM->nom}}</span></td>
+                                                             <td><span><img src="{{ asset('storage/'.$listeM->photo)}}" class="pull-left m-r-10 avatar-img w-40px" alt="">{{$listeM->nom}}</span>
+                                                             </td>
                                                                <td><span>{{$listeM->dosage}}</span></td>
                                                                <td><span>{{$listeM->forme}}</span></td>
                                                                <td><span>{{$listeM->famille}}</span></td>
@@ -72,7 +73,7 @@
                                                     </table>
            @endif
            @else
-                                              <h5>Désole; Aucun Medicament trouvée </h5>
+                                              <h5>Désole! Aucun Medicament trouvée </h5>
          @endif
 
                                                </div>

@@ -24,23 +24,22 @@
                                                   <thead>
                                                       <tr>
                                                         <th>nom</th>
-                                                        <th>dosage (ml/mg)</th>
+                                                        <th>dosage</th>
                                                         <th>forme</th>
                                                         <th>famille</th>
-                                                        <th>prix DA</th>
-                                                        <th>action</th>
+                                                        <th>prix</th>
+
                                                       </tr>
                                                   </thead>
                                                   <tbody>
                                                      @foreach($medicaments as $listeM)
                                                       <tr class="col-md-2">
-                                                          <td><span>{{$listeM->nom}}</span>
-                                                          </td>
-                                                          <td><span>{{$listeM->dosage}}</span>
-                                                          </td>
-                                                          <td></td>
+                                                          <td><span>{{$listeM->nom}}</span></td>
+                                                          <td><span>{{$listeM->dosage}}</span></td>
+                                                          <td><span>{{$listeM->forme}}</span></td>
                                                           <td><span>{{$listeM->famille}}</span></td>
                                                           <td><span>{{$listeM->prix}}</span></td>
+
                                                           <td>
                                                               <form action="{{ url('medicaments/'.$listeM->id)}}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet médicament?')">
                                                                 {{ csrf_field() }}

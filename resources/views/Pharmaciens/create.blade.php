@@ -111,6 +111,9 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="col-md-12">
+                                  <input type="checkbox" id="checkbox" style="cursor:pointer;"> Afficher le mot de passe
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -152,6 +155,23 @@
                             </div>
                         </div>
                     </form>
+                    <script src="/Login_v16/vendor/jquery/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                          var checkbox = $("#checkbox");
+                          var password = $("#password");
+                          var passwordd = $("#password-confirm");
+                          checkbox.click(function() {
+                            if(checkbox.prop("checked")) {
+                              password.attr("type", "text");
+                              passwordd.attr("type", "text");
+                            } else {
+                              password.attr("type", "password");
+                              passwordd.attr("type", "password");
+                            }
+                          });
+                        });
+                      </script>
                 </div>
             </div>
         </div>
