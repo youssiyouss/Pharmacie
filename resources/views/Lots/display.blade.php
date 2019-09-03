@@ -6,9 +6,18 @@
    <div class="row">
      <div class="col-md-12">
 
-       <h2>Détails de Ventes:</h2>
+      @if($vente->count() == 0)
+        <h2>Pas Ventes Effectué!</h2>
+      @endif
+
+        @if($vente->count() != 0)
+       <h2>Détails de Ventes du Lot:</h2>
        <br>
-       <div>
+        <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+       <div class="card-body">
+
        <table class="table">
   <thead >
     <tr class="bg-primary">
@@ -31,13 +40,14 @@
      @endforeach
   </tbody>
 </table>
-        
+@endif
+      <div><a href="{{ url('lot') }}" class="btn btn-success">Retour</a></div>  
           
           
          
-
-        
-        
+</div>
+        </div>
+        </div>
         </div>
        
      </div>

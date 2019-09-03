@@ -13,9 +13,8 @@ class UpdateVentesTable extends Migration
      */
     public function up()
     {
-        Schema::table('ventes', function (Blueprint $table) {
-          $table->unsignedBigInteger('lot')->unsigned()->index()->change();
-          $table->foreign('lot')->references('id')->on('lots')->onDelete('cascade')->onUpdate('cascade');
+        Schema::table('Ventes', function (Blueprint $table) {
+          $table->integer('prix_total')->after('qt');
         });
     }
 
@@ -26,8 +25,8 @@ class UpdateVentesTable extends Migration
      */
     public function down()
     {
-        Schema::table('ventes', function (Blueprint $table) {
-            $table->dropForeign('vente_lots_id_foreign');
+        Schema::table('Ventes', function (Blueprint $table) {
+          $table->dropColumn('prix_total');
         });
     }
 }

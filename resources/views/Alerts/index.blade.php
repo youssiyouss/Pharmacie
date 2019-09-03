@@ -7,6 +7,12 @@
      <div class="col-md-12">
 
        <h4 class="alert alert-danger">Alertes :</h4>
+
+       <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+
        @foreach(auth()->user()->notifications as $notification)
 
       @if($notification->read_at != NULL)
@@ -55,7 +61,10 @@
 
        @endforeach   
 
-        
+        </div>
+      </div>
+    </div>
+  </div>
         
        
      </div>

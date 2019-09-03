@@ -5,6 +5,12 @@
   <div class="row">
     <div class="col-md-12">
     <h2>Nouveau Achat:</h2><br>
+
+    <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+
       <form action="{{ url('achat') }}" method="POST">
         {{ csrf_field() }}
         
@@ -34,7 +40,24 @@
        
        <div class="form-group has-warning">
           <label for="">Nom Médicament:</label>
-          <input type="text" name="med"  class="form-control" value="{{ old('med') }}" required>
+         
+         <input list="brows" name="med" class="form-control" value="{{ old('med') }}" required>
+
+<datalist id="brows">
+
+@foreach($med as $m)
+    <option value="{{ $m->nom }}">
+    
+    @endforeach
+
+</datalist>
+        @if($errors->get('med'))
+        @foreach($errors->get('med') as $message)
+          <li class="alert alert-danger">{{ $message }}</li>
+        @endforeach
+        @endif
+
+
         </div>
 
         <div class="form-group has-error">
@@ -66,6 +89,12 @@
           <input type="submit"  class="btn btn-success" value="Valider">
         </div>
       </form>
+
+</div>
+</div>
+</div>
+</div>
+
     </div>
   </div>
 </div>

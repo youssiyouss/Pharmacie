@@ -41,7 +41,7 @@
                                                           <td><span>{{$listeM->prix}}</span></td>
 
                                                           <td>
-                                                              <form action="{{ url('medicaments/'.$listeM->id)}}" method="post">
+                                                              <form action="{{ url('medicaments/'.$listeM->id)}}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet médicament?')">
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('DELETE') }}
                                                                   <li class="icons">
