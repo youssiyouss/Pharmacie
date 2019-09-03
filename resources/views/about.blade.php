@@ -9,7 +9,8 @@
 
   <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
   <link rel="stylesheet" href="frontEnd/fonts/icomoon/style.css">
-
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
   <link rel="stylesheet" href="frontEnd/css/bootstrap.min.css">
   <link rel="stylesheet" href="frontEnd/css/magnific-popup.css">
   <link rel="stylesheet" href="frontEnd/css/jquery-ui.css">
@@ -59,7 +60,7 @@
                   </ul>
                 </li>
                 <li><a href="{{url('about')}}">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{{url('contact')}}">Contact</a></li>
               </ul>
             </nav>
           </div>
@@ -235,40 +236,50 @@
   </div>
 
 
- <footer class="site-footer">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
-         <div class="block-7">
-           <h3 class="footer-heading mb-4">Quick Links</h3>
-           <ul class="list-unstyled">
-             <li><a href="{{url('medi')}}">Medicaments</a></li>
-             <li><a href="{{url('soin')}}">Soins &amp; Santé</a></li>
-             <li><a href="{{url('about')}}">About Us</a></li>
-           </ul>
-         </div>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
-       </div>
-       <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+              <div class="block-7">
+                <h3 class="footer-heading mb-4">Quick Links</h3>
+                <ul class="list-unstyled">
+                  <li><a href="{{url('medi')}}">Medicaments</a></li>
+                  <li><a href="{{url('soin')}}">Soins &amp; Santé</a></li>
+                  <li><a href="{{url('about')}}">About Us</a></li>
+                </ul>
+              </div>
 
-       </div>
+            </div>
+            <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+              <div class="block-5">
+                <h3 class="footer-heading mb-4">Nos réseaux sociaux</h3>
+                <div class="wrapper">
+                  <div class="dis-flex size1 p-b-47">
+                    &nbsp&nbsp<a href="#" style="text-decoration: none; color:#9068be;"><span class="fa fa-twitter-square twitter" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                    <a href="#" style="color:#9068be;"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                    <a href="#" style="color:#9068be;"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                  </div>
+                </div>
+            </div>
+          </div>
 
-       <div class="col-md-6 col-lg-3">
-         <div class="block-5 mb-5">
-           <h3 class="footer-heading mb-4">Info Contact</h3>
-           <ul class="list-unstyled">
-             <li class="address">203 cite Essalihin imama, Tlemcen, Algeria</li>
-             <li class="phone"><a href="tel://043366042">043366042</a></li>
-             <li class="email">pharmaTlem@gmail.com</li>
-           </ul>
-         </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="block-5 mb-5">
+                <h3 class="footer-heading mb-4">Info Contact</h3>
+                <ul class="list-unstyled">
+                  <li class="address">203 cite Essalihin imama, Tlemcen, Algeria</li>
+                  <li class="phone"><a href="tel://043366042">043366042</a></li>
+                  <li class="email">pharmaTlem@gmail.com</li>
+                </ul>
+              </div>
 
 
-       </div>
-     </div>
-   </div>
- </footer>
+            </div>
+          </div>
+        </div>
+      </footer>
 </div>
 
 <script src="frontEnd/js/jquery-3.3.1.min.js"></script>
