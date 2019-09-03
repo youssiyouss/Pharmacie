@@ -116,5 +116,5 @@ Route::get('alerte','NotifController@index');
 //Statistiques Routes
 
 //Route::get('VenteMontuelle','StatistiqueController@index');
-Route::get('VenteMontuelle','StatistiqueController@VenteMontuelle');
-Route::get('historique','StatistiqueController@Histo');
+Route::get('historiqueAnnuelle','StatistiqueController@histoAnnee');
+Route::get('historiqueMensuelle','StatistiqueController@histoMois');

@@ -7,27 +7,24 @@ $db = 'pharmacie';
 $mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
 
 $qt = '';
-$jour = '';
-$jourMois='';
-if (isset($_GET['mois_vente']) && $_GET['mois_vente']<=date("Y-m")) {
+$month='';
+
+if (isset($_GET['mois_vente']) && $_GET['mois_vente']<=date("Y")) {
 	 $mois = $_GET['mois_vente'];
-   $sql =  "SELECT SUM(qt) ,DAYOFMONTH(DATE),date
-		        FROM `ventes`
-		        WHERE DATE_FORMAT(date,'%Y-%m') ='$mois'
-		        GROUP BY DAYOFMONTH(DATE),date";
+   $sql =  "SELECT SUM(qt) ,MONTH(DATE)
+						FROM `ventes`
+						WHERE DATE_FORMAT(DATE,'%Y') ='$mois'
+						GROUP BY MONTH(DATE)";
    $result = mysqli_query($mysqli, $sql);
-
-
-while ($row = mysqli_fetch_array($result)) {
-  $qt = $qt.$row['SUM(qt)'].',';
-  $jour =$jour.'"'. $row['DAYOFMONTH(DATE)'].'",';
-  $jourMois =$jourMois.'"'.$row['date'].'",';
-}
-
+   while ($row = mysqli_fetch_array($result)) {
+     $qt = $qt.$row['SUM(qt)'].',';
+		 $month .='"'.$row['MONTH(DATE)'].'",';
+   }
 $qt = trim($qt,",");
-$jour = trim($jour,",");
-$jourMois =trim($jourMois,",");
+$month = trim($month,",");
+
 }
+
 ?>
 
 @extends('layouts.admin')
@@ -40,30 +37,27 @@ $jourMois =trim($jourMois,",");
       <form method="GET">
         <fieldset>
           <label><h3><i class="fa fa-calendar" aria-hidden="true" style="Color :#9068be; "></i></h3></label>
-          <input type="month"name="mois_vente" value="{{ old('mois_vente') }}" style="Color:#b7e778; border-color:#9068be; border-radius: .25rem;">
+          <input type="year" name="mois_vente" value="{{ old('mois_vente') }}"  placeholder="année.."  style="Color:#b7e778; border-color:#9068be; border-radius: .25rem;">
           <input type = "submit" value = "Entrer" style="Color :#b7e778;  border-color:#9068be;  font-weight: 400;font-weight: bold;  padding: 7px 18px;border-radius: .25rem; background-color:#b7e778;
            background-color: #fff; ">
         </fieldset>
       </form>
-                        <div class="card-body">
-
-                           <h4 class="text-center bg-primary">Nombre de  vente pour ce mois </h4>
-                           <canvas id="Dailysales" style="height:250vh; width:250vw"></canvas>
-                         </div>
-                  </div>
+      <div class="card-body">
+           <h4 class="text-center bg-primary">Chiffre d'affaire des ventes par mois</h4>
+           <canvas id="Dailysales" style="height:250vh; width:250vw"></canvas>
+      </div>
+      </div>
   </div>
-
-
 
 <script type="text/javascript">
 var ctx = document.getElementById("Dailysales").getContext('2d');
   var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: [<?php echo date("m-d", strtotime($jourMois)); ?>],
+        labels: [<?php echo $month; ?>],
         datasets:
         [{
-            label: 'Vente par jour',
+            label: 'Vente par mois',
             data: [<?php echo $qt; ?>],
             backgroundColor: [
                  'rgba(255, 99, 132, 0.2)',
@@ -86,11 +80,33 @@ var ctx = document.getElementById("Dailysales").getContext('2d');
 
         },
 
-    options: {
-        scales: {scales:{yAxes: [{beginAtZero: false}], xAxes: [{autoskip: true, maxTicketsLimit: 20}]}},
-        tooltips:{mode: 'index'},
-        legend:{display: true, position: 'top', labels: {fontColor: 'rgb(255,255,255)', fontSize: 16}}
-    }
+				options: {
+							responsive: true,
+							tooltips: {
+								mode: 'index',
+								intersect: false,
+							},
+							hover: {
+								mode: 'nearest',
+								intersect: true
+							},
+							scales: {
+								xAxes: [{
+									display: true,
+									scaleLabel: {
+										display: true,
+										labelString: 'Mois'
+									}
+								}],
+								yAxes: [{
+									display: true,
+									scaleLabel: {
+										display: true,
+										labelString: 'Vente de chaque mois'
+									}
+								}]
+							}
+						}
 });
 
 </script>

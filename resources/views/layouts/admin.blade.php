@@ -38,7 +38,7 @@
             <div class="header-content">
                 <div class="header-left">
                     <ul>
-                        <li class="icons position-relative"><a href="url{{'/search'}}"><i class="icon-magnifier f-s-16"></i></a>
+                        <li class="icons position-relative"><a href="javascript:void(0)"><i class="icon-magnifier f-s-16"></i></a>
                             <div class="drop-down animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <div class="header-search" id="header-search">
@@ -110,8 +110,15 @@
                     <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
                             <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
-                    <li><a href="{{ url('historique')}}"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
+                    <li class=""><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
+                        <ul aria-expanded="false" class="collapse" style="height: 0px;">
+                            <li><a href="{{ url('historiqueMensuelle')}}"><span class="nav-text">Mensuelles</span></a>
+                            </li>
+                            <li><a href="{{ url('historiqueAnnuelle')}}"><span class="nav-text">Annuellles</span></a>
+                            </li>
+                        </ul>
                     </li>
+
                 </ul>
             </div>
             <!-- #/ nk nav scroll -->
