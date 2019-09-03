@@ -666,7 +666,7 @@ a {
     left: 0;
     font-size: 20px;
     line-height: 1;
-    color: #51eaea; }
+    color: #9068be; }
   .block-5 ul li.address:before {
     content: "\e8b4"; }
   .block-5 ul li.email:before {
@@ -1102,7 +1102,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(81, 234, 234, 0.9);
+    background: #b7e778;
     z-index: 1; }
   .bg-image > .container {
     position: relative;

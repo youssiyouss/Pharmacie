@@ -38,5 +38,9 @@ class HomeController extends Controller
     {
         return view('acceuil');
     }
+    public function about()
+    { $x = User::all();
+      return view('about',['phar'=>$x]);
+    }
 
 }

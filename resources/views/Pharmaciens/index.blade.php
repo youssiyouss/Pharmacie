@@ -52,14 +52,11 @@
                                                           {{ method_field('DELETE') }}
                                                             <li class="icons">
                                                               <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+
                                                               @can('delete',$phar)
                                                               <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i></button>
                                                               @endcan
                                                            </li>
-                                                          <!-- <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-primary">Details</a>
-                                                          <a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-info">Modifier</a>
-                                                          <button type="submit" class="btn btn-danger">Supprimer</button> -->
-
                                                         </form>
                                                    </td>
                                                 </tr>
