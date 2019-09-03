@@ -166,7 +166,7 @@
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="">
             <div class="icon mr-4 align-self-start">
               <figure>
-                <img src="../frontEnd/images/icons8-Available_Updates.png" alt="Image placeholder" style="width:40px; height:40px;">
+                <img src="{{ asset('assets/images/icons8-Available_Updates.png') }}" style="width:40px; height:40px;">
               </figure>
             </div>
             <div class="text">
@@ -179,7 +179,7 @@
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
             <div class="icon mr-4 align-self-start">
               <figure>
-                <img src="../frontEnd/images/icons8-Approval.png" alt="Image placeholder" style="width:40px; height:40px;">
+                <img src="../assets/images/icons8-Approval.png" alt="Image placeholder" style="width:40px; height:40px;">
               </figure>
             </div>
             <div class="text">
@@ -192,7 +192,7 @@
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
             <div class="icon mr-4 align-self-start">
               <figure>
-                <img src="../frontEnd/images/icons8-Online_Support.png" alt="Image placeholder" style="width:40px; height:40px;">
+                <img src="../assets/images/icons8-Online_Support.png" alt="Image placeholder" style="width:40px; height:40px;">
               </figure>
             </div>
             <div class="text">
