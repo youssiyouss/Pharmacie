@@ -39,7 +39,7 @@
                                                           <td>{{ $frnsrs->tel}}</td>
                                                           <td><span>{{ $frnsrs->email}}</span></td>
                                                           <td>
-                                                              <form action="{{ url('fournisseurs/'.$frnsrs->id)}}" method="post">
+                                                              <form action="{{ url('fournisseurs/'.$frnsrs->id)}}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet fournisseur?')">
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('DELETE') }}
                                                                   <li class="icons">
