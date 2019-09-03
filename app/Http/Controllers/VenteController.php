@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Vente;
 use App\Http\Requests\venteRequest;
 use App\Lot;
+use App\Medicament;
 
 use App\User;
 use Notification;
@@ -54,9 +55,14 @@ class VenteController extends Controller
     {
        $v = new Vente();
 
+       $lott =Lot::where('id', '=', $request->input('lot'))->first();
+       $prix_uni = Medicament::where('id', '=', $lott->medoc)->first();
+
+
        $v->lot = $request->input('lot');
        $v->date = $request->input('date');
        $v->qt = $request->input('qt');
+       $v->prix_total = $request->input('qt') * $prix_uni->prix;
        $v->save();
        $qt=$v->qt;
 
@@ -88,8 +94,8 @@ class VenteController extends Controller
                
        
        //redirection
-       session()->flash('success','Le fournisseur a été ajouter avec succés!');
-       return redirect('vente');
+       //session()->flash('success','Vente bien effectuée!');
+       return redirect('vente')->with('success', 'Vente effectuée!');
 
     }
 
@@ -101,7 +107,17 @@ class VenteController extends Controller
      */
     public function show($id)
     {
-        //
+        $vente= DB::table('Ventes')
+                ->select('Ventes.*')
+                ->where('id','=',$id)
+                ->get();
+        $vent = Vente::where('id', '=', $id)->first();
+
+        $lot = Lot::where('id', '=', $vent->lot)->first();
+
+        $medoc = Medicament::where('id', '=', $lot->medoc)->first();
+
+        return view('Ventes.detail',['vente' =>$vente, 'medoc' =>$medoc]);
     }
 
     /**
@@ -113,7 +129,13 @@ class VenteController extends Controller
     public function edit($id)
     {
         $v = Vente::find($id);
-        return view('Ventes.edit',['v'=>$v]);
+
+         $lotid = DB::table('Lots')
+            ->select('Lots.id')
+            ->where('qt_stock','>','0')
+            ->get();
+
+        return view('Ventes.edit',['v'=>$v,'lotid'=>$lotid]);
     }
 
     /**

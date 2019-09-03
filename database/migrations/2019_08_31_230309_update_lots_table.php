@@ -13,10 +13,9 @@ class UpdateLotsTable extends Migration
      */
     public function up()
     {
-        Schema::table('Lots', function (Blueprint $table) {
-             $table->date('date_per')->after('date_fab');
-    
-              });
+         Schema::table('Lots', function (Blueprint $table) {
+          $table->date('date_per')->after('date_fab');
+        });
     }
 
     /**
@@ -27,7 +26,7 @@ class UpdateLotsTable extends Migration
     public function down()
     {
         Schema::table('Lots', function (Blueprint $table) {
-            $table->dropColumn('date_per');
-            });
+          $table->dropColumn('date_per');
+        });
     }
 }

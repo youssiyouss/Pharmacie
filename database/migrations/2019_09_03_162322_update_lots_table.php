@@ -13,10 +13,7 @@ class UpdateLotsTable extends Migration
      */
     public function up()
     {
-        Schema::table('Lots', function (Blueprint $table) {
-             $table->integer('nbr_medoc_lot')->after('prix');
-    
-});
+     //;
     }
 
     /**
@@ -26,8 +23,8 @@ class UpdateLotsTable extends Migration
      */
     public function down()
     {
-        Schema::table('Lots', function (Blueprint $table) {
-            $table->dropColumn('nbr_medoc_lot');
-            });
+       Schema::table('Lots', function (Blueprint $table) {
+          $table->dropForeign('medoc');
+        });
     }
 }

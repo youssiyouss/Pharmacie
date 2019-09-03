@@ -9,6 +9,12 @@
       <div class="container">
   <h2>Détails Achat:</h2>
   <h5 class="bg-primary">détail sur l'Achats le Fournisseur et Lot :</h5>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+       <div class="card-body">
+
   <table class="table table-borderless" >
     <thead>
       <tr>
@@ -75,9 +81,14 @@
 
     </tbody>
   </table>
-</div>
+</tr>
+
+
 
     @endforeach
+    </div>
+  </div>
+</div>
   </div>
 </div>
 

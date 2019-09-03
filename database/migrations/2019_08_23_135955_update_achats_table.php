@@ -14,7 +14,7 @@ class UpdateAchatsTable extends Migration
     public function up()
     {
         Schema::table('achats', function (Blueprint $table) {
-          $table->unsignedBigInteger('fournisseur')->unsigned()->index()->change();
+          $table->unsignedBigInteger('fournisseur')->after('date');
           $table->foreign('fournisseur')->references('id')->on('fournisseurs')->onDelete('cascade')->onUpdate('cascade');
         });
     }

@@ -7,6 +7,12 @@
      <div class="col-md-12">
 
        <h4>Liste des Achats :</h4>
+
+       <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+
        <div class="pull-right">
          <a href="{{ url('achat/create') }}" class="btn btn-success">Nouveau Achat</a>
        </div>
@@ -41,6 +47,11 @@
          @endforeach
         </body>
        </table>
+
+     </div>
+   </div>
+ </div>
+</div>
      </div>
    </div>
  </div>

@@ -25,6 +25,17 @@ Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
 
+//
+Route::get('contact', 'HomeController@contact')->name('contact');
+Route::post('contact', ['as'=>'contact.store','uses'=>'ContactController@contactPost']);
+Route::get('messages', 'ContactController@message');
+Route::get('messages/{id}', 'ContactController@display');
+Route::delete('message/{id}','ContactController@destroy');
+
+
+
+
+
 Route::any('/search_User',function(){
     $q = Input::get ( 'search' );
     $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
@@ -88,6 +99,7 @@ Route::post('vente','VenteController@store');
 Route::delete('vente/{id}','VenteController@destroy');
 Route::get('vente/{id}/edit','VenteController@edit');
 Route::put('vente/{id}','VenteController@update');
+Route::get('vente/{id}/detail','VenteController@show');
 //Achat Route
 Route::get('achat','AchatController@index');
 Route::get('achat/create','AchatController@create');
