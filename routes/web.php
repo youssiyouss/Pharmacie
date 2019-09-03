@@ -27,6 +27,7 @@ Route::get('acceuil', 'HomeController@acceuil')->name('acceuil');
 Route::get('medi', 'HomeController@medi')->name('medicament');
 Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
+Route::get('about', 'HomeController@about')->name('about');
 
 //Les bares de recherchers front and backend
 Route::any('/search_User',function(){

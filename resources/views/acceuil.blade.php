@@ -97,4 +97,92 @@
         </div>
       </div>
     </div>
+
+        <div class="site-section">
+          <div class="container">
+            <div class="row">
+              <div class="title-section text-center col-12">
+                <h2 class="text-uppercase">Testimonials</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 block-3 products-wrap">
+                <div class="nonloop-block-3 no-direction owl-carousel">
+
+                  <div class="testimony">
+                    <blockquote>
+                      <img src="frontEnd/images/person_1.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+                      <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat unde.&rdquo;</p>
+                    </blockquote>
+
+                    <p>&mdash; Kelly Holmes</p>
+                  </div>
+
+                  <div class="testimony">
+                    <blockquote>
+                      <img src="frontEnd/images/person_2.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+                      <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
+                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
+                        unde.&rdquo;</p>
+                    </blockquote>
+
+                    <p>&mdash; Rebecca Morando</p>
+                  </div>
+
+                  <div class="testimony">
+                    <blockquote>
+                      <img src="frontEnd/images/person_3.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+                      <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
+                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
+                        unde.&rdquo;</p>
+                    </blockquote>
+
+                    <p>&mdash; Lucas Gallone</p>
+                  </div>
+
+                  <div class="testimony">
+                    <blockquote>
+                      <img src="frontEnd/images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+                      <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
+                        obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
+                        unde.&rdquo;</p>
+                    </blockquote>
+
+                    <p>&mdash; Andrew Neel</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="site-section bg-image" style="background-image: url('frontEnd/images/bg_1.jpg');">
+          <div class="container">
+            <div class="row align-items-stretch">
+              <div class="col-lg-6 mb-5 mb-lg-0">
+                  <div class=" banner-1-inner ml-auto align-self-center">
+                    <h2 style="color: #000; text-transform: uppercase;font-weight: 900;"> Produits  PharmaTlem:</h2>
+                    <p>
+                        -Une délivrance confidentielle et sécurisée des mêmes médicaments .<br>
+                        -Un pharmacien à votre écoute en permanence et accessible par téléphone, email et réseaux sociaux. Il vous délivre des conseils personnalisés et assure une utilisation sûre des médicaments.<br>
+                        -Un accès à un catalogue de médicaments de 2000 produits <br>
+                        -Une transparence totale au niveau des prix des médicaments et de l’ensemble des produits proposés pour vous garantir le choix mais aussi un accès éclairé à nos catalogues
+
+                    </p>
+                  </div>
+
+              </div>
+              <div class="col-lg-6 mb-5 mb-lg-0">
+                <a href="javascript:void(0)" class="banner-1 h-100 d-flex" style="background-image: url('frontEnd/images/bg_2.jpg');">
+                  <div class="banner-1-inner ml-auto  align-self-center">
+                    <h2>Traite par des experts</h2>
+
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
 @endsection

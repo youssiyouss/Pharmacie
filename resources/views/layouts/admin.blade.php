@@ -14,7 +14,7 @@
     <script src="../node_modules/chart.js/dist/Chart.bundle.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-
+  
 </head>
 
 <body class="v-light vertical-nav fix-header fix-sidebar">
