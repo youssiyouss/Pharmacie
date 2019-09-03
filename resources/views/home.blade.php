@@ -1,4 +1,4 @@
-<!-- doughnut -->
+
 <?php
 /* Database connection settings */
 $host = 'localhost';
@@ -6,11 +6,10 @@ $user = 'root';
 $pass = '';
 $db = 'pharmacie';
 $mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
-
+// line
 $qt = '';
 $date='';
 $today = date ("Y-m", mktime(0,0,0,date("m")-1,date("d"),date("Y")));
-
 	 $sql =  "SELECT SUM(qt) ,DAYOFMONTH(DATE),CURDATE()
 		        FROM `ventes`
 		        WHERE DATE_FORMAT(date,'%Y-%m') ='$today'
@@ -32,17 +31,17 @@ $qt = trim($qt,",");
 $date = trim($date,",");
 
 
-// <!-- AREA -->
+// <!-- doughnut -->
 $qnt='';
 $months='';
-$annee =  date ("Y", mktime(date("Y")-1));
+$annee =  date ("Y", mktime(date("Y")));
 $sql =  "SELECT SUM(qt) ,MONTH(DATE)
          FROM `ventes`
          WHERE DATE_FORMAT(DATE,'%Y') ='$annee'
          GROUP BY MONTH(DATE)";
 $result = mysqli_query($mysqli, $sql);
 while ($row = mysqli_fetch_array($result)) {
-  $qnt = $qt.$row['SUM(qt)'].',';
+  $qnt .= $row['SUM(qt)'].',';
   $months .='"'.$row['MONTH(DATE)'].'",';
 }
 $qnt = trim($qnt,",");
@@ -89,8 +88,8 @@ while ($row = mysqli_fetch_array($revenueA)) {
 
                         <div class="card">
                             <div class="card-body">
-                                <i><h4 class=" card-title text-center bg-primary">Vente de l'année derniere</h4></i>
-                                <div class="f-s-30 f-w-300 text-success">Revenue  total :<br><?php echo $prixA; ?><span class="f-s-16 text-uppercase">DA</span>                                </div>
+                                <i><h4 class=" card-title text-center bg-primary">Vente du dernier mois</h4></i>
+                                <div class="f-s-30 f-w-300 text-success">Revenue  total :<br><?php echo $prix; ?><span class="f-s-16 text-uppercase">DA</span>                                </div>
 
                             </div>
                             <canvas id="chart-1" width="392" height="256" class="chartjs-render-monitor" style="display: block; width: 392px; height: 256px;"></canvas>
@@ -101,11 +100,11 @@ while ($row = mysqli_fetch_array($revenueA)) {
                       var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: [<?php echo $months; ?>],
+                            labels: [<?php echo $date; ?>],
                             datasets:
                             [{
                                 label: 'Vente par mois',
-                                data: [<?php echo $qnt; ?>],
+                                data: [<?php echo $qt; ?>],
                                 backgroundColor: [
                                      'rgba(213, 184, 255, 1)',
                                      'rgba(54, 162, 235, 0.2)',
@@ -149,7 +148,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
                                       display: true,
                                       scaleLabel: {
                                         display: true,
-                                        labelString: 'Vente de chaque mois'
+                                        labelString: 'Vente de chaque jour'
                                       }
                                     }]
                                   }
@@ -162,8 +161,8 @@ while ($row = mysqli_fetch_array($revenueA)) {
                         <div class="col-xl-12">
                           <div class="card">
                               <div class="card-body">
-                                  <i><h4 class=" card-title text-center bg-primary">Vente du dernier mois</h4></i>
-                                  <div class="f-s-30 f-w-300 text-success">Revenue  total :<br><?php echo $prix; ?><span class="f-s-16 text-uppercase">DA</span>                                </div>
+                                  <i><h4 class=" card-title text-center bg-primary">Vente de l'année derniere</h4></i>
+                                  <div class="f-s-30 f-w-300 text-success">Revenue  total :<br><?php echo $prixA; ?><span class="f-s-16 text-uppercase">DA</span>                                </div>
 
                               </div>
                                   <canvas id="chart-area" style="display: block; width: 533px; height: 266px;" width="533" height="266" class="chartjs-render-monitor"></canvas>
@@ -174,26 +173,37 @@ while ($row = mysqli_fetch_array($revenueA)) {
                                     var myChart = new Chart(ctx, {
                                               type: 'doughnut',
                                               data: {
-                                                    labels: [<?php echo $date; ?>],
+                                                    labels: [<?php echo $months; ?>],
                                                     datasets:
                                                         [{
-                                                            label: 'Vente par jour',
-                                                            data: [<?php echo $qt; ?>],
+                                                            label: 'Vente par mois',
+                                                            data: [<?php echo $qnt; ?>],
                                                             backgroundColor: [
-                                                                 'rgba(255, 99, 132, 0.2)',
-                                                                 'rgba(54, 162, 235, 0.2)',
-                                                                 'rgba(255, 206, 86, 0.2)',
-                                                                 'rgba(75, 192, 192, 0.2)',
-                                                                 'rgba(153, 102, 255, 0.2)',
-                                                                 'rgba(255, 159, 64, 0.2)'
-                                                             ],
+                                                                	'rgba(219, 10, 91, 0.5)',
+																																	'rgba(191, 85, 236, 0.5)',
+																																	'rgba(82, 179, 217, 0.5)',
+																																	'rgba(63, 195, 128, 0.5)',
+																																	'rgba(254, 241, 96, 0.5)',
+																																	'rgba(243, 156, 18, 0.5)',
+																																	'rgba(46, 49, 49, 0.5)',
+																																	'rgba(207, 0, 15, 0.5)',
+																																	'rgba(30, 130, 76, 0.5)',
+																																	'rgba(248, 148, 6, 0.5)',
+																																	'rgba(140, 20, 252, 0.5)',
+																																	'rgba(77, 5, 232, 0.5)'
+                                                                 ],
                                                             borderColor: [
                                                                  'rgba(255,99,132,1)',
                                                                  'rgba(54, 162, 235, 1)',
                                                                  'rgba(255, 206, 86, 1)',
                                                                  'rgba(75, 192, 192, 1)',
                                                                  'rgba(153, 102, 255, 1)',
-                                                                 'rgba(255, 159, 64, 1)'
+                                                                 'rgba(255, 159, 64, 1)',
+																																 'rgba(219, 10, 91, 0.5)',
+																																 'rgba(191, 85, 236, 0.5)',
+																																 'rgba(82, 179, 217, 0.5)',
+																																 'rgba(63, 195, 128, 0.5)',
+																																 'rgba(254, 241, 96, 0.5)'
                                                              ],
                                                             borderWidth: 2
                                                         }]
