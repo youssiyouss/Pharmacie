@@ -11,7 +11,14 @@ class StatistiqueController extends Controller
   }
 
 
-  public function index(){
-  return view('Statistiques.VenteMontuelle');
-}
+  public function histoMois(){
+
+    return view('Statistiques.historiqueMensuelle');
+  }
+
+
+  public function histoAnnee(){
+
+    return view('Statistiques.historiqueAnnuelle');
+  }
 }
