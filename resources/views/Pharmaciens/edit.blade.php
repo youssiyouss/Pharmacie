@@ -153,7 +153,7 @@
               <div class="form-group row mb-0">
                   <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-success "><i class="fa fa-thumbs-o-up" aria-hidden="true"> Enregistrer</i></button>
-                    <a href="{{ url('pharmaciens') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+                    <a href="{{ url('pharmaciens/'.$phar->id) }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
                 </div>
             </div>
               </form>

@@ -7,6 +7,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!--===============================================================================================-->
+   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
   <link rel="stylesheet" href="frontEnd/fonts/icomoon/style.css">
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -16,11 +37,48 @@
   <link rel="stylesheet" href="frontEnd/css/jquery-ui.css">
   <link rel="stylesheet" href="frontEnd/css/owl.carousel.min.css">
   <link rel="stylesheet" href="frontEnd/css/owl.theme.default.min.css">
-
-
   <link rel="stylesheet" href="frontEnd/css/aos.css">
-
   <link rel="stylesheet" href="frontEnd/css/style.css">
+
+  <style type="text/css">
+  .instagram {
+    background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+  .instagram:hover {
+    background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+     text-shadow: 0 0 15px #bc2a8d;
+  }
+
+  .facebook:hover {
+  	color : #3b5998;
+  	text-shadow: 0 0 15px #3b5998;
+  }
+  .facebook{
+  	color:#3b5998
+  }
+
+  .twitter:hover {
+  	color : #00aced;
+  	text-shadow: 0 0 15px #00aced;
+  }
+  .twitter{
+  	color:#00aced;
+  }
+
+  .marker:hover {
+  	color : white;
+  	text-shadow: 0 0 30px white;
+  }
+  .marker{
+  	color:white;
+  }
+  </style>
 
 </head>
 
@@ -256,10 +314,10 @@
               <div class="block-5">
                 <h3 class="footer-heading mb-4">Nos réseaux sociaux</h3>
                 <div class="wrapper">
-                  <div class="dis-flex size1 p-b-47">
-                    &nbsp&nbsp<a href="#" style="text-decoration: none; color:#9068be;"><span class="fa fa-twitter-square twitter" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
-                    <a href="#" style="color:#9068be;"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
-                    <a href="#" style="color:#9068be;"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                  <div class="dis-flex size1 p-b-47">&nbsp&nbsp
+                    <a href="#"><span class="fa fa-twitter-square twitter" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                    <a href="#"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                    <a href="#"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
                   </div>
                 </div>
             </div>

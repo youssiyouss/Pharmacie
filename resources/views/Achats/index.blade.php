@@ -14,23 +14,25 @@
 
        @if(Session::has('success'))
                    <div class="alert alert-success">
-                     {{ Session::get('success') }}
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                      {{ Session::get('success') }}
                    </div>
         @endif
+
        <div class="pull-right">
-         <a href="{{ url('achat/create') }}" class="btn btn-success">Nouveau Achat</a>
+         @can('create',Auth::user())
+         <a href="{{ url('achat/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Ajouter </i></a>
+         @endcan
        </div>
        <table class="table">
-         <head>
+         <thead>
 
-           <tr>
              <th>ID</th>
              <th>Date création</th>
              <th>Num fournisseur</th>
 
-           </tr>
-         </head>
-        <body>
+         </thead>
+        <tbody>
             @foreach($achat as $a)
 
           <tr>
@@ -43,14 +45,15 @@
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
                   <a href="{{ url('achat/'.$a->id.'/detail') }}" class="btn btn-primary">Details</a>
+                  @can('delete',$a)
                   <a href="{{ url('achat/'.$a->id.'/edit') }}" class="btn btn-info">Modifier</a>
                   <button type="submit" class="btn btn-danger">Supprimer</button>
-
+                  @endcan
                 </form>
            </td>
           </tr>
          @endforeach
-        </body>
+       </tbody>
        </table>
 
      </div>

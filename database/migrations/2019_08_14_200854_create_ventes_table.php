@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFournisseursTable extends Migration
+class CreateVentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateFournisseursTable extends Migration
      */
     public function up()
     {
-        Schema::create('fournisseurs', function (Blueprint $table) {
+        Schema::create('ventes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nom');
-            $table->string('adresse');
-            $table->string('tel');
-            $table->string('email');
+            $table->integer('lot');
+            $table->DateTime('date');
+            $table->integer('qt');
+            $table->integer('prix_total');
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
-
         });
     }
 
@@ -32,6 +31,6 @@ class CreateFournisseursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fournisseurs');
+        Schema::dropIfExists('ventes');
     }
 }

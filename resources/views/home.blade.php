@@ -103,7 +103,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
                             labels: [<?php echo $date; ?>],
                             datasets:
                             [{
-                                label: 'Vente par mois',
+                                label: 'Vente par jour',
                                 data: [<?php echo $qt; ?>],
                                 backgroundColor: [
                                      'rgba(213, 184, 255, 1)',
@@ -187,7 +187,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
 																																	'rgba(243, 156, 18, 0.5)',
 																																	'rgba(46, 49, 49, 0.5)',
 																																	'rgba(207, 0, 15, 0.5)',
-																																	'rgba(30, 130, 76, 0.5)',
+																																	'rgba(154, 18, 179, 0.5)',
 																																	'rgba(248, 148, 6, 0.5)',
 																																	'rgba(140, 20, 252, 0.5)',
 																																	'rgba(77, 5, 232, 0.5)'
@@ -230,7 +230,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
 
 
                         </div>
-                    <div class="col-xl-5">
+                    <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Messages</h4>
@@ -258,195 +258,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="f-s-30 m-b-0">$6,932.60</h2><span class="f-w-600">Total Revenue</span>
-                                <div class="m-t-30">
-                                    <h4 class="f-w-600">2,365</h4>
-                                    <h6 class="m-t-10 text-muted">Online Earning <span class="pull-right">50%</span></h6>
-                                    <div class="progress m-t-15 h-6px">
-                                        <div class="progress-bar bg-primary wow animated progress-animated w-50pc h-6px" role="progressbar"></div>
-                                    </div>
-                                </div>
-                                <div class="m-t-20 m-b-20">
-                                    <h4 class="f-w-600">1,250</h4>
-                                    <h6 class="m-t-10">Offline Earning <span class="pull-right">50%</span></h6>
-                                    <div class="progress m-t-15 h-6px">
-                                        <div class="progress-bar bg-success wow animated progress-animated w-50pc h-6px" role="progressbar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="active-member">
-                                    <div class="table-responsive">
-                                        <table class="table table-xs">
-                                            <thead>
-                                                <tr>
-                                                    <th>Top Active Members</th>
-                                                    <th>Views</th>
-                                                    <th>Country</th>
-                                                    <th>Status</th>
-                                                    <th>Comments</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../../assets/images/avatar/1.jpg" class="w-40px rounded-circle m-r-10" alt="">Arden Karn</td>
-                                                    <td><span>125</span>
-                                                    </td>
-                                                    <td>United States</td>
-                                                    <td><i class="fa fa-circle-o text-success f-s-12 m-r-10"></i> Active</td>
-                                                    <td><span>84</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../../assets/images/avatar/2.jpg" class="w-40px rounded-circle m-r-10" alt="">Arden Karn</td>
-                                                    <td><span>547</span>
-                                                    </td>
-                                                    <td>Canada</td>
-                                                    <td><i class="fa fa-circle-o text-success f-s-12 m-r-10"></i> Active</td>
-                                                    <td><span>36</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../../assets/images/avatar/3.jpg" class="w-40px rounded-circle m-r-10" alt="">Arden Karn</td>
-                                                    <td><span>557</span>
-                                                    </td>
-                                                    <td>Germany</td>
-                                                    <td><i class="fa fa-circle-o text-danger f-s-12 m-r-10"></i> Inactive</td>
-                                                    <td><span>55</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../../assets/images/avatar/4.jpg" class="w-40px rounded-circle m-r-10" alt="">Arden Karn</td>
-                                                    <td><span>753</span>
-                                                    </td>
-                                                    <td>England</td>
-                                                    <td><i class="fa fa-circle-o text-success f-s-12 m-r-10"></i> Active</td>
-                                                    <td><span>45</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../../assets/images/avatar/5.jpg" class="w-40px rounded-circle m-r-10" alt="">Arden Karn</td>
-                                                    <td><span>453</span>
-                                                    </td>
-                                                    <td>China</td>
-                                                    <td><i class="fa fa-circle-o text-danger f-s-12 m-r-10"></i> Inactive</td>
-                                                    <td><span>63</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../../assets/images/avatar/6.jpg" class="w-40px rounded-circle m-r-10" alt="">Arden Karn</td>
-                                                    <td><span>658</span>
-                                                    </td>
-                                                    <td>Japan</td>
-                                                    <td><i class="fa fa-circle-o text-success f-s-12 m-r-10"></i> Active</td>
-                                                    <td><span>38</span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="../../assets/images/users/2.jpg" class="rounded-circle m-t-15 w-75px" alt="">
-                                    <h4 class="m-t-15 m-b-2">Paul Custard</h4>
-                                    <p class="text-muted">Web Developer</p>
-                                    <ul class="list-inline m-t-15">
-                                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square f-s-20 text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter f-s-20 text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest f-s-20 text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin f-s-20 text-muted"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="row">
-                                        <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Name:</span> <span class="pull-right">Bob Springer</span>
-                                        </div>
-                                        <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Email:</span> <span class="pull-right">example@examplel.com</span>
-                                        </div>
-                                        <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">Phone:</span> <span class="pull-right">+12 123 124 125</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Activity Timeline</h4>
-                                <div class="timeline-">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge primary"></div><a href="#" class="timeline-panel text-muted"><span>10 minutes ago</span><h6 class="m-t-5">Youtube, a video-sharing website, goes live.</h6></a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge warning"></div><a href="#" class="timeline-panel text-muted"><span>20 minutes ago</span><h6 class="m-t-5">Mashable, a news website and blog, goes live.</h6></a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge danger"></div><a href="#" class="timeline-panel text-muted"><span>30 minutes ago</span><h6 class="m-t-5">Google acquires Youtube.</h6></a>
-                                        </li>
-                                        <li>
-                                            <div class="timeline-badge success"></div><a href="#" class="timeline-panel text-muted"><span>15 minutes ago</span><h6 class="m-t-5">StumbleUpon is acquired by eBay.</h6></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="../../assets/images/users/1.jpg" class="rounded-circle m-t-10 w-50px" alt="">
-                                    <h6 class="f-w-500 m-t-15">Bob Springer</h6>
-                                    <p class="m-b-0 f-s-12">Status: <strong>Online</strong>
-                                    </p>
-                                    <p class="m-b-0 f-s-12">Response Time: <strong>3 Hours</strong>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="../../assets/images/users/2.jpg" class="rounded-circle m-t-10 w-50px" alt="">
-                                    <h6 class="f-w-500 m-t-15">Bob Springer</h6>
-                                    <p class="m-b-0 f-s-12">Status: <strong>Online</strong>
-                                    </p>
-                                    <p class="m-b-0 f-s-12">Response Time: <strong>3 Hours</strong>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  </div>
+
 @endsection

@@ -24,7 +24,8 @@
                                        <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Login:</span> <span class="pull-right">{{ $phar->login}}</span></div>
                                        <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date d'inscription:</span> <span class="pull-right">{{ $phar->created_at}}</span></div>
                                        <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">Date dérniere modification:</span> <span class="pull-right">{{ $phar->updated_at}}</span></div>
-                                       <div class="col-12 p-t-10 p-b-10"><a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"> Modifier</i></a></div>
+                                       <div class="col-12 p-t-10 p-b-10"><a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"> Modifier</i></a>
+                                       <a href="{{ url('pharmaciens') }}" class="btn btn-success"><i class="fa fa-chevron-circle-left" aria-hidden="true"> Retour</i></a></div>
                                     </div>
                 </div>
             </div>
