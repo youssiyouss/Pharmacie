@@ -47,7 +47,7 @@
                                                     <td><i class="text-success f-s-12 m-r-10"></i>@if($phar->isadmin==true) Admin @else Pharmacien
                                                         @endif</td>
                                                     <td>
-                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet utilisateur?')">
+                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" onsubmit="return confirm('Etes vous sure de vouloir supprimer cet utilisateur?')">
                                                           {{ csrf_field() }}
                                                           {{ method_field('DELETE') }}
                                                             <li class="icons">

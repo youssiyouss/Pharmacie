@@ -18,7 +18,7 @@
                                       <div class="active-member">
                                           <div class="table-responsive">
                                             <div class="pull-right">
-                                              <a href="{{ url('medicaments/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Nouveau medicament </i></a>
+                                              <a href="{{ url('medicaments/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Ajouter </i></a>
                                             </div>
                                               <table class="table table-xs">
                                                   <thead>
@@ -34,7 +34,7 @@
                                                   <tbody>
                                                      @foreach($medicaments as $listeM)
                                                       <tr class="col-md-2">
-                                                          <td><span>{{$listeM->nom}}</span></td>
+                                                          <td><span><img src="{{ asset('storage/'.$listeM->photo)}}" class="pull-left m-r-10 avatar-img w-40px" alt="">{{$listeM->nom}}</span></td>
                                                           <td><span>{{$listeM->dosage}}</span></td>
                                                           <td><span>{{$listeM->forme}}</span></td>
                                                           <td><span>{{$listeM->famille}}</span></td>

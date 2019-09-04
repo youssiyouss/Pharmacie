@@ -37,6 +37,7 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact');
+    }
     public function acceuil()
     {
         return view('acceuil');
