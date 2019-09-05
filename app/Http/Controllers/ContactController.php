@@ -19,8 +19,23 @@ class ContactController extends Controller
         'email' => 'required|email',
         'message' => 'required'
         ]);
-       Contact::create($request->all());
-       return back()->with('success', 'Message envoyé!');
+       // Contact::create($request->all());
+           $x = new Contact();
+           $x->nom = $request->input('nom');
+           $x->prenom = $request->input('prenom');
+           $x->tel = $request->input('tel');
+           $x->email = $request->input('email');
+           $x->message = $request->input('message');
+           $x->temoin = $request->input('temoin');
+             $x->save();
+             return back()->with('success', 'Message envoyé!');
+
+    }
+    public function temoignages(){
+      $msgs =DB::table('contact')
+                ->select('nom','prenom','temoin','created_at')
+                ->get();
+       return view('acceuil',['tst' => $msgs]);
 
     }
 
@@ -41,7 +56,7 @@ class ContactController extends Controller
                         ->get();
 
     	return view('Messages.msgListe',['msg'=>$msg, 'reads'=>$reads, 'trash'=>$trash]);
-    	
+
     }
 
     public function display($id){
@@ -60,7 +75,7 @@ class ContactController extends Controller
 
             }
 
-    	
+
 
     	return view('Messages.displaymsg', ['content' => $content]);
     }
@@ -69,7 +84,7 @@ class ContactController extends Controller
     {
         $a = Contact::find($id);
         $a->delete();
-        
+
         return redirect('messages')->with('delete', 'Message supprimé!');;
     }
 }

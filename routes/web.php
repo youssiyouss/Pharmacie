@@ -29,6 +29,12 @@ Route::get('soin', 'HomeController@soin')->name('soins&santé');
 Route::get('produit', 'HomeController@produit')->name('produit');
 Route::get('about', 'HomeController@about')->name('about');
 
+Route::get('home', 'HomeController@messages');
+Route::get('acceuil', 'ContactController@temoignages');
+Route::get('/', 'ContactController@temoignages');
+
+
+
 
 //Contacts
 Route::get('contact', 'HomeController@contact')->name('contact');

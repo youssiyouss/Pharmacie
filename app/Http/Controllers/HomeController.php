@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -46,5 +47,12 @@ class HomeController extends Controller
     { $x = User::all();
       return view('about',['phar'=>$x]);
     }
+    public function messages()
+    {
+      $msgs =DB::table('contact')
+                ->select('nom','prenom','message','created_at')
+                ->get();
+       return view('home',['msg' => $msgs]);
+     }
 
 }

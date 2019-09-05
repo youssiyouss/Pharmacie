@@ -73,6 +73,8 @@ $revenueA =  mysqli_query($mysqli,"SELECT SUM(`lots`.prix * `ventes`.qt) as B
 while ($row = mysqli_fetch_array($revenueA)) {
   $prixA.=$row['B'];
 }
+
+
 ?>
 @extends('layouts.admin')
 
@@ -231,34 +233,25 @@ while ($row = mysqli_fetch_array($revenueA)) {
 
 
                         </div>
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Messages</h4>
-                                <div class="media border-bottom-1 p-t-15 p-b-15">
-                                    <img src="../../assets/images/avatar/1.jpg" class="mr-3 rounded-circle" alt="">
-                                    <div class="media-body">
-                                        <h5>John Tomas</h5>
-                                        <p class="m-b-0">I shared this on my fb wall a few months back,</p>
-                                    </div><span class="text-muted f-s-12">April 24, 2018</span>
-                                </div>
-                                <div class="media border-bottom-1 p-t-15 p-b-15">
-                                    <img src="../../assets/images/avatar/2.jpg" class="mr-3 rounded-circle" alt="">
-                                    <div class="media-body">
-                                        <h5>John Tomas</h5>
-                                        <p class="m-b-0">I shared this on my fb wall a few months back,</p>
-                                    </div><span class="text-muted f-s-12">April 24, 2018</span>
-                                </div>
-                                <div class="media p-t-15 p-b-15">
-                                    <img src="../../assets/images/avatar/3.jpg" class="mr-3 rounded-circle" alt="">
-                                    <div class="media-body">
-                                        <h5>John Tomas</h5>
-                                        <p class="m-b-0">I shared this on my fb wall a few months back,</p>
-                                    </div><span class="text-muted f-s-12">April 24, 2018</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+												<div class="col-xl-12">
+		                        <div class="card">
+		                            <div class="card-body">
+		                                <h4 class="card-title">Messages</h4>
+
+																		@foreach($msg as $msg)
+																		<a href="messages">
+																	  <div class="media border-bottom-1 p-t-15 p-b-15">
+		                                   <div class="media-body">
+		                                        <h5>{{$msg->nom}} {{$msg->prenom}} </h5>
+		                                        <p class="m-b-0">{{$msg->message}}</p>
+		                                    </div><span class="text-muted f-s-12">{{$msg->created_at}}</span>
+		                                </div>
+																		</a>
+																		@endforeach
+		                            </div>
+		                        </div>
+		                    </div>
+
 
   </div>
 
