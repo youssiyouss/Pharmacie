@@ -147,7 +147,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form action="{{ route('contact.store') }}" method="post" class="contact100-form validate-form">
+			<form action="{{ route('contact.store') }}" method="post" class="contact100-form validate-form" enctype="multipart/form-data">
 				{{ csrf_field() }}
 
 
@@ -161,7 +161,7 @@
 					Contactez nous
 				</span>
 
-				<label class="label-input100" for="first-name">Entrer ton Nom et prénom *</label>
+				<label class="label-input100" for="first-name">Entrer Votre Nom et prénom *</label>
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
 					<input id="first-name" class="input100" type="text" name="nom" placeholder="Nom" value="{{ old('nom') }}">
 					<span class="focus-input100"></span>
@@ -183,7 +183,7 @@
                   @endforeach
                  @endif
 
-				<label class="label-input100" for="email">Enter ton Email *</label>
+				<label class="label-input100" for="email">Entrer votre  Email *</label>
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com" value="{{ old('email') }}">
 					<span class="focus-input100"></span>
@@ -195,9 +195,9 @@
                  @endif
 				</div>
 
-				<label class="label-input100" for="phone">Enter ton numéro de téléphone</label>
+				<label class="label-input100" for="phone">Entrer votre numéro de téléphone</label>
 				<div class="wrap-input100">
-					<input id="phone" class="input100" type="text" name="tel" placeholder="Eg. +1 800 000000" value="{{ old('tel') }}">
+					<input id="phone" class="input100" type="text" name="tel" placeholder="Eg. +231 000000" value="{{ old('tel') }}">
 					<span class="focus-input100"></span>
 
 					@if($errors->get('tel'))
@@ -207,6 +207,17 @@
                  @endif
 				</div>
 
+				<label class="label-input100" for="temoin">Laissez-nous savoir comment vous trouvez nos service si vous faite partie de nos clients </label>
+				<div class="wrap-input100">
+					<textarea id="temoin" class="input100" name="temoin" placeholder="Vos avis ...">{{ old('temoin') }}</textarea>
+					<span class="focus-input100"></span>
+
+					@if($errors->get('temoin'))
+              @foreach($errors->get('temoin') as $message)
+                <span class="text-danger">{{ $message }}</span>
+              @endforeach
+          @endif
+				</div>
 				<label class="label-input100" for="message">Message *</label>
 				<div class="wrap-input100 validate-input" data-validate = "Message is required">
 					<textarea id="message" class="input100" name="message" placeholder="Tapez votre message...">{{ old('message') }}</textarea>
