@@ -35,10 +35,11 @@ $date = trim($date,",");
 $qnt='';
 $months='';
 $annee =  date ("Y", mktime(date("Y")));
-$sql =  "SELECT SUM(qt) ,DATE_FORMAT(DATE,'%M') as M
+$sql =  "SELECT SUM(qt) ,DATE_FORMAT(DATE,'%M') as M,MONTH(DATE)
          FROM `ventes`
          WHERE DATE_FORMAT(DATE,'%Y') ='$annee'
-         GROUP BY DATE_FORMAT(DATE,'%M')";
+         GROUP BY DATE_FORMAT(DATE,'%M'),MONTH(DATE)
+				 ORDER BY MONTH(DATE)";
 $result = mysqli_query($mysqli, $sql);
 while ($row = mysqli_fetch_array($result)) {
   $qnt .= $row['SUM(qt)'].',';

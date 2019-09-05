@@ -10,22 +10,23 @@ $qt = '';
 $date='';
 if (isset($_GET['mois_vente']) && $_GET['mois_vente']<=date("Y-m")) {
 	 $mois = $_GET['mois_vente'];
-   $sql =  "SELECT SUM(qt) ,DAYOFMONTH(DATE)
+   $sql =  "SELECT SUM(qt) ,DAYOFMONTH(DATE) as a
 		        FROM `ventes`
 		        WHERE DATE_FORMAT(date,'%Y-%m') ='$mois'
-		        GROUP BY DAYOFMONTH(DATE)";
+		        GROUP BY DAYOFMONTH(DATE)
+						ORDER BY a";
    $result = mysqli_query($mysqli, $sql);
    while ($row = mysqli_fetch_array($result)) {
      $qt = $qt.$row['SUM(qt)'].',';
    }
 
-  $query= "SELECT MONTH(DATE),DAY(DATE)
+  $query= "SELECT DATE_FORMAT(DATE,'%M') as M,DAY(DATE)
           from `ventes`
           WHERE DATE_FORMAT(date,'%Y-%m') = '$mois'
-          GROUP BY MONTH(DATE),DAY(DATE)";
+          GROUP BY DATE_FORMAT(DATE,'%M'),DAY(DATE)";
   $result2=mysqli_query($mysqli,$query);
   while ($row = mysqli_fetch_array($result2)) {
-    $date =$date.'"'.$row['MONTH(DATE)'].'/'.$row['DAY(DATE)'].'",';
+    $date =$date.'"'.$row['M'].'/'.$row['DAY(DATE)'].'",';
   }
 $qt = trim($qt,",");
 $date = trim($date,",");
@@ -106,6 +107,8 @@ var ctx = document.getElementById("Dailysales").getContext('2d');
                   }
                 }],
                 yAxes: [{
+
+										ticks: { beginAtZero: true },
                   display: true,
                   scaleLabel: {
                     display: true,
