@@ -19,13 +19,13 @@ $today = date ("Y-m", mktime(0,0,0,date("m")-1,date("d"),date("Y")));
      $qt = $qt.$row['SUM(qt)'].',';
      }
 
-    $query= "SELECT MONTH(DATE),DAY(DATE)
+    $query= "SELECT DATE_FORMAT(DATE,'%M') as MY,DAY(DATE)
           from `ventes`
           WHERE DATE_FORMAT(date,'%Y-%m') = '$today'
-          GROUP BY MONTH(DATE),DAY(DATE)";
+          GROUP BY DATE_FORMAT(DATE,'%M'),DAY(DATE)";
  $result2=mysqli_query($mysqli,$query);
   while ($row = mysqli_fetch_array($result2)) {
-    $date =$date.'"'.$row['MONTH(DATE)'].'/'.$row['DAY(DATE)'].'",';
+    $date =$date.'"'.$row['MY'].'/'.$row['DAY(DATE)'].'",';
   }
 $qt = trim($qt,",");
 $date = trim($date,",");
@@ -35,14 +35,14 @@ $date = trim($date,",");
 $qnt='';
 $months='';
 $annee =  date ("Y", mktime(date("Y")));
-$sql =  "SELECT SUM(qt) ,MONTH(DATE)
+$sql =  "SELECT SUM(qt) ,DATE_FORMAT(DATE,'%M') as M
          FROM `ventes`
          WHERE DATE_FORMAT(DATE,'%Y') ='$annee'
-         GROUP BY MONTH(DATE)";
+         GROUP BY DATE_FORMAT(DATE,'%M')";
 $result = mysqli_query($mysqli, $sql);
 while ($row = mysqli_fetch_array($result)) {
   $qnt .= $row['SUM(qt)'].',';
-  $months .='"'.$row['MONTH(DATE)'].'",';
+  $months .='"'.$row['M'].'",';
 }
 $qnt = trim($qnt,",");
 $months = trim($months,",");
