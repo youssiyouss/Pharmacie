@@ -26,7 +26,7 @@ class VenteController extends Controller
      */
     public function index()
     {
-        $arr['vente'] = Vente::all();
+        $arr['vente'] = DB::table('Ventes')->select('Ventes.*')->paginate(20);
         return view('Ventes.index')->with($arr);
     }
 
@@ -41,7 +41,13 @@ class VenteController extends Controller
             ->select('Lots.id')
             ->where('qt_stock','>','0')
             ->get();
-            return view('Ventes.create', ['lotid' => $lotid]);
+
+        $loti = DB::table('Achats')
+             ->join('Lots', 'Achats.id', '=', 'Lots.achat')
+            ->select('Lots.id')
+            ->whereNull('Achats.deleted_at')
+            ->get();
+            return view('Ventes.create', ['lotid' => $lotid, 'loti'=>$loti ]);
         //return view('Ventes.create');
     }
 
@@ -156,7 +162,7 @@ class VenteController extends Controller
         $vente->save();
 
         session()->flash('success','La vente a été modifiée avec succées!');
-        return redirect('vente');
+        return redirect('vente')->with('success', 'Vente Mofifiée!');
     }
 
     /**
@@ -169,6 +175,6 @@ class VenteController extends Controller
     {
         $v = Vente::find($id);
         $v->delete();
-        return redirect('vente');
+        return redirect('vente')->with('danger', 'Vente Supprimée!');
     }
 }

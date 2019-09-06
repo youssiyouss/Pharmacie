@@ -160,7 +160,7 @@ class AchatController extends Controller
               'date_fab' => $request->input('datefab'),'date_per' => $request->input('dateper'),'prix' => $request->input('prix'),
               'qt_stock' => $qt_stock ]);
 
-        return redirect('achat');
+        return redirect('achat')->with('success', 'Achat modifié!');
     }
 
     /**
@@ -175,12 +175,13 @@ class AchatController extends Controller
         $this->authorize('delete',$a);
 
         $a->delete();
+
         $l = DB::table('Lots')
             ->select('Lots.*')
             ->where('Lots.id','=',$id)
             ->delete();
 
 
-        return redirect('achat');
+        return redirect('achat')->with('danger', 'Achat Supprimé!');
     }
 }

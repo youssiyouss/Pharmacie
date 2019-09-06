@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 use App\Contact;
+use Mail;
+use App\mail\sendMail;
+use App\Send;
 use App\Vente;
 use App\Medicament;
 
 class ContactController extends Controller
 {
+    //Send a message from the contact form to database
     public function contactPost(Request $request){
 
     	$this->validate($request, [
@@ -53,7 +57,7 @@ class ContactController extends Controller
        return view('acceuil',['tst' => $msgs ,'top'=>$m , 'new'=>$n]);
 
     }
-    
+
     public function message(){
 
     		$msg = DB::table('contact')
@@ -61,7 +65,7 @@ class ContactController extends Controller
                         ->whereNull('deleted_at')
     					->paginate(20);
 
-    	     $reads = DB::table('contact')
+    	    $reads = DB::table('contact')
                     ->where([['read_at', '<>', NULL],['deleted_at', '=', NULL],])
                     ->get();
 
@@ -70,10 +74,17 @@ class ContactController extends Controller
                         ->whereNotNull('deleted_at')
                         ->get();
 
-    	return view('Messages.msgListe',['msg'=>$msg, 'reads'=>$reads, 'trash'=>$trash]);
+            $send = DB::table('Sends')->select('Sends.*')->count();
+
+            $customer= DB::table('contact')
+                ->inRandomOrder()
+                ->paginate(6);
+
+    	return view('Messages.msgListe',['msg'=>$msg, 'reads'=>$reads, 'trash'=>$trash, 'send'=>$send,'customer'=>$customer]);
 
     }
 
+    //Display the choosen message by ID
     public function display($id){
     	$content = DB::table('contact')
             ->where('id', $id)
@@ -90,16 +101,78 @@ class ContactController extends Controller
 
             }
 
+        $reads = DB::table('contact')
+                    ->where([['read_at', '<>', NULL],['deleted_at', '=', NULL],])
+                    ->get();
+
+        $trash = DB::table('contact')
+                        ->select('contact.*')
+                        ->whereNotNull('deleted_at')
+                        ->get();
+
+        $send = DB::table('Sends')->select('Sends.*')->count();
+
+        $customer= DB::table('contact')
+                ->inRandomOrder()
+                ->paginate(6);
 
 
-    	return view('Messages.displaymsg', ['content' => $content]);
+
+    	return view('Messages.displaymsg', ['content' => $content, 'reads' => $reads, 'trash' => $trash, 'send' => $send,'customer' => $customer]);
     }
 
-     public function destroy($id)
+
+    //Delete a message define by his Id
+    public function destroy($id)
     {
         $a = Contact::find($id);
         $a->delete();
 
         return redirect('messages')->with('delete', 'Message supprimé!');;
     }
+
+    //Return the email compose
+    public function email(){
+
+        $reads = DB::table('contact')
+                    ->where([['read_at', '<>', NULL],['deleted_at', '=', NULL],])
+                    ->get();
+
+        $trash = DB::table('contact')
+                        ->select('contact.*')
+                        ->whereNotNull('deleted_at')
+                        ->get();
+
+        $send = DB::table('Sends')->select('Sends.*')->count();
+
+        $customer= DB::table('contact')
+                ->inRandomOrder()
+                ->paginate(6);
+
+        return view('Messages.sendMail',['reads'=>$reads, 'trash'=>$trash, 'send'=>$send,'customer'=>$customer]);
+    }
+
+
+    //Send email submited & store on Sends table
+    public function send(Request $request){
+
+        Mail::send(new sendMail());
+
+        //store on Sends table
+        $send = new Send();
+        $send->to = $request->input('to');
+        $send->subject = $request->input('sub');
+        $send->message = $request->input('message');
+        $send->day_sended = now();
+        $send->time_sended= now();
+        $send->save();
+
+        return redirect('messages')->with('success', 'Message Envoyée');
+
+    }
+
+
+
+
+
 }
