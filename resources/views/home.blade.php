@@ -86,6 +86,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
                     </div>
 
                 </div>
+								@can('isAdmin',Auth::user())
                 <div class="row">
                     <div class="col-xl-12">
 
@@ -160,6 +161,8 @@ while ($row = mysqli_fetch_array($revenueA)) {
 
                     </script>
                     </div>
+										@endcan
+										@can('isAdmin',Auth::user())
                     <div class="row">
                         <div class="col-xl-12">
                           <div class="card">
@@ -233,6 +236,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
 
 
                         </div>
+														@endcan
 												<div class="col-xl-12">
 		                        <div class="card">
 		                            <div class="card-body">

@@ -28,7 +28,8 @@
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+
+
   <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
   <link rel="stylesheet" href="frontEnd/fonts/icomoon/style.css">
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -112,10 +113,11 @@
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li><a href="{{url('acceuil')}}">Home</a></li>
                 <li class="has-children">
-                  <a href="#">Nos Produits</a>
+                  <a href="medi">Nos Produits</a>
                   <ul class="dropdown">
-                    <li><a href="{{url('medi')}}">Medicaments</a></li>
-                    <li><a href="{{url('soin')}}">Soins et Santé</a></li>
+                    <li><a href="medi#medi">Medicaments</a></li>
+                    <li><a href="medi#soin">Soins et Santé</a></li>
+                    <li><a href="medi#materiel">Materiel</a></li>
                   </ul>
                 </li>
                 <li><a href="{{url('contact')}}">Contact</a></li>
@@ -144,21 +146,6 @@
       </div>
     </div>
 
-    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
-      <div class="container">
-        <div class="row">
-          <div class="order-lg-2 align-self-center">
-            <div class="text-center">
-            <h1><i><strong style="color :#b7e778;">Pharma</strong><strong style="color : #9068be;">Tlem</strong></i></h1>
-            <h2 class="sub-title"><b>Adopter le bon traitement </b></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-      <div class="site-section">
        @yield('content')
      </div>
 
@@ -173,6 +160,7 @@
               <ul class="list-unstyled">
                 <li><a href="{{url('medi')}}">Medicaments</a></li>
                 <li><a href="{{url('soin')}}">Soins &amp; Santé</a></li>
+                <li><a href="{{url('materiel')}}">Materiel</a></li>
                 <li><a href="{{url('about')}}">About Us</a></li>
               </ul>
             </div>

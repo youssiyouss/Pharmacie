@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Medicament;
+use App\Vente;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,11 +27,9 @@ class HomeController extends Controller
     }
     public function medi()
     {
-        return view('medi');
-    }
-     public function soin()
-    {
-        return view('soin');
+      $listeMed = Medicament::all();
+      return view('medi',['medicaments' => $listeMed]);
+
     }
      public function produit()
     {
@@ -39,14 +39,20 @@ class HomeController extends Controller
     {
         return view('contact');
     }
+
     public function acceuil()
     {
-        return view('acceuil');
+      return view('acceuil');
+
     }
+
+  
+
     public function about()
     { $x = User::all();
       return view('about',['phar'=>$x]);
     }
+
     public function messages()
     {
       $msgs =DB::table('contact')

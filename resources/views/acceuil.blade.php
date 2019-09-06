@@ -1,56 +1,46 @@
-@extends('welcome')
+@extends('layouts.welcome')
 
 
 
 @section('content')
 
 
- <div class="container">
+    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
+      <div class="container">
         <div class="row">
+          <div class="order-lg-2 align-self-center">
+            <div class="text-center">
+            <h1><i><strong style="color :#b7e778;">Pharma</strong><strong style="color : #9068be;">Tlem</strong></i></h1>
+            <h2 class="sub-title"><b>Adopter le bon traitement </b></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="site-section">
+         <div class="container">
+      <div class="row">
           <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">Popular Products</h2>
+            <h2 class="text-uppercase">Produits repondus</h2>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
-            <a href="http://localhost:8000/medicaments/12"> <img src="frontEnd/images/product_01.png" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/12">Bioderma</a></h3>
-            <p class="price"> 1200</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="http://localhost:8000/medicaments/10"> <img src="frontEnd/images/spasfon.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/10">Spasfon</a></h3>
-            <p class="price">340</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="http://localhost:8000/medicaments/7"> <img src="frontEnd/images/maxilase.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/7">Maxilase</a></h3>
-            <p class="price">120</p>
-          </div>
+          @if($top)
+          @foreach($top as $m)
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-
-            <a href="http://localhost:8000/medicaments/6"> <img src="frontEnd/images/humex.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/6">Humex</a></h3>
-            <p class="price"><del>450</del> &mdash; 230</p>
+            <a href="{{url('affichage/'.$m->id)}}"> <img src="{{ asset('storage/'.$m->photo)}}" style="height:90%;width:80%;" alt="Image"></a>
+            <h3 class="text-dark"><a href="{{url('affichage/'.$m->id)}}">{{$m->nom}}</a></h3>
+            <p class="price">{{$m->prix}}</p>
           </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="http://localhost:8000/medicaments/13"> <img src="frontEnd/images/mustela.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/13">Mustela</a></h3>
-            <p class="price">1380</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
-            <a href="http://localhost:8000/medicaments/2"> <img src="frontEnd/images/doliprane.jpg" alt="Image"></a>
-            <h3 class="text-dark"><a href="http://localhost:8000/medicaments/2">Doliprane</a></h3>
-            <p class="price"><del>75</del> &mdash; 60</p>
-          </div>
+          @endforeach
+          @endif
         </div>
         <div class="row mt-5">
           <div class="col-12 text-center">
-            <a href="{{url('produit')}}" class="btn btn-primary px-4 py-3">View All Products</a>
+            <a href="{{url('medi')}}" class="btn btn-primary px-4 py-3">Voir tout les produits</a>
           </div>
         </div>
       </div>
@@ -61,37 +51,19 @@
       <div class="container">
         <div class="row">
           <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">New Products</h2>
+            <h2 class="text-uppercase">Nouveautés</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 block-3 products-wrap">
             <div class="nonloop-block-3 owl-carousel">
-
+              @foreach($new as $n)
               <div class="text-center item mb-4">
-                <a href="http://localhost:8000/medicaments/11"> <img src="frontEnd/images/avene.jpg" alt="Image"></a>
-                <h3 class="text-dark"><a href="http://localhost:8000/medicaments/11">avene</a></h3>
-                <p class="price">2340</p>
+                <a href="{{ url('affichage/'.$n->id)}}"> <img src="{{ asset('storage/'.$n->photo)}}" style="height:90%;width:80%;" alt="Image"></a>
+                <h3 class="text-dark"><a href="{{ url('affichage/'.$n->id)}}">{{$n->nom}}</a></h3>
+                <p class="price">{{$n->prix}}</p>
               </div>
-
-              <div class="text-center item mb-4">
-                <a href="http://localhost:8000/medicaments/12"> <img src="frontEnd/images/product_01.png" alt="Image"></a>
-                <h3 class="text-dark"><a href="http://localhost:8000/medicaments/12">bioderma</a></h3>
-                <p class="price">1200</p>
-              </div>
-
-              <div class="text-center item mb-4">
-                <a href="http://localhost:8000/medicaments/14"> <img src="frontEnd/images/nuxe.jpg" alt="Image"></a>
-                <h3 class="text-dark"><a href="http://localhost:8000/medicaments/14">nuxe</a></h3>
-                <p class="price">1400</p>
-              </div>
-
-              <div class="text-center item mb-4">
-                <a href="shop-single.html"> <img src="frontEnd/images/dexeryl.jpg" alt="Image"></a>
-                <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-                <p class="price">950.00</p>
-              </div>
-
+              @endforeach
             </div>
           </div>
         </div>

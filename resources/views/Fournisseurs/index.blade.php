@@ -43,8 +43,8 @@
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('DELETE') }}
                                                                   <li class="icons">
-                                                                    <a href="{{ url('fournisseurs/'.$frnsrs->id)}}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
-                                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i></button>
+                                                                    <a href="{{ url('fournisseurs/'.$frnsrs->id)}}" class="btn btn-default"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+                                                                    <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-close color-danger">></i></button>
                                                                  </li>
                                                               </form>
                                                          </td>

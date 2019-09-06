@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 use App\Contact;
+use App\Vente;
+use App\Medicament;
 
 class ContactController extends Controller
 {
@@ -35,10 +37,28 @@ class ContactController extends Controller
       $msgs =DB::table('contact')
                 ->select('nom','prenom','temoin','created_at')
                 ->get();
-       return view('acceuil',['tst' => $msgs]);
+      $m=DB::select("SELECT M.id,M.nom,M.photo,M.prix,V.lot ,SUM(V.qt) AS qt
+                     FROM ventes V,lots L,medicaments M
+                     WHERE V.lot=L.id
+                     AND L.medoc=M.id
+                     GROUP BY V.lot
+                     ORDER BY SUM(V.qt) DESC
+                     LIMIT 0,6");
+      $n=DB::select("SELECT M.id, M.nom, M.photo, M.prix, L.created_at
+                      FROM lots L,medicaments M
+                      WHERE L.medoc=M.id
+                      AND L.medoc=M.id
+                      ORDER BY L.created_at DESC
+                      LIMIT 0,7");
+       return view('acceuil',['tst' => $msgs ,'top'=>$m , 'new'=>$n]);
 
     }
+    public function affichage($id)
+    {
+      $medicament = Medicament::find($id);
+      return view('affichage',['medicament'=>$medicament]);
 
+    }
     public function message(){
 
     		$msg = DB::table('contact')
