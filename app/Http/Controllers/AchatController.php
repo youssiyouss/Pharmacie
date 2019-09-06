@@ -58,7 +58,7 @@ class AchatController extends Controller
             ->get();
           $med = DB::table('Medicaments')
             ->select('Medicaments.nom')
-            ->get();  
+            ->get();
             return view('Achats.create', ['four' => $four, 'med' => $med]);
         //return view('Achats.create');
 
@@ -132,8 +132,8 @@ class AchatController extends Controller
                ->get();
         $med = DB::table('Medicaments')
                ->select('Medicaments.nom')
-               ->get();        
-
+               ->get();
+        $this->authorize('update',$a);
         return view('Achats.edit',['a'=>$a, 'lots'=>$lots, 'fournis'=>$fournis, 'med'=>$med]);
     }
 
@@ -151,7 +151,7 @@ class AchatController extends Controller
         $ach->fournisseur = $request->input('numf');
         $ach->qt_achat = $request->input('qtachat');
         $ach->save();
-        
+
         $qt_stock = $request->input('qtachat')* $request->input('indiv');
 
         $lot =DB::table('Lots')
@@ -172,6 +172,8 @@ class AchatController extends Controller
     public function destroy($id)
     {
         $a = Achat::find($id);
+        $this->authorize('delete',$a);
+
         $a->delete();
 
         $l = DB::table('Lots')

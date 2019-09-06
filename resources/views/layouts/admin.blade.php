@@ -14,7 +14,7 @@
     <script src="../node_modules/chart.js/dist/Chart.bundle.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-  
+
 </head>
 
 <body class="v-light vertical-nav fix-header fix-sidebar">
@@ -75,7 +75,7 @@
                                         @foreach(auth()->user()->unreadNotifications as $notification)
                                         <li>
                                             <a href="{{ url( 'notifread/'.$notification->id ) }}">
-                                                
+
                                                 <div class="notification-content"><small class="notification-timestamp pull-right">{{ $notification->data['alerte']['title'] }}</small>
                                                     <div class="notification-heading">{{ $notification->created_at }}</div>
                                                     <div class="notification-text"></div>
@@ -83,7 +83,7 @@
                                             </a>
                                         </li>
                                         @endforeach
-                                        
+
                                         <li class="text-center"><a href="{{ url( 'alerte' ) }}" class="more-link">See All</a>
                                         </li>
                                     </ul>
@@ -141,6 +141,7 @@
                     <li><a href="{{ url('alerte') }}"><i class="mdi mdi-alert"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
                             <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
+                    @can('isAdmin',Auth::user())
                     <li class=""><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
                         <ul aria-expanded="false" class="collapse" style="height: 0px;">
                             <li><a href="{{ url('historiqueMensuelle')}}"><span class="nav-text">Mensuelles</span></a>
@@ -149,7 +150,7 @@
                             </li>
                         </ul>
                     </li>
-
+                    @endcan
                     <li><a href="{{ url('messages') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Email</span></a>
                     </li>
 

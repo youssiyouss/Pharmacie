@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Medicament;
+use App\Vente;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,27 +27,48 @@ class HomeController extends Controller
     }
     public function medi()
     {
-        return view('medi');
+      $listeMed = Medicament::all();
+      return view('medi',['medicaments' => $listeMed]);
     }
-     public function soin()
-    {
-        return view('soin');
-    }
-     public function produit()
-    {
-        return view('produit');
-    }
+
     public function contact()
     {
         return view('contact');
     }
+
     public function acceuil()
     {
-        return view('acceuil');
+      return view('acceuil');
+
     }
+
     public function about()
-    { $x = User::all();
+    {
+       $x = User::all();
       return view('about',['phar'=>$x]);
     }
+
+    public function messages()
+    {
+      $msgs =DB::table('contact')
+                ->select('nom','prenom','message','created_at')
+                ->get();
+      $x=DB::select("SELECT M.nom,M.prix,V.lot ,SUM(V.qt) AS qt,L.qt_stock,(qt*100/L.qt_stock) pourc
+                     FROM `ventes` V,`lots` L,`medicaments` M
+                     WHERE V.lot=L.id
+                     AND L.medoc=M.id
+                     GROUP BY V.lot,pourc
+                     ORDER BY SUM(V.qt) DESC
+                     LIMIT 0,10");
+       return view('home',['msg' => $msgs ,'top' => $x ]);
+    }
+
+    public function detail($id)
+    {
+      $medicament = Medicament::find($id);
+      return view('detail',['medicament'=>$medicament]);
+
+    }
+
 
 }

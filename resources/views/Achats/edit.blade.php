@@ -15,7 +15,7 @@
       <form action="{{ url('achat/'.$a->id) }}" method="POST">
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
-        
+
        <div class="form-group has-error">
           <label for="">Numéro du fournisseur:</label>
           <input list="browsers" name="numf" class="form-control" value="{{ $a->fournisseur }}" required>
@@ -24,7 +24,7 @@
 
 @foreach($fournis as $l)
     <option value="{{ $l->id }}">
-    
+
     @endforeach
 
 </datalist>
@@ -33,22 +33,22 @@
           <li class="alert alert-danger">{{ $message }}</li>
         @endforeach
         @endif
-              
+
         </div>
-       
-       
+
+
           @foreach($lots as $l)
-          
+
           <div class="form-group has-warning">
           <label for="">Nom Médicament:</label>
-         
+
          <input list="brows" name="med" class="form-control" value="{{ $l->medoc }}" required>
 
 <datalist id="brows">
 
 @foreach($med as $m)
     <option value="{{ $m->nom }}">
-    
+
     @endforeach
 
 </datalist>
@@ -71,7 +71,7 @@
           <label for="">Date de péremption:</label>
           <input type="date" name="dateper" class="form-control" value="{{ $l->date_per }}" required>
         </div>
-       
+
        <div class="form-group has-error">
           <label for="">Prix:</label>
           <input type="number" name="prix" min="1"  class="form-control" value="{{ $l->prix }}" required>
@@ -88,10 +88,12 @@
           <input type="number" name="qtachat" min="1"  class="form-control" value="{{ $a->qt_achat }}" required>
         </div>
 
-       
+
         <div class="form-group">
-          <input type="submit"  class="btn btn-success" value="Valider">
-          <a href="{{ url('achat') }}" class="btn btn-danger">Annuler</a>
+          <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-success "><i class="fa fa-thumbs-o-up" aria-hidden="true"> Enregistrer</i></button>
+            <a href="{{ url('achat') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+        </div>
         </div>
       </form>
 
@@ -99,7 +101,7 @@
     </div>
     </div>
     </div>
-    
+
     </div>
   </div>
 </div>

@@ -12,10 +12,11 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-         
+
          @if(Session::has('success'))
                    <div class="alert alert-success">
-                     {{ Session::get('success') }}
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                      {{ Session::get('success') }}
                    </div>
         @endif
 
@@ -26,10 +27,10 @@
         @endif
 
        <div class="pull-right">
-         <a href="{{ url('vente/create') }}" class="btn btn-success">Nouvelle vente</a>
+         <a href="{{ url('vente/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Ajouter </i></a>
        </div>
        <table class="table">
-         <head>
+         <thead>
 
            <tr>
              <th>ID</th>
@@ -37,8 +38,8 @@
              <th>Date</th>
              <th>Quatitée</th>
            </tr>
-         </head>
-        <body>
+         </thead>
+         <tbody>
            @foreach($vente as $v)
 
           <tr>
@@ -57,7 +58,7 @@
            </td>
           </tr>
          @endforeach
-        </body>
+       </tbody>
        </table>
 
               <div class="col-12 ">

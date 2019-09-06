@@ -51,9 +51,14 @@
 
 
         <div class="form-group">
-          <input type="submit"  class="btn btn-success" value="Valider">
-        </div>
-
+          <div class="col-md-6 offset-md-4">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa fa-check-circle-o" aria-hidden="true">
+                  {{ __('Enregistrer') }}
+                </i>
+              </button>
+              <a href="{{ url('vente') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+          </div>  </div>
       </form>
 
 

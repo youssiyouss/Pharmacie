@@ -11,14 +11,15 @@ $month='';
 
 if (isset($_GET['mois_vente']) && $_GET['mois_vente']<=date("Y")) {
 	 $mois = $_GET['mois_vente'];
-   $sql =  "SELECT SUM(qt) ,MONTH(DATE)
+   $sql =  "SELECT SUM(qt) ,MONTH(DATE),DATE_FORMAT(DATE,'%M') M
 						FROM `ventes`
 						WHERE DATE_FORMAT(DATE,'%Y') ='$mois'
-						GROUP BY MONTH(DATE)";
+						GROUP BY DATE_FORMAT(DATE,'%M'),MONTH(DATE)
+						ORDER BY MONTH(DATE)";
    $result = mysqli_query($mysqli, $sql);
    while ($row = mysqli_fetch_array($result)) {
      $qt = $qt.$row['SUM(qt)'].',';
-		 $month .='"'.$row['MONTH(DATE)'].'",';
+		 $month .='"'.$row['M'].'",';
    }
 $qt = trim($qt,",");
 $month = trim($month,",");

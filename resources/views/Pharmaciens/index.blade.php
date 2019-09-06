@@ -47,14 +47,14 @@
                                                     <td><i class="text-success f-s-12 m-r-10"></i>@if($phar->isadmin==true) Admin @else Pharmacien
                                                         @endif</td>
                                                     <td>
-                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet utilisateur?')">
+                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" onsubmit="return confirm('Etes vous sure de vouloir supprimer cet utilisateur?')">
                                                           {{ csrf_field() }}
                                                           {{ method_field('DELETE') }}
                                                             <li class="icons">
-                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil color-muted m-r-5"></i></a>
 
                                                               @can('delete',$phar)
-                                                              <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i></button>
+                                                              <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-close color-danger"></i></button>
                                                               @endcan
                                                            </li>
                                                         </form>

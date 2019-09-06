@@ -10,6 +10,8 @@ use App\Contact;
 use Mail;
 use App\mail\sendMail;
 use App\Send;
+use App\Vente;
+use App\Medicament;
 
 class ContactController extends Controller
 {
@@ -23,12 +25,39 @@ class ContactController extends Controller
         'email' => 'required|email',
         'message' => 'required'
         ]);
-       Contact::create($request->all());
-       return back()->with('success', 'Message envoyé!');
+       // Contact::create($request->all());
+           $x = new Contact();
+           $x->nom = $request->input('nom');
+           $x->prenom = $request->input('prenom');
+           $x->tel = $request->input('tel');
+           $x->email = $request->input('email');
+           $x->message = $request->input('message');
+           $x->temoin = $request->input('temoin');
+             $x->save();
+             return back()->with('success', 'Message envoyé!');
+
+    }
+    public function temoignages(){
+      $msgs =DB::table('contact')
+                ->select('nom','prenom','temoin','created_at')
+                ->get();
+      $m=DB::select("SELECT M.id,M.nom,M.photo,M.prix,V.lot ,SUM(V.qt) AS qt
+                     FROM ventes V,lots L,medicaments M
+                     WHERE V.lot=L.id
+                     AND L.medoc=M.id
+                     GROUP BY V.lot
+                     ORDER BY SUM(V.qt) DESC
+                     LIMIT 0,6");
+      $n=DB::select("SELECT M.id, M.nom, M.photo, M.prix, L.created_at
+                      FROM lots L,medicaments M
+                      WHERE L.medoc=M.id
+                      AND L.medoc=M.id
+                      ORDER BY L.created_at DESC
+                      LIMIT 0,7");
+       return view('acceuil',['tst' => $msgs ,'top'=>$m , 'new'=>$n]);
 
     }
 
-    //Display the listes of the received messages
     public function message(){
 
     		$msg = DB::table('contact')
@@ -52,7 +81,7 @@ class ContactController extends Controller
                 ->paginate(6);
 
     	return view('Messages.msgListe',['msg'=>$msg, 'reads'=>$reads, 'trash'=>$trash, 'send'=>$send,'customer'=>$customer]);
-    	
+
     }
 
     //Display the choosen message by ID
@@ -85,9 +114,9 @@ class ContactController extends Controller
 
         $customer= DB::table('contact')
                 ->inRandomOrder()
-                ->paginate(6);    
+                ->paginate(6);
 
-    	
+
 
     	return view('Messages.displaymsg', ['content' => $content, 'reads' => $reads, 'trash' => $trash, 'send' => $send,'customer' => $customer]);
     }
@@ -98,10 +127,10 @@ class ContactController extends Controller
     {
         $a = Contact::find($id);
         $a->delete();
-        
+
         return redirect('messages')->with('delete', 'Message supprimé!');;
     }
-    
+
     //Return the email compose
     public function email(){
 
@@ -126,7 +155,7 @@ class ContactController extends Controller
 
     //Send email submited & store on Sends table
     public function send(Request $request){
-        
+
         Mail::send(new sendMail());
 
         //store on Sends table
@@ -142,7 +171,7 @@ class ContactController extends Controller
 
     }
 
-    
+
 
 
 

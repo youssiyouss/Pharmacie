@@ -17,17 +17,7 @@ use Illuminate\Support\Facades\Input;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', function () {
-    return view('acceuil');
-});
 Auth::routes();
-Route::get('acceuil', 'HomeController@acceuil')->name('acceuil');
-Route::get('medi', 'HomeController@medi')->name('medicament');
-Route::get('soin', 'HomeController@soin')->name('soins&santé');
-Route::get('produit', 'HomeController@produit')->name('produit');
-Route::get('about', 'HomeController@about')->name('about');
 
 
 //Contacts & Email
@@ -42,30 +32,20 @@ Route::get('send','SendController@sendIndex');
 Route::get('sendmsg/{id}', 'SendController@display');
 Route::delete('sendmsg/{id}','SendController@destroy');
 
-//Les bares de recherchers front and backend
+Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@messages');
+Route::get('/', 'HomeController@acceuil');
+Route::get('acceuil','HomeController@acceuil');
+Route::get('medi','HomeController@medi');
+Route::get('soin','HomeController@medi');
+Route::get('materiel','HomeController@medi');
+Route::get('produit','HomeController@medi');
+Route::get('about','HomeController@about');
 
-Route::any('/search_User',function(){
-    $q = Input::get ( 'search' );
-    $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
-  return view('searchUser')->with(['medicaments' => $medicaments]);
-});
 
-Route::any('search',function(){
-    $q = Input::get ( 'search' );
-
-    $users = User::where('name','LIKE','%'.$q.'%')->orWhere('prenom','LIKE','%'.$q.'%')->orWhere('login','LIKE','%'.$q.'%')->get();
-    $fournisseurs = Fournisseur::where('nom','LIKE','%'.$q.'%')->orWhere('adresse','LIKE','%'.$q.'%')->get();
-    $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
-    $lots = Lot::where('medoc','LIKE','%'.$q.'%')->get();
-
-    return view('search')->with([
-        'users' => $users,
-        'fournisseurs' => $fournisseurs,
-        'medicaments' => $medicaments,
-        'lots' => $lots,
-       ]);
-
-});
+Route::get('acceuil', 'ContactController@temoignages');
+Route::get('/', 'ContactController@temoignages');
+Route::get('detail/{id}','HomeController@detail');
 
 
 //Gestion mediacaments
@@ -101,21 +81,24 @@ Route::resource('fournisseurs','FournisseurController');
 Route::resource('pharmaciens','PharmacienController');
 
 //vente routes
-Route::get('vente','VenteController@index');
-Route::get('vente/create','VenteController@create');
-Route::post('vente','VenteController@store');
-Route::delete('vente/{id}','VenteController@destroy');
-Route::get('vente/{id}/edit','VenteController@edit');
-Route::put('vente/{id}','VenteController@update');
-Route::get('vente/{id}/detail','VenteController@show');
+// Route::get('vente','VenteController@index');
+// Route::get('vente/create','VenteController@create');
+// Route::post('vente','VenteController@store');
+// Route::delete('vente/{id}','VenteController@destroy');
+// Route::get('vente/{id}/edit','VenteController@edit');
+// Route::put('vente/{id}','VenteController@update');
+// Route::get('vente/{id}/detail','VenteController@show');
+Route::resource('vente','VenteController');
+
 //Achat Route
-Route::get('achat','AchatController@index');
-Route::get('achat/create','AchatController@create');
-Route::post('achat','AchatController@store');
-Route::get('achat/{id}/edit','AchatController@edit');
-Route::put('achat/{id}','AchatController@update');
-Route::delete('achat/{id}','AchatController@destroy');
-Route::get('achat/{id}/detail','AchatController@show');
+// Route::get('achat','AchatController@index');
+// Route::get('achat/create','AchatController@create');
+// Route::post('achat','AchatController@store');
+// Route::get('achat/{id}/edit','AchatController@edit');
+// Route::put('achat/{id}','AchatController@update');
+// Route::delete('achat/{id}','AchatController@destroy');
+// Route::get('achat/{id}/detail','AchatController@show');
+Route::resource('achat','AchatController');
 Route::get('achat/{id}/listAchat','AchatController@ListeAchat');
 Route::get('achat/{id}/listDetail','AchatController@ListeDetail');
 
@@ -130,8 +113,39 @@ Route::get('alerte/{id}','NotifController@displaytNotif');
 Route::get('alerte','NotifController@index');
 Route::delete('alert','NotifController@destroyAll');
 
+//Contacts
+Route::get('contact', 'HomeController@contact')->name('contact');
+Route::post('contact', ['as'=>'contact.store','uses'=>'ContactController@contactPost']);
+Route::get('messages', 'ContactController@message');
+Route::get('messages/{id}', 'ContactController@display');
+Route::delete('message/{id}','ContactController@destroy');
+
 //Statistiques Routes
 
-//Route::get('VenteMontuelle','StatistiqueController@index');
 Route::get('historiqueAnnuelle','StatistiqueController@histoAnnee');
 Route::get('historiqueMensuelle','StatistiqueController@histoMois');
+
+//Les bares de recherchers front and backend
+
+Route::any('/search_User',function(){
+    $q = Input::get ( 'search' );
+    $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
+  return view('searchUser')->with(['medicaments' => $medicaments]);
+});
+
+Route::any('search',function(){
+    $q = Input::get ( 'search' );
+
+    $users = User::where('name','LIKE','%'.$q.'%')->orWhere('prenom','LIKE','%'.$q.'%')->orWhere('login','LIKE','%'.$q.'%')->get();
+    $fournisseurs = Fournisseur::where('nom','LIKE','%'.$q.'%')->orWhere('adresse','LIKE','%'.$q.'%')->get();
+    $medicaments = Medicament::where('nom','LIKE','%'.$q.'%')->orWhere('famille','LIKE','%'.$q.'%')->orWhere('forme','LIKE','%'.$q.'%')->get();
+    $lots = Lot::where('medoc','LIKE','%'.$q.'%')->get();
+
+    return view('search')->with([
+        'users' => $users,
+        'fournisseurs' => $fournisseurs,
+        'medicaments' => $medicaments,
+        'lots' => $lots,
+       ]);
+
+});
