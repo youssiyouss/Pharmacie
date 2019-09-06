@@ -42,7 +42,7 @@
 													<label class="col-md-4 col-form-label text-md-right">Dosage:</label>
 
 													<div class="col-md-6">
-															<input type="number" class="form-control @error('dosage') is-invalid @enderror" name="dosage" value="{{ old('dosage') }}" required autocomplete="dosage">
+															<input type="number" class="form-control @error('dosage') is-invalid @enderror" name="dosage" value="{{ old('dosage') }}" autocomplete="dosage">
 
 															@error('dosage')
 																	<span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
 													<label class="col-md-4 col-form-label text-md-right">Forme du medicament:</label>
 
 													<div class="col-md-6">
-															<input list="browsers" class="form-control @error('forme') is-invalid @enderror" name="forme" value="{{ old('forme') }}" required autocomplete="forme">
+															<input list="browsers" class="form-control @error('forme') is-invalid @enderror" name="forme" value="{{ old('forme') }}" autocomplete="forme">
 															<datalist id="browsers">
 																<option value="Comprimé">
 																	<option value="Gellule">

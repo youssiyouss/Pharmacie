@@ -51,10 +51,10 @@
                                                           {{ csrf_field() }}
                                                           {{ method_field('DELETE') }}
                                                             <li class="icons">
-                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil color-muted m-r-5"></i></a>
 
                                                               @can('delete',$phar)
-                                                              <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i></button>
+                                                              <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-close color-danger"></i></button>
                                                               @endcan
                                                            </li>
                                                         </form>
