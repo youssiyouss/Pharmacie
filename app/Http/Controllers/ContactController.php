@@ -53,12 +53,7 @@ class ContactController extends Controller
        return view('acceuil',['tst' => $msgs ,'top'=>$m , 'new'=>$n]);
 
     }
-    public function affichage($id)
-    {
-      $medicament = Medicament::find($id);
-      return view('affichage',['medicament'=>$medicament]);
-
-    }
+    
     public function message(){
 
     		$msg = DB::table('contact')

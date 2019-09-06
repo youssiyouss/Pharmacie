@@ -29,12 +29,8 @@ class HomeController extends Controller
     {
       $listeMed = Medicament::all();
       return view('medi',['medicaments' => $listeMed]);
+    }
 
-    }
-     public function produit()
-    {
-        return view('produit');
-    }
     public function contact()
     {
         return view('contact');
@@ -46,10 +42,9 @@ class HomeController extends Controller
 
     }
 
-  
-
     public function about()
-    { $x = User::all();
+    {
+       $x = User::all();
       return view('about',['phar'=>$x]);
     }
 
@@ -58,7 +53,22 @@ class HomeController extends Controller
       $msgs =DB::table('contact')
                 ->select('nom','prenom','message','created_at')
                 ->get();
-       return view('home',['msg' => $msgs]);
-     }
+      $x=DB::select("SELECT M.nom,M.prix,V.lot ,SUM(V.qt) AS qt,L.qt_stock,(qt*100/L.qt_stock) pourc
+                     FROM `ventes` V,`lots` L,`medicaments` M
+                     WHERE V.lot=L.id
+                     AND L.medoc=M.id
+                     GROUP BY V.lot,pourc
+                     ORDER BY SUM(V.qt) DESC
+                     LIMIT 0,10");
+       return view('home',['msg' => $msgs ,'top' => $x ]);
+    }
+
+    public function detail($id)
+    {
+      $medicament = Medicament::find($id);
+      return view('detail',['medicament'=>$medicament]);
+
+    }
+
 
 }

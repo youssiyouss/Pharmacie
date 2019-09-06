@@ -31,8 +31,8 @@
           @foreach($top as $m)
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="{{url('affichage/'.$m->id)}}"> <img src="{{ asset('storage/'.$m->photo)}}" style="height:90%;width:80%;" alt="Image"></a>
-            <h3 class="text-dark"><a href="{{url('affichage/'.$m->id)}}">{{$m->nom}}</a></h3>
+            <a href="{{url('detail/'.$m->id)}}"> <img src="{{ asset('storage/'.$m->photo)}}" style="height:90%;width:80%;" alt="Image"></a>
+            <h3 class="text-dark"><a href="{{url('detail/'.$m->id)}}">{{$m->nom}}</a></h3>
             <p class="price">{{$m->prix}}</p>
           </div>
           @endforeach
@@ -59,8 +59,8 @@
             <div class="nonloop-block-3 owl-carousel">
               @foreach($new as $n)
               <div class="text-center item mb-4">
-                <a href="{{ url('affichage/'.$n->id)}}"> <img src="{{ asset('storage/'.$n->photo)}}" style="height:90%;width:80%;" alt="Image"></a>
-                <h3 class="text-dark"><a href="{{ url('affichage/'.$n->id)}}">{{$n->nom}}</a></h3>
+                <a href="{{ url('detail/'.$n->id)}}"> <img src="{{ asset('storage/'.$n->photo)}}" style="height:90%;width:80%;" alt="Image"></a>
+                <h3 class="text-dark"><a href="{{ url('detail/'.$n->id)}}">{{$n->nom}}</a></h3>
                 <p class="price">{{$n->prix}}</p>
               </div>
               @endforeach

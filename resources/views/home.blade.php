@@ -255,7 +255,27 @@ while ($row = mysqli_fetch_array($revenueA)) {
 		                            </div>
 		                        </div>
 		                    </div>
+												<div class="col-xl-12">
+													 <div class="card">
+														 <div class="card-body">
+			                                <h4 class="card-title">Produit les plus vendus</h4>
 
+																			@foreach($top as $top)
+																		  <div class="m-t-30">
+			                                    <h4 class="f-w-600">{{$top->nom}}</h4>
+			                                    <h6 class="m-t-10 text-muted">{{$top->qt}} <span class="pull-right">{{$top->prix}} DZ ({{$top->pourc}}%)</span></h6>
+																					<p></p>
+																					<div class="progress">
+                                    		<progress  class="progress-bar progress-vertical  bg-primary wow animated progress-animated w-50pc h-6px" value="{{$top->qt}}" max={{$top->qt_stock}}></progress>
+
+
+			                                    </div>
+			                                </div>
+																			@endforeach
+
+			                        </div>
+													  </div>
+												</div>
 
   </div>
 

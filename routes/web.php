@@ -31,7 +31,7 @@ Route::get('about','HomeController@about');
 
 Route::get('acceuil', 'ContactController@temoignages');
 Route::get('/', 'ContactController@temoignages');
-Route::get('affichage/{id}','ContactController@affichage');
+Route::get('detail/{id}','HomeController@detail');
 
 
 //Gestion mediacaments
