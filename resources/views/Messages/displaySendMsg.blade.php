@@ -26,7 +26,7 @@
                                 <div class="email-right-box">
                                     <div class="toolbar" role="toolbar">
                                         <div class="btn-group m-b-20">
-                                            <form action="{{ url('message/'.$c->id) }}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cette vente?')">
+                                            <form action="{{ url('sendmsg/'.$c->id) }}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cette vente?')">
                                                     {{ csrf_field() }}
                                                    {{ method_field('DELETE') }}
                                             <button type="submit"  class="btn btn-light" title="supprimer"><i class="fa fa-trash" ></i>
@@ -38,17 +38,17 @@
                                         <div class="media p-t-15">
                                             
                                             <div class="media-body">
-                                                <h5 class="m-b-3">{{ $c->nom }}  {{ $c->prenom }}</h5>
-                                                <p class="m-b-2">{{ $c->created_at }}</p>
+                                                <h5 class="m-b-3"><b>to:  </b>{{ $c->to }}</h5>
+                                                <p class="m-b-2"><b>Le:  </b>{{ $c->day_sended }}</p>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="media mb-4 mt-1">
-                                            <div class="media-body"><span class="pull-right">07:23 AM</span>
-                                                <small class="text-muted">DE: {{ $c->email }}</small>
+                                            <div class="media-body"><span class="pull-right"><b>à:  </b>{{$c->time_sended}}</span>
+                                                <div><span class="m-0 text-primary"><b>subject: </b></span>{{ $c->subject }}</div><br>
                                             </div>
                                         </div>
-                                        <h4 class="m-0 text-primary">Message:</h4><br>
+                                        
                                        <div class="form-group">
                                                 <p class="textarea_editor form-control bg-light" rows="15" > {{$c->message}} </p>
                                             </div>

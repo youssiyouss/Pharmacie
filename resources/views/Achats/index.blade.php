@@ -17,6 +17,13 @@
                      {{ Session::get('success') }}
                    </div>
         @endif
+
+        @if(Session::has('danger'))
+                   <div class="alert alert-danger">
+                     {{ Session::get('danger') }}
+                   </div>
+        @endif
+
        <div class="pull-right">
          <a href="{{ url('achat/create') }}" class="btn btn-success">Nouveau Achat</a>
        </div>
@@ -42,9 +49,9 @@
                 <form action="{{ url('achat/'.$a->id) }}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet achat?')">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
-                  <a href="{{ url('achat/'.$a->id.'/detail') }}" class="btn btn-primary">Details</a>
-                  <a href="{{ url('achat/'.$a->id.'/edit') }}" class="btn btn-info">Modifier</a>
-                  <button type="submit" class="btn btn-danger">Supprimer</button>
+                  <a href="{{ url('achat/'.$a->id.'/detail') }}" class="btn btn-primary" title="Details"><i class="fa fa-align-justify"></i></a>
+                  <a href="{{ url('achat/'.$a->id.'/edit') }}" class="btn btn-info" title="Modifier"><i class="fa fa-pencil-square-o"></i></a>
+                  <button type="submit" class="btn btn-danger" title="supprimer"><i class="fa fa-trash-o fa-fw"></i></button>
 
                 </form>
            </td>

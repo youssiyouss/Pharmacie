@@ -28,13 +28,14 @@ class NotifController extends Controller
     public function displaytNotif($id){
     	$url=auth()->user()->readNotifications->find($id);
     	if (($url->data['alerte']['var']) == '1') {
-    		$medi['medi']=DB::table('Lots')->select('Lots.*')->where('qt_stock','<' ,50)->get();
+    		$medi=DB::table('Lots')->select('Lots.*')->where('qt_stock','<' ,50)->get();
     	}
 
     	if (($url->data['alerte']['var']) == '2') {
-    		$medi['medi']=DB::table('Lots')->select('Lots.*')->where('qt_stock','=' ,0)->get();
+    		$medi=DB::table('Lots')->select('Lots.*')->where('qt_stock','=' ,0)->get();
     	}
-    	return view('Alerts.display')->with($medi);
+        $date= $url->created_at;
+    	return view('Alerts.display',['medi'=>$medi, 'date'=>$date]);
 
     }
 
@@ -44,5 +45,11 @@ class NotifController extends Controller
     	return view('Alerts.index');
     }
       
+
+    public function destroyAll(){
+        DB::table('notifications')->delete();
+
+        return view('Alerts.index')->with('danger', 'Notifications Supprimées!');
+    }
 
 }

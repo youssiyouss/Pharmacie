@@ -6,7 +6,7 @@
    <div class="row">
      <div class="col-md-12">
 
-       <h4>Liste des Achats :</h4>
+       <h4>Liste des Lots :</h4>
 
        <div class="row">
                     <div class="col-lg-12">
@@ -23,6 +23,7 @@
              <th>ID</th>
              <th>Médicament</th>
              <th>Quatitée au stock</th>
+             <th>Actions</th>
              
            </tr>
          </head>
@@ -34,11 +35,11 @@
             <td>{{ $a->medoc }}</td>
             <td>{{ $a->qt_stock }}</td>
             
-            <td>
+            <td class="text-left">
                 <form action="{{ url('achat/'.$a->id) }}" method="post">
                   {{ csrf_field() }}
                   
-                  <a href="{{ url('lot/'.$a->id) }}" class="btn btn-primary">Details</a>
+                  <a href="{{ url('lot/'.$a->id) }}" class="btn btn-primary" title="detail"><i class="fa fa-align-justify"></i></a>
                  
 
                 </form>
