@@ -19,6 +19,19 @@ use Illuminate\Support\Facades\Input;
 */
 Auth::routes();
 
+
+//Contacts & Email
+Route::get('contact', 'HomeController@contact')->name('contact');
+Route::post('contact', ['as'=>'contact.store','uses'=>'ContactController@contactPost']);
+Route::get('messages', 'ContactController@message');
+Route::get('messages/{id}', 'ContactController@display');
+Route::delete('message/{id}','ContactController@destroy');
+Route::post('send','ContactController@send');
+Route::get('email','ContactController@email');
+Route::get('send','SendController@sendIndex');
+Route::get('sendmsg/{id}', 'SendController@display');
+Route::delete('sendmsg/{id}','SendController@destroy');
+
 Route::get('/home', 'HomeController@index');
 Route::get('/home', 'HomeController@messages');
 Route::get('/', 'HomeController@acceuil');
@@ -28,6 +41,7 @@ Route::get('soin','HomeController@medi');
 Route::get('materiel','HomeController@medi');
 Route::get('produit','HomeController@medi');
 Route::get('about','HomeController@about');
+
 
 Route::get('acceuil', 'ContactController@temoignages');
 Route::get('/', 'ContactController@temoignages');
@@ -97,6 +111,7 @@ Route::get('lot/{id}','LotController@show');
 Route::get('notifread/{id}','NotifController@markAsRead');
 Route::get('alerte/{id}','NotifController@displaytNotif');
 Route::get('alerte','NotifController@index');
+Route::delete('alert','NotifController@destroyAll');
 
 //Contacts
 Route::get('contact', 'HomeController@contact')->name('contact');

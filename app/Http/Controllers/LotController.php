@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\DB;
 class LotController extends Controller
 {
     public function index(){
-    	 $arr['lot'] = Lot::all();
+    	 $arr['lot'] = DB::table('Achats')
+                        ->join('Lots', 'achat', '=', 'Achats.id')
+                        ->whereNull('Achats.deleted_at')
+                        ->get();
         return view('Lots.index')->with($arr);
     }
 

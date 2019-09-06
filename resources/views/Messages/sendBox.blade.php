@@ -7,9 +7,9 @@
             <div class="container">
                 <div class="row page-titles">
                     <div class="col p-0">
-                        <h4>Boite Email Reçus:</span></h4>
+                        <h4>Boite Email Envoyés:</span></h4>
                     </div>
-
+                   
                 </div>
                 <!-- row -->
                 <div class="row">
@@ -28,14 +28,15 @@
                                     </div>
                                     @endif
 
-                             <div class="email-left-box"><a href="{{ url('email')}}" class="btn btn-primary btn-block">nouveau message</a>
+                                <div class="email-left-box">
+                                    <a href="{{url('email')}}" class="btn btn-primary btn-block">Nouveau message</a>
                                     <div class="mail-list mt-4">
-                                        <a href="{{url('messages')}}" class="list-group-item border-0 text-primary p-r-0"><i class="fa fa-inbox font-18 align-middle mr-2"></i> <b>Boite de réception</b> <span class="badge badge-primary badge-sm float-right m-t-5">{{$reads->count()}}</span> </a>
+                                        <a href="{{url('messages')}}" class="list-group-item border-0 p-r-0"><i class="fa fa-inbox font-18 align-middle mr-2"></i> Boite de réception <span class="badge badge-primary badge-sm float-right m-t-5">{{$reads->count()}}</span> </a>
 
-                                        <a href="{{url('send')}}" class="list-group-item border-0 p-r-0"><i class="fa fa-paper-plane font-18 align-middle mr-2"></i>Messages envoyés <span class="badge badge-info badge-sm float-right m-t-5">{{$send}}</span></a>
+                                        <a href="{{url('send')}}" class="list-group-item border-0 text-info p-r-0"><i class="fa fa-paper-plane font-18 align-middle mr-2"></i><b>Messages envoyés</b><span class="badge badge-info badge-sm float-right m-t-5">{{$msg->count()}}</span</a> 
                                         <a href="#" class="list-group-item border-0 p-r-0"><i class="fa fa-trash font-18 align-middle mr-2"></i>Trash <span class="badge badge-danger badge-sm float-right m-t-5">{{$trash->count()}}</span></a>
                                     </div>
-
+                                    
                                     <h5 class="mt-5 m-b-10">Chat</h5>
                                     @foreach($customer as $c)
                                     <div class="chat-wrap">
@@ -46,61 +47,36 @@
                                                 <p class="f-s-14 m-b-0">{{$c->email}}</p>
                                             </div>
                                         </div>
-
+                                        
                                     </div>
                                     @endforeach
+                                   
+                                  
                                 </div>
                                 <div class="email-right-box">
                                     <div role="toolbar" class="toolbar">
-                                        <h3>Messages </h3>
-
+                                        <h3>Messages envoyés</h3>
+                                        
                                     </div>
                                      <div class="email-list m-t-15 ">
                                     @foreach($msg as $m)
 
-                                    @if($m->read_at ==NULL)
-
-
+                                   
                                     	<div class="message">
-                                            <a href="{{ url('messages/'.$m->id)}}">
+                                            <a href="{{ url('sendmsg/'.$m->id)}}">
                                                 <div class="col-mail col-mail-1">
                                                     <div class="email-checkbox">
-
+                                                        
                                                     </div><span class="star-toggle ti-star"></span>
                                                 </div>
                                                 <div class="col-mail col-mail-2">
                                                     <div class="subject"> {{ $m->message }} </div>
-                                                    <div class="date">{{ $m->created_at }}</div>
+                                                    <div class="date">{{ $m->time_sended }}</div>
                                                 </div>
                                             </a>
                                         </div>
-
-                                    @endif
-
-                                     @if($m->read_at !=NULL)
-
-
-                                    	<div  class="bg-light">
-                                    	<div class="message">
-                                            <a href="{{ url('messages/'.$m->id)}}">
-                                                <div class="col-mail col-mail-1">
-                                                    <div class="email-checkbox">
-
-                                                    </div><span class="star-toggle ti-star"></span>
-                                                </div>
-                                                <div class="col-mail col-mail-2">
-                                                    <div class="subject"> {{ $m->message }} </div>
-                                                    <div class="date">{{ $m->created_at }}</div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @endif
-
-
-
-
-
+                                    
+                                   
                                         @endforeach
 
                                     </div>
@@ -125,7 +101,7 @@
                 </div>
             </div>
             <!-- #/ container -->
-
+        
 
 
 
