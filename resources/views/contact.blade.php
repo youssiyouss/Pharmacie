@@ -1,7 +1,7 @@
 @extends('layouts.welcome')
 
 @section('content')
-<div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
+<div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');min-height: 300px;height: calc(75vh);">
   <div class="container">
     <div class="row">
       <div class="order-lg-2 align-self-center">
