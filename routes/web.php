@@ -32,7 +32,8 @@ Route::put('medicaments/{id}','MedController@update');
 Route::delete('medicaments/{id}','MedController@destroy');
 Route::post('medicaments/{id}','MedController@show');*/
 Route::resource('medicaments','MedController');
-Route::get('medicaments/search','MedController@search');
+Route::post('affichage/{id}','MedController@affichage');
+
 
 //Gestion fournisseurs
 // Route::get('fournisseurs/{id}','FournisseurController@show');

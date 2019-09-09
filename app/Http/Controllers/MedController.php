@@ -90,14 +90,17 @@ class MedController extends Controller
     //afficher les details de chaque medicament
     public function show( $id){
         $x = Medicament::find($id);
-    	return view('medicament.show',['medicament' => $x]);
-
-    
-     
-    
-
+    	return view('medicament.show',['medicament' => $x]);     
        
     }
+    public function affichage( $id){
+        //$x = Medicament::find($id);
+        return view('affichage'); 
+       
+    }
+
+    
+   
     //supprimer un medicament
     public function destroy(Request $request, $id){
     	
