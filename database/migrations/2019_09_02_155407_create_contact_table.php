@@ -19,11 +19,11 @@ class CreateContactTable extends Migration
             $table->string('prenom');
             $table->string('tel');
             $table->string('email');
-            $table->text('message');
+            $table->text('message');            
+            $table->text('temoin');
             $table->date('read_at')->nullable();
             $table->date('deleted_at')->nullable();
             $table->timestamps();
-            $table->text('temoin');
         });
     }
 

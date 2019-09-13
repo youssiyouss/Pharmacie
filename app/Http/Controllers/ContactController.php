@@ -38,9 +38,9 @@ class ContactController extends Controller
 
     }
     public function temoignages(){
-      $msgs =DB::table('contact')
-                ->select('nom','prenom','temoin','created_at')
-                ->get();
+      // $msgs =DB::table('contact')
+      //           ->select('nom','prenom','temoin','created_at')
+      //           ->get();
       $m=DB::select("SELECT M.id,M.nom,M.photo,M.prix,V.lot ,SUM(V.qt) AS qt
                      FROM ventes V,lots L,medicaments M
                      WHERE V.lot=L.id
