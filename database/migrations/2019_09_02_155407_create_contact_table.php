@@ -23,6 +23,7 @@ class CreateContactTable extends Migration
             $table->date('read_at')->nullable();
             $table->date('deleted_at')->nullable();
             $table->timestamps();
+            $table->text('temoin');
         });
     }
 
