@@ -37,26 +37,7 @@ class ContactController extends Controller
              return back()->with('success', 'Message envoyé!');
 
     }
-    public function temoignages(){
-      // $msgs =DB::table('contact')
-      //           ->select('nom','prenom','temoin','created_at')
-      //           ->get();
-      $m=DB::select("SELECT M.id,M.nom,M.photo,M.prix,V.lot ,SUM(V.qt) AS qt
-                     FROM ventes V,lots L,medicaments M
-                     WHERE V.lot=L.id
-                     AND L.medoc=M.id
-                     GROUP BY V.lot
-                     ORDER BY SUM(V.qt) DESC
-                     LIMIT 0,6");
-      $n=DB::select("SELECT M.id, M.nom, M.photo, M.prix, L.created_at
-                      FROM lots L,medicaments M
-                      WHERE L.medoc=M.id
-                      AND L.medoc=M.id
-                      ORDER BY L.created_at DESC
-                      LIMIT 0,7");
-       return view('acceuil',['tst' => $msgs ,'top'=>$m , 'new'=>$n]);
-
-    }
+    
 
     public function message(){
 
