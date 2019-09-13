@@ -17,7 +17,7 @@ class CreateAchatsTable extends Migration
             $table->bigIncrements('id');
             $table->DateTime('date');
             $table->integer('qt_achat');
-            $table->string('fournisseur');
+            $table->Integer('fournisseur'); //string
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });
