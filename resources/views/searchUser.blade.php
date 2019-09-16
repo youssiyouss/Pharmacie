@@ -60,8 +60,10 @@
                                                        <tbody>
                                                           @foreach($medicaments as $listeM)
                                                            <tr class="col-md-2">
-                                                             <td><span><img src="{{ asset('storage/'.$listeM->photo)}}" class="pull-left m-r-10 avatar-img w-40px" alt="">{{$listeM->nom}}</span>
+                                                                <td><span><a href="{{ asset('detail/'.$listeM->id)}}" style=" color:black;">
+                                                               <img src="{{ asset('storage/'.$listeM->photo)}}" class="pull-left m-r-10 avatar-img w-40px" alt="">{{$listeM->nom}}   </a></span>
                                                              </td>
+
                                                                <td><span>{{$listeM->dosage}}</span></td>
                                                                <td><span>{{$listeM->forme}}</span></td>
                                                                <td><span>{{$listeM->famille}}</span></td>
