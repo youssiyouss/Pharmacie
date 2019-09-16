@@ -265,7 +265,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
 			                                    <h6 class="m-t-10 text-muted">{{$top->qt}} <span class="pull-right">{{$top->prix}} DZ ({{$top->pourc}}%)</span></h6>
 																					<p></p>
 																					<div class="progress">
-                                    		<progress  class="progress-bar progress-vertical  bg-primary wow animated progress-animated w-50pc h-6px" value="{{$top->qt}}" max={{$top->qt_stock}}></progress>
+                                    		<progress  class="progress-bar progress-vertical  bg-primary wow animated progress-animated w-50pc h-6px" value="{{$top->qt}}" max={{$top->qnt_total}}></progress>
 
 
 			                                    </div>
