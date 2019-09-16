@@ -59,8 +59,15 @@ class VenteController extends Controller
      */
     public function store(venteRequest $request)
     {
-       $v = new Vente();
+       
 
+      $max= DB::table('Lots')->where('Lots.id','=',$request->input('lot'))->first();
+      if ($max->qt_stock<$request->input('qt')) {
+          return back()->with('danger', 'quantitée invalide!');
+      }
+
+      else{
+        $v = new Vente();
        $lott =Lot::where('id', '=', $request->input('lot'))->first();
        $prix_uni = Medicament::where('id', '=', $lott->medoc)->first();
 
@@ -102,6 +109,8 @@ class VenteController extends Controller
        //redirection
        //session()->flash('success','Vente bien effectuée!');
        return redirect('vente')->with('success', 'Vente effectuée!');
+      }
+       
 
 
     }

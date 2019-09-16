@@ -57,7 +57,7 @@ class HomeController extends Controller
                      FROM `ventes` V,`lots` L,`medicaments` M
                      WHERE V.lot=L.id
                      AND L.medoc=M.id
-                     GROUP BY V.lot,pourc
+                     GROUP BY V.lot,pourc,M.nom,M.prix,L.qt_stock,qt
                      ORDER BY SUM(V.qt) DESC
                      LIMIT 0,10");
        return view('home',['msg' => $msgs ,'top' => $x ]);
