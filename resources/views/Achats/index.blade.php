@@ -56,6 +56,7 @@
                   <button type="submit" class="btn btn-danger" title="supprimer"><i class="fa fa-trash-o fa-fw"></i></button>
                   @endcan
 
+
                 </form>
            </td>
           </tr>

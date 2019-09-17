@@ -87,10 +87,11 @@ Route::resource('pharmaciens','PharmacienController');
 // Route::delete('vente/{id}','VenteController@destroy');
 // Route::get('vente/{id}/edit','VenteController@edit');
 // Route::put('vente/{id}','VenteController@update');
-// Route::get('vente/{id}/detail','VenteController@show');
+ Route::get('vente/{id}/detail','VenteController@show');
 Route::resource('vente','VenteController');
 
 //Achat Route
+
 Route::get('achat','AchatController@index');
 Route::get('achat/create','AchatController@create');
 Route::post('achat','AchatController@store');
