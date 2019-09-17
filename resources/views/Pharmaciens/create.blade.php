@@ -79,10 +79,10 @@
 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Email:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required unique autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Mot de passe:</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -107,10 +107,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Comfirmer mot de passe:</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="col-md-12">
+                                  <input type="checkbox" id="checkbox" style="cursor:pointer;"> Afficher le mot de passe
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -152,6 +155,23 @@
                             </div>
                         </div>
                     </form>
+                    <script src="/Login_v16/vendor/jquery/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                          var checkbox = $("#checkbox");
+                          var password = $("#password");
+                          var passwordd = $("#password-confirm");
+                          checkbox.click(function() {
+                            if(checkbox.prop("checked")) {
+                              password.attr("type", "text");
+                              passwordd.attr("type", "text");
+                            } else {
+                              password.attr("type", "password");
+                              passwordd.attr("type", "password");
+                            }
+                          });
+                        });
+                      </script>
                 </div>
             </div>
         </div>

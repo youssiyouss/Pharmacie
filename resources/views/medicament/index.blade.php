@@ -1,70 +1,68 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
 
+ <div class="container">
+   <div class="row">
+     <div class="col-md-12">
+       @if(session()->has('success'))
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                <h5> {{session()->get('success')}} </h5>
+          </div>
+       @endif
+
+      <div class="col-lg-12 col-xl-12">
+                              <div class="card">
+                                  <div class="card-body">
+                                      <div class="active-member">
+                                          <div class="table-responsive">
+                                            <div class="pull-right">
+                                              <a href="{{ url('medicaments/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Ajouter </i></a>
+                                            </div>
+                                              <table class="table table-xs">
+                                                  <thead>
+                                                      <tr>
+                                                        <th>nom</th>
+                                                        <th>dosage</th>
+                                                        <th>forme</th>
+                                                        <th>famille</th>
+                                                        <th>prix</th>
+
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                     @foreach($medicaments as $listeM)
+                                                      <tr class="col-md-2">
+                                                          <td><span><img src="{{ asset('storage/'.$listeM->photo)}}" class="pull-left m-r-10 avatar-img w-40px" alt="">{{$listeM->nom}}</span></td>
+                                                          <td><span>{{$listeM->dosage}}</span></td>
+                                                          <td><span>{{$listeM->forme}}</span></td>
+                                                          <td><span>{{$listeM->famille}}</span></td>
+                                                          <td><span>{{$listeM->prix}}</span></td>
+
+                                                          <td>
+                                                              <form action="{{ url('medicaments/'.$listeM->id)}}" method="post" onsubmit="return confirm('Voulez vous vraiment supprimer cet médicament?')">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('DELETE') }}
+                                                                  <li class="icons">
+                                                                    <a href="{{ url('medicaments/'.$listeM->id)}}" class="btn btn-default"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+                                                                    <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-close color-danger"></i></button>
+                                                                 </li>
+                                                              </form>
+                                                         </td>
+                                                      </tr>
+                                                      @endforeach
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+     </div>
+   </div>
+ </div>
 
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			@if(session()->has('success'))
-			<div class="alert alert-success">
-				{{ session()->get('success')}}
-			</div>
-			@endif
-
-
-
-			<h1>la liste des medicaments</h1>
-			<div class="pull-right">
-				<a href="{{url('medicaments/create')}}" class="btn btn-success">Nouveau medicament</a>
-
-
-
-			<table class="table">
-				<head>
-					<tr>
-						<th>nom</th>
-						<th>dosage (ml/mg)</th>
-						<th>forme</th>
-						<th>famille</th>
-						<th>prix DA</th>
-						<th>action</th>
-					</tr>
-				</head>
-				@foreach($medicaments as $listeM)
-				<body>
-					<tr>
-						<td>{{$listeM->nom}}</td>
-						<td>{{$listeM->dosage}}</td>
-						<td>{{$listeM->forme}}</td>
-						<td>{{$listeM->famille}}</td>
-						<td>{{$listeM->prix}}</td>
-						
-						<td>
-							
-
-							<form action="{{('medicaments/'.$listeM->id)}}" method="post">
-								{{csrf_field()}}
-								{{method_field('DELETE')}}
-
-								<a href="{{url('medicaments/'.$listeM->id)}}" class="btn btn-primary">detail</a>
-							<a href="{{url('medicaments/'.$listeM->id.'/edit')}}" class="btn btn-default">modifier</a>
-							<button type="submit" class="btn btn-danger">supprimer</button>
-							</form>
-
-						</td>
-					</tr>
-				</body>
-				@endforeach
-			</table>
-		</div>
-	</div>
-</div>
-</div>
-
-
-
-@endsection
+ @endsection

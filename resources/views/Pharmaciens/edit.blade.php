@@ -114,8 +114,14 @@
 
                   <div class="col-md-6">
                       <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+
+                      <div class="col-md-12">
+                        <input type="checkbox" id="checkbox" style="cursor:pointer;"> Afficher le mot de passe
+                        </div>
                   </div>
+
               </div>
+
               <div class="form-group row">
                   <label for="login" class="col-md-4 col-form-label text-md-right">Nom d'utilisateur:</label>
 
@@ -147,10 +153,27 @@
               <div class="form-group row mb-0">
                   <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-success "><i class="fa fa-thumbs-o-up" aria-hidden="true"> Enregistrer</i></button>
-                    <a href="{{ url('pharmaciens') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+                    <a href="{{ url('pharmaciens/'.$phar->id) }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
                 </div>
             </div>
               </form>
+              <script src="/Login_v16/vendor/jquery/jquery.min.js"></script>
+              <script type="text/javascript">
+                  $(document).ready(function() {
+                    var checkbox = $("#checkbox");
+                    var password = $("#password");
+                    var passwordd = $("#password-confirm");
+                    checkbox.click(function() {
+                      if(checkbox.prop("checked")) {
+                        password.attr("type", "text");
+                        passwordd.attr("type", "text");
+                      } else {
+                        password.attr("type", "password");
+                        passwordd.attr("type", "password");
+                      }
+                    });
+                  });
+                </script>
         </div>
       </div>
     </div>

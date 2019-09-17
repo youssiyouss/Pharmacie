@@ -18,6 +18,7 @@ class CreateVentesTable extends Migration
             $table->integer('lot');
             $table->DateTime('date');
             $table->integer('qt');
+            $table->integer('prix_total');
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });

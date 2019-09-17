@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Vente;
 use App\Http\Requests\venteRequest;
 use App\Lot;
+use App\Medicament;
 
 use App\User;
 use Notification;
@@ -25,7 +26,7 @@ class VenteController extends Controller
      */
     public function index()
     {
-        $arr['vente'] = Vente::all();
+        $arr['vente'] = DB::table('Ventes')->select('Ventes.*')->paginate(20);
         return view('Ventes.index')->with($arr);
     }
 
@@ -40,7 +41,13 @@ class VenteController extends Controller
             ->select('Lots.id')
             ->where('qt_stock','>','0')
             ->get();
-            return view('Ventes.create', ['lotid' => $lotid]);
+
+        $loti = DB::table('Achats')
+             ->join('Lots', 'Achats.id', '=', 'Lots.achat')
+            ->select('Lots.id')
+            ->whereNull('Achats.deleted_at')
+            ->get();
+            return view('Ventes.create', ['lotid' => $lotid, 'loti'=>$loti ]);
         //return view('Ventes.create');
     }
 
@@ -54,42 +61,48 @@ class VenteController extends Controller
     {
        $v = new Vente();
 
+       $lott =Lot::where('id', '=', $request->input('lot'))->first();
+       $prix_uni = Medicament::where('id', '=', $lott->medoc)->first();
+
+
        $v->lot = $request->input('lot');
        $v->date = $request->input('date');
        $v->qt = $request->input('qt');
+       $v->prix_total = $request->input('qt') * $prix_uni->prix;
        $v->save();
        $qt=$v->qt;
 
 
        //Diminuer la quatitée en stock du lot
        DB::table('Lots')->where('Lots.id','=',$v->lot)->decrement('qt_stock', $qt);
-      
-   
+
+
         //Send Notifications
        //Medicaments aux stocks minimum
         $medocs = DB::table('Lots')->select('Lots.*')->where('qt_stock','<=' ,50)->get();
-            
+
             if ($medocs->count()  != 0) {
-                
+
                 $user = auth()->User();
             $alerte = collect(['title'=>'Médicaments aux stocks minimum ', 'var' =>'1' ,'nombre liste' => $medocs->count(),'url'=>'achat/create']);
             Notification::send($user,new InvoicePaid($alerte));
             }
         //Stocks en rupture
             $medocz = DB::table('Lots')->select('Lots.*')->where('qt_stock','=' ,0)->get();
-            
+
             if ($medocz->count()  != 0) {
-                
+
                 $user = auth()->User();
             $alerte = collect(['title'=>'Médicaments en ruptures ', 'var' =>'2' ,'nombre liste' => $medocz->count(),'url'=>'achat/create']);
             Notification::send($user,new InvoicePaid($alerte));
             }
-            
-               
-       
+
+
+
        //redirection
-       session()->flash('success','Le fournisseur a été ajouter avec succés!');
-       return redirect('vente');
+       //session()->flash('success','Vente bien effectuée!');
+       return redirect('vente')->with('success', 'Vente effectuée!');
+
 
     }
 
@@ -101,7 +114,17 @@ class VenteController extends Controller
      */
     public function show($id)
     {
-        //
+        $vente= DB::table('Ventes')
+                ->select('Ventes.*')
+                ->where('id','=',$id)
+                ->get();
+        $vent = Vente::where('id', '=', $id)->first();
+
+        $lot = Lot::where('id', '=', $vent->lot)->first();
+
+        $medoc = Medicament::where('id', '=', $lot->medoc)->first();
+
+        return view('Ventes.detail',['vente' =>$vente, 'medoc' =>$medoc]);
     }
 
     /**
@@ -113,7 +136,13 @@ class VenteController extends Controller
     public function edit($id)
     {
         $v = Vente::find($id);
-        return view('Ventes.edit',['v'=>$v]);
+
+         $lotid = DB::table('Lots')
+            ->select('Lots.id')
+            ->where('qt_stock','>','0')
+            ->get();
+
+        return view('Ventes.edit',['v'=>$v,'lotid'=>$lotid]);
     }
 
     /**
@@ -122,7 +151,7 @@ class VenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function update(venteRequest $request, $id)
     {
         $vente = Vente::find($id);
@@ -132,7 +161,8 @@ class VenteController extends Controller
         $vente->qt = $request->input('qt');
         $vente->save();
 
-        return redirect('vente');
+        session()->flash('success','La vente a été modifiée avec succées!');
+        return redirect('vente')->with('success', 'Vente Mofifiée!');
     }
 
     /**
@@ -145,6 +175,6 @@ class VenteController extends Controller
     {
         $v = Vente::find($id);
         $v->delete();
-        return redirect('vente');
+        return redirect('vente')->with('danger', 'Vente Supprimée!');
     }
 }

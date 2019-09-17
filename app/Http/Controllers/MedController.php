@@ -9,13 +9,6 @@ use Illuminate\Http\UploadedFile;
 class MedController extends Controller
 {
 
-	public function search(Requests $request)
-{
-    $search = $request->get('search');
-    $medicament = medicament::where('nom','like','%'.$search.'%')->paginate(5);
-    return view('medicament.index',['medicaments' => $search]);
-
-}
     //lister les medicament
    public function index(){
     	//$listeMed = medicament::where('user_id',auth::user()->id)->get();
@@ -31,15 +24,15 @@ class MedController extends Controller
     public function store(medRequest $request){
     $medicament = new Medicament();
     $medicament->nom = $request->input('nom');
-   $medicament->prix = $request->input('prix');
+    $medicament->prix = $request->input('prix');
     $medicament->dosage = $request->input('dosage');
     $medicament->forme = $request->input('forme');
-    $medicament->famille = $request->input('famille');	
+    $medicament->famille = $request->input('famille');
     $medicament->resume = $request->input('resume');
     $medicament->mode = $request->input('mode');
     $medicament->composition = $request->input('composition');
     $medicament->plus = $request->input('plus');
-           
+
     //$medicament->user_id = auth::user()->id;
 
    if($request->hasFile('photo')){
@@ -55,7 +48,7 @@ class MedController extends Controller
     	}
     //recuperer un medicament puis l'inserer dans un formulaire
     public function edit($id){
-    	
+
     	$medicament = Medicament::find($id);
     	return view('medicament.edit',['medicament' => $medicament]);
 
@@ -66,30 +59,28 @@ class MedController extends Controller
     	$medicament = Medicament::find($id);
 
     	$medicament->nom = $request->input('nom');
-        $medicament->prix = $request->input('prix');
+      $medicament->prix = $request->input('prix');
     	$medicament->dosage = $request->input('dosage');
     	$medicament->forme = $request->input('forme');
     	$medicament->famille = $request->input('famille');
-        $medicament->resume = $request->input('resume');
-    $medicament->mode = $request->input('mode');
-    $medicament->composition = $request->input('composition');
-    $medicament->plus = $request->input('plus');
+      $medicament->resume = $request->input('resume');
+    	$medicament->mode = $request->input('mode');
+    	$medicament->composition = $request->input('composition');
+    	$medicament->plus = $request->input('plus');
 
-
-		if($request->hasFile('photo')){
-    	 $medicament->photo = $request->photo->store('image');
-
-    }
-
-
-    	$medicament->save();
+			if($request->hasFile('photo')){
+    	 	$medicament->photo = $request->photo->store('image');
+			}
+			$medicament->save();
     	session()->flash('success', 'la modification a bien ete effectuer');
     	return redirect('medicaments');
-	    	
+
     }
+
     //afficher les details de chaque medicament
     public function show( $id){
         $x = Medicament::find($id);
+<<<<<<< HEAD
     	return view('medicament.show',['medicament' => $x]);     
        
     }
@@ -101,9 +92,14 @@ class MedController extends Controller
 
     
    
+=======
+    	return view('medicament.show',['medicament' => $x]);
+		}
+		
+>>>>>>> aecd5a603135c6ed3f31d05a2733e58d98ffa808
     //supprimer un medicament
     public function destroy(Request $request, $id){
-    	
+
     	$medicament = Medicament::find($id);
     	$medicament->delete();
     	session()->flash('success', 'le medicament est supprimer de la liste');

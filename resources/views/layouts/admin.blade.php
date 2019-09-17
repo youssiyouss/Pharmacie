@@ -11,6 +11,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/pt.png">
     <link href="../css/style.css" rel="stylesheet">
     <script src="../js/modernizr-3.6.0.min.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
 </head>
 
 <body class="v-light vertical-nav fix-header fix-sidebar">
@@ -38,10 +42,11 @@
                             <div class="drop-down animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <div class="header-search" id="header-search">
-                                        <form action="#">
+                                        <form action="/search" method="get">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search">
-                                                <div class="input-group-append"><span class="input-group-text"><i class="icon-magnifier"></i></span>
+                                                <input type="search" name="search" class="form-control" placeholder="Recherche">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text"><i class="icon-magnifier"></i></span>
                                                 </div>
                                             </div>
                                         </form>
@@ -57,7 +62,38 @@
 
                       </div>
                     <ul>
-                        <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 avatar-img w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
+                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-bell f-s-18" aria-hidden="true"></i>
+                             @if(auth()->user()->unreadNotifications->count() != 0)
+                            <span class="badge badge-danger"> {{ auth()->user()->unreadNotifications->count() }} </span>
+                            @endif
+                        </a>
+                            <div class="drop-down animated bounceInDown">
+                                <div class="dropdown-content-heading"><span class="text-left">Recent Notifications</span>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        @foreach(auth()->user()->unreadNotifications as $notification)
+                                        <li>
+                                            <a href="{{ url( 'notifread/'.$notification->id ) }}">
+
+                                                <div class="notification-content"><small class="notification-timestamp pull-right">{{ $notification->data['alerte']['title'] }}</small>
+                                                    <div class="notification-heading">{{ $notification->created_at }}</div>
+                                                    <div class="notification-text"></div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @endforeach
+
+                                        <li class="text-center"><a href="{{ url( 'alerte' ) }}" class="more-link">See All</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="icons"><a href="javascript:void(0)"><img class="m-r-10 img-responsive w-40px" src="{{ asset('storage/'.Auth::user()->photo) }}"></a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">
                                     <ul>
@@ -89,12 +125,12 @@
                     <li><a href="{{ url('/home') }}"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Page principale</span></a>
                     </li>
                     @can('isAdmin',Auth::user())
-                    <li><a href="{{ url('pharmaciens') }}"><i class="mdi mdi-map"></i> <span class="nav-text">Utilisateurs</span></a>
+                    <li><a href="{{ url('pharmaciens') }}"><i class="mdi mdi-account-multiple"></i> <span class="nav-text">Utilisateurs</span></a>
                     </li>
                     @endcan
                     <li><a href="{{ url('fournisseurs') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Fournisseurs</span></a>
                     </li>
-                    <li><a href="{{ url('medicaments') }}"><i class="mdi mdi-table-edit"></i> <span class="nav-text">Medicaments</span></a>
+                    <li><a href="{{ url('medicaments') }}"><i class="mdi mdi-heart-pulse"></i> <span class="nav-text">Medicaments</span></a>
                     </li>
                     <li><a href="{{ url('lot') }}"><i class="mdi mdi-widgets"></i> <span class="nav-text">Lots</span></a>
                     </li>
@@ -102,11 +138,22 @@
                     </li>
                     <li><a href="{{ url('vente') }}"><i class="mdi mdi-nfc-variant"></i> <span class="nav-text">Ventes</span></a>
                     </li>
-                    <li><a href="{{ url('alerte') }}"><i class="mdi mdi-calendar-check"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
+                    <li><a href="{{ url('alerte') }}"><i class="mdi mdi-alert"></i> <span class="nav-text">Alerts</span>@if(auth()->user()->unreadNotifications->count() > 0)
                             <span class="badge badge-danger rounded-circle"> {{ auth()->user()->unreadNotifications->count() }} </span>@endif</a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
+                    @can('isAdmin',Auth::user())
+                    <li class=""><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-chart-bar"></i> <span class="nav-text">Statistiques</span></a>
+                        <ul aria-expanded="false" class="collapse" style="height: 0px;">
+                            <li><a href="{{ url('historiqueMensuelle')}}"><span class="nav-text">Mensuelles</span></a>
+                            </li>
+                            <li><a href="{{ url('historiqueAnnuelle')}}"><span class="nav-text">Annuellles</span></a>
+                            </li>
+                        </ul>
                     </li>
+                    @endcan
+                    <li><a href="{{ url('messages') }}"><i class="mdi mdi-email"></i> <span class="nav-text">Email</span></a>
+                    </li>
+
                 </ul>
             </div>
             <!-- #/ nk nav scroll -->
@@ -132,6 +179,18 @@
     <script src="../../assets/plugins/chartjs/Chart.bundle.js"></script>
     <!-- Custom dashboard script -->
     <script src="../js/dashboard-1.js"></script>
+
+    <script>
+        $('#delete').on('show.bs.modal',function (event){
+          var button = $(event.relatedTarget)
+          var cat_id = button.data('catid')
+          var modal = $(this)
+
+          modal.find('.modal-body #cat_id').val(cat_id);
+
+        })
+
+    </script>
 </body>
 
 </html>

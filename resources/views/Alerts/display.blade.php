@@ -2,11 +2,15 @@
 
 @section('content')
 
- <div class="container">
-   <div class="row">
-     <div class="col-md-12">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-       <h2>Détails :</h2>
+       <h2>Détail Alerte :</h2>
+        <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
        <br>
        <div>
        <table class="table">
@@ -28,15 +32,21 @@
     </tr>
      @endforeach
   </tbody>
-</table>
-        
-          
-          
-         
-
-        
-        
+</table><br><hr>
+         <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6 text-right"><a href="{{url('alerte')}}" class="btn btn-danger">Retour</a></div>
+            <div class="col-md-6 text-right"><span><b>Date Alerte: </b></span><small> {{$date}}</small></div>
+         </div>
+         </div>
+  
         </div>
+
+        </div>
+       
+     </div>
+   </div>
+ </div>
        
      </div>
    </div>

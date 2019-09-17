@@ -1,48 +1,40 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <body>
 
+        <div class="card">
+					<div class="text-center"><img class="rounded-circle m-t-15 w-75px" src="{{ asset('storage/'.$medicament->photo) }}" alt="Card image cap" style="width: 35rem;"></div>
+          <div class="text-center bg-primary" >fiche detaillé sur le medicament: </div>
 
-<div class="container" >
-	<div class="row"> 
-	
-     <div class="col-9">
-                         
-	<h2>fiche detaillé sur le medicament </h2>
-    
-    <div class="card" style="width: 30rem;">
-       <img class="card-img-top" src="{{ asset('storage/'.$medicament->photo) }}" alt="Card image cap">
-         <div class="card-body">
-                       <h2 class="card-title"><strong>{{$medicament->nom}}</strong></h2>
-                        <h4><strong>Medicament {{$medicament->famille}}</strong></h4>
-                        <p>{{$medicament->resume}}</p>
-                        <hr>
-                        <p><strong>mode d'administration : {{$medicament->mode}}</strong></p>
-                    <hr>
-                    <p><strong>composition : {{$medicament->composition}}</strong></p>
-                    <hr>
-                  
-                    <p><strong>plus d'information : <a href="{{$medicament->plus}}">en savoir+</a></strong></p>
-                          
-         </div>
-	</div> 
+        </div>
+        <div class="card-body">
+            <div class="text-center">
+                     <h4 class="m-t-15 m-b-2">{{$medicament->nom}}<p class="text-muted">Medicament {{$medicament->famille}}</p></h4>
+                              <div class="row">
+																	<div class="col-12 border-bottom-1 p-t-10 p-b-10">{{$medicament->resume}}</div>
+																	<div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">prix:</span> <span class="pull-right"> {{$medicament->prix}}<strong>DA</strong></span></div>
+																	<div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">mode d'administration :</span> <span class="pull-right">{{$medicament->mode}}</span></div>
+                                  <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">composition :</span> <span class="pull-right"> {{$medicament->composition}}</span></div>
+                                  <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600"><a href="{{$medicament->plus}}"><i class="fa fa-plus"  style="color :#b7e778;" aria-hidden="true"> En savoir plus </i></a></span></div>
+                                  <div class="col-12 p-t-10 p-b-10"><a href="{{ url('medicaments/'.$medicament->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"> Modifier</i></a></div>
 
-                       
-     </div>
-
-
-<div class="col-3">
-   <h1><u><strong>prix</strong> </u>  <br> {{$medicament->prix}} <strong>DA</strong></h1>
-</div> 
-
-     </div>
-
-    
-
+                                </div>
+            </div>
+        </div>
+        </body>
+      </div>
+  </div>
 </div>
-         
+
+                    <p><strong></strong></p>
+
+         </div>
+	</div>
+</div>
 
 @endsection

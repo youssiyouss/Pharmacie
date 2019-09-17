@@ -21,6 +21,7 @@ class CreateFournisseursTable extends Migration
             $table->string('email');
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
+
         });
     }
 

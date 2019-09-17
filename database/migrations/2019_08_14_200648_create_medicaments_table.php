@@ -17,7 +17,6 @@ class CreateMedicamentsTable extends Migration
         Schema::create('medicaments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
-            $table->string('prix');
             $table->double('dosage');
             $table->string('forme');
             $table->string('famille');
@@ -26,6 +25,7 @@ class CreateMedicamentsTable extends Migration
             $table->string('mode');
             $table->string('composition');
             $table->string('plus');
+            $table->double('prix');
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();
         });

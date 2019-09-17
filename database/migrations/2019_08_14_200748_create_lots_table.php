@@ -16,9 +16,11 @@ class CreateLotsTable extends Migration
         Schema::create('lots', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('achat');
-            $table->string('medoc');
+            $table->unsignedBigInteger('medoc');
             $table->DateTime('date_fab');
+            $table->date('date_per');
             $table->double('prix');
+            $table->integer('nbr_medoc_lot');
             $table->integer('qt_stock');
             $table->DateTime('deleted_at')->nullable();
             $table->timestamps();

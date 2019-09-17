@@ -38,8 +38,8 @@
                                             <tbody>
                                                @foreach($phar as $phar)
                                                 <tr>
-                                                    <td>
-                                                        <img src="{{ asset('storage/'.$phar->photo) }}" class="pull-left m-r-10 avatar-img w-40px rounded-circle" alt="">{{ $phar->name}}_{{ $phar->Prenom}}</td>
+                                                    <td><span><img src="{{ asset('storage/'.$phar->photo) }}" class="pull-left m-r-10 avatar-img w-40px rounded-circle" alt="">{{ $phar->name}}_{{ $phar->Prenom}}</span>
+                                                    </td>
                                                     <td><span>{{ $phar->date_nais}}</span>
                                                     </td>
                                                     <td>{{ $phar->tel}}</td>
@@ -47,19 +47,16 @@
                                                     <td><i class="text-success f-s-12 m-r-10"></i>@if($phar->isadmin==true) Admin @else Pharmacien
                                                         @endif</td>
                                                     <td>
-                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post">
+                                                        <form action="{{ url('pharmaciens/'.$phar->id)}}" method="post" onsubmit="return confirm('Etes vous sure de vouloir supprimer cet utilisateur?')">
                                                           {{ csrf_field() }}
                                                           {{ method_field('DELETE') }}
                                                             <li class="icons">
-                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+                                                              <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-default"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+
                                                               @can('delete',$phar)
-                                                              <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-fw"></i></button>
+                                                              <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-close color-danger"></i></button>
                                                               @endcan
                                                            </li>
-                                                          <!-- <a href="{{ url('pharmaciens/'.$phar->id)}}" class="btn btn-primary">Details</a>
-                                                          <a href="{{ url('pharmaciens/'.$phar->id.'/edit')}}" class="btn btn-info">Modifier</a>
-                                                          <button type="submit" class="btn btn-danger">Supprimer</button> -->
-
                                                         </form>
                                                    </td>
                                                 </tr>

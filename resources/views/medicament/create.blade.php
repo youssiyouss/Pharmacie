@@ -3,147 +3,173 @@
 
 
 @section('content')
-
-
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Creation d'un nouveau medicament:</div>
 
+                <div class="card-body">
+									<form method="POST" action="{{url('medicaments')}}" enctype="multipart/form-data">
+											@csrf
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Nom:</label>
 
-			<form action="{{url('medicaments')}}" method="POST" enctype="multipart/form-data">
-				{{csrf_field()}}
-				<div class="form-groupe @if($errors->get('nom')) has-error @endif">
-					<label for="">nom</label>
-					<input type="text" name="nom" class="form-control" value="{{old('nom')}}">
+													<div class="col-md-6">
+															<input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
 
-					@if($errors->get('nom'))
-					@foreach($errors->get('nom') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
+															@error('nom')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Prix:</label>
 
-				</div>
+													<div class="col-md-6">
+															<input type="number" class="form-control @error('prix') is-invalid @enderror" name="prix" value="{{ old('prix') }}" required autocomplete="prix">
 
-				<div class="form-groupe @if($errors->get('prix')) has-error @endif">
-					<label for="">prix</label>
-					<input type="number" name="prix" class="form-control" value="{{old('prix')}}">
+															@error('prix')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Dosage:</label>
 
-					@if($errors->get('prix'))
-					@foreach($errors->get('prix') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
+													<div class="col-md-6">
+															<input type="number" class="form-control @error('dosage') is-invalid @enderror" name="dosage" value="{{ old('dosage') }}" autocomplete="dosage">
 
-				</div>
-				
+															@error('dosage')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Forme du medicament:</label>
 
+													<div class="col-md-6">
+															<input list="browsers" class="form-control @error('forme') is-invalid @enderror" name="forme" value="{{ old('forme') }}" autocomplete="forme">
+															<datalist id="browsers">
+																<option value="Comprimé">
+																	<option value="Gellule">
+																	<option value="Gel">
+																	<option value="Pomade">
+																	<option value="sirop">
+																	<option value="Créme">
+																	<option value="sollution applicable">
+																	<option value="sollution en goutte">
+																	<option value="suspention injectable">
+																	<option value="suppositoire">
+																</datalist>
 
-				<div class="form-groupe @if($errors->get('dosage')) has-error @endif">
-					<label for="">dosage</label>
-					<input type="number" name="dosage" class="form-control" value="{{old('dosage')}}">
+															@error('forme')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">famille:</label>
 
-					@if($errors->get('dosage'))
-					@foreach($errors->get('dosage') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
-				</div>
-				<div class="form-groupe @if($errors->get('forme')) has-error @endif">
-					<p>forme du medicament</p>
-					<input list="browsers" name="forme" class="form-control" value="{{ old('forme') }}" required>
+													<div class="col-md-6">
+															<input type="text" class="form-control @error('famille') is-invalid @enderror" name="famille" value="{{ old('famille') }}" required autocomplete="famille">
 
-						<datalist id="browsers">
-							<option value="Comprimé">
-    						<option value="Gellule">
-    						<option value="Gel">
-    						<option value="Pomade">
-   						    <option value="sirop">
-    						<option value="sollution applicable">
-   						    <option value="sollution en goutte">
-    						<option value="suspention injectable">
-   							 <option value="suppositoire">
-    					</datalist>
-					@if($errors->get('forme'))
-					@foreach($errors->get('forme') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
-				</div>
-				<div class="form-groupe @if($errors->get('famille')) has-error @endif">
-					<label for="">famille</label>
-					<input type="text" name="famille" class="form-control" value="{{old('famille')}}">
-					@if($errors->get('famille'))
-					@foreach($errors->get('famille') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
-				</div>
+															@error('famille')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Indication:</label>
 
-				<div class="form-groupe @if($errors->get('resume')) has-error @endif">
-					<label for="">information</label>
-					<textarea type="text" name="resume" class="form-control" value="{{old('resume')}}"></textarea>
-					@if($errors->get('resume'))
-					@foreach($errors->get('resume') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
+													<div class="col-md-6">
+														<textarea type="text" class="form-control @error('resume') is-invalid @enderror" name="resume"  value="{{old('resume')}}"></textarea>
 
-				</div>
-				<div class="form-groupe @if($errors->get('mode')) has-error @endif">
-					<label for="">mode d'administration</label>
-					<textarea type="text" name="mode" class="form-control" value="{{old('mode')}}"></textarea>
+															@error('resume')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Mode d'administration:</label>
 
-					@if($errors->get('mode'))
-					@foreach($errors->get('mode') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
+													<div class="col-md-6">
+														<textarea type="text" class="form-control @error('mode') is-invalid @enderror" name="mode"  value="{{old('mode')}}"></textarea>
 
-				</div>
-				
-				<div class="form-groupe @if($errors->get('composition')) has-error @endif">
-					<label for="">composition</label>
-					<textarea type="text" name="composition" class="form-control" value="{{old('composition')}}"></textarea>
+															@error('mode')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Composition:</label>
 
-					@if($errors->get('composition'))
-					@foreach($errors->get('composition') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
+													<div class="col-md-6">
+														<textarea type="text" class="form-control @error('composition') is-invalid @enderror" name="composition"  value="{{old('composition')}}"></textarea>
 
-				</div>
-				<div class="form-groupe @if($errors->get('plus')) has-error @endif">
-					<label for="">plus d'information</label>
-					<textarea type="text" name="plus" class="form-control" value="{{old('plus')}}"></textarea>
+															@error('composition')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">Plus d'information:</label>
 
-					@if($errors->get('plus'))
-					@foreach($errors->get('plus') as $message)
-					<li>{{ $message }}</li>
-					@endforeach
-					@endif
+													<div class="col-md-6">
+														<textarea type="text" class="form-control @error('plus') is-invalid @enderror" name="plus"  value="{{old('plus')}}"></textarea>
 
-				</div>
+															@error('plus')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row">
+													<label class="col-md-4 col-form-label text-md-right">image du produit:</label>
 
-				<div class="form-groupe">
-					<label for="">image</label>
-					<input name="photo" class="form-control" type="file" accept="image/*" style="height: auto;">
-				</div>
-				
+													<div class="col-md-6">
+														<input name="photo" class="form-control @error('photo') is-invalid @enderror" type="file" accept="image/*" style="height: auto;">
+															@error('photo')
+																	<span class="invalid-feedback" role="alert">
+																			<strong>{{ $message }}</strong>
+																	</span>
+															@enderror
+													</div>
+											</div>
+											<div class="form-group row mb-0">
+													<div class="col-md-6 offset-md-4">
+															<button type="submit" class="btn btn-primary">
+																<i class="fa fa-check-circle-o" aria-hidden="true">
+																	{{ __('Enregistrer') }}
+																</i>
+															</button>
+															<a href="{{ url('medicaments') }}" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"> Annuler</i></a>
+													</div>
+											</div>
+									</form>
 
-				<div class="form-groupe">
-					
-					<input type="submit" class="form-control btn btn-primary" value="enregistrer">
-					
-
-				</div>
-				
-			</form>
-			
 		</div>
-	</div>
 </div>
-
-
+</div>
+</div>
+</div>
 
 
 @endsection

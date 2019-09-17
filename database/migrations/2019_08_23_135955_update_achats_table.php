@@ -18,7 +18,6 @@ class UpdateAchatsTable extends Migration
           $table->foreign('fournisseur')->references('id')->on('fournisseurs')->onDelete('cascade')->onUpdate('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      *
