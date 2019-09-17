@@ -1,7 +1,7 @@
 @extends('layouts.welcome')
 
 @section('content')
-<div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
+<div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');min-height: 300px;height: calc(75vh);">
   <div class="container">
     <div class="row">
       <div class="order-lg-2 align-self-center">
@@ -112,12 +112,12 @@
 					</div>
 
 					<div class="flex-col size2">
-						<a href="#"><span class="txt1 p-b-20 adress">
+						<a href="https://www.google.com/maps/place/Pharmacie+Hamza+cherif/@34.8828993,-1.3285089,17z/data=!3m1!4b1!4m5!3m4!1s0xd78c97ef6d4772d:0x384c6530d13bbb64!8m2!3d34.8828949!4d-1.3263202" target="_blank"><span class="txt1 p-b-20 adress">
 							Adresse
 						</span></a>
 
 						<span class="txt2">
-							203 cite Essalihin imama, Tlemcen, Algeria
+              Boulevard Ain Sbaa Ali, Tlemcen, Algeria
 						</span>
 					</div>
 				</div>
@@ -133,7 +133,7 @@
 						</span>
 
 						<span class="txt3">
-							043 22 55 66
+							043 36 60 42
 						</span>
 					</div>
 				</div>
@@ -161,11 +161,11 @@
 					</div>
 
 					<div class="txt1 p-r-25">
-						<a href="#"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>
+						<a href="https://www.facebook.com/pharm.hamza.cherif/" target="_blank"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>
 					</div>
 
 					<div class="txt1 p-r-25">
-						<a href="#"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>
+						<a href="https://www.instagram.com/pharmaciehamzacherif/" target="_blank"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>
 					</div>
 
 				</div>

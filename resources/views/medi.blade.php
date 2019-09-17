@@ -1,7 +1,7 @@
 @extends('layouts.welcome')
 
 @section('content')
-<div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
+<div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');height: calc(75vh);min-height: 300px;">
   <div class="container">
     <div class="row">
       <div class="order-lg-2 align-self-center">
@@ -22,8 +22,8 @@
            @foreach($medicaments as $o)
            @if($o->famille =='homéopathie'||$o->famille =='paracetamol'||$o->famille =='anti-imflamatoire'||$o->famille =='Gastro'||$o->famille =='antihistamine'||$o->famille =='anti-biotique'||$o->famille =='ANALGESIQUE'||$o->famille =='Allopathie'||$o->famille =='radiothérapeutique')
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="{{ asset('affichage/'.$o->id)}}"> <img src="{{ asset('storage/'.$o->photo)}}" style="border-style: groove; border-radius: 10px;height:90%; width: 80%;" alt="Image"></a>
-            <h3 class="text-dark"><a href="{{ asset('affichage/'.$o->id)}}" style="font-size:20px;">{{$o->nom}}</a></h3>
+            <a href="{{ asset('detail/'.$o->id)}}"> <img src="{{ asset('storage/'.$o->photo)}}" style="border-style: groove; border-radius: 10px;height:90%; width: 80%;" alt="Image"></a>
+            <h3 class="text-dark"><a href="{{ asset('detail/'.$o->id)}}" style="font-size:20px;">{{$o->nom}}</a></h3>
             <p class="price" style="color : #9068be;">{{$o->prix}} <b>DA</b></p>
           </div>
          @endif
@@ -36,8 +36,8 @@
          @foreach($medicaments as $o)
          @if($o->famille =='huils'||$o->famille =='Nettoyant'||$o->famille =='dermatologie'||$o->famille =='eau micelaire')
         <div class="col-sm-6 col-lg-4 text-center item mb-4">
-          <a href="{{ asset('affichage/'.$o->id)}}"><img src="{{ asset('storage/'.$o->photo)}}" style="border-style: groove; border-radius: 10px;height:90%; width: 80%;" alt="Image"></a>
-          <h3 class="text-dark"><a href="{{ asset('affichage/'.$o->id)}}" style="font-size:20px;">{{$o->nom}}</a></h3>
+          <a href="{{ asset('detail/'.$o->id)}}"><img src="{{ asset('storage/'.$o->photo)}}" style="border-style: groove; border-radius: 10px;height:90%; width: 80%;" alt="Image"></a>
+          <h3 class="text-dark"><a href="{{ asset('detail/'.$o->id)}}" style="font-size:20px;">{{$o->nom}}</a></h3>
           <p class="price" style="color : #9068be;">{{$o->prix}} <b>DA</b></p>
         </div>
 
@@ -51,8 +51,8 @@
        @foreach($medicaments as $o)
        @if($o->famille =='materiel')
       <div class="col-sm-6 col-lg-4 text-center item mb-4">
-        <a href="{{ asset('affichage/'.$o->id)}}"><img src="{{ asset('storage/'.$o->photo)}}" style="border-style: groove; border-radius: 10px;height:90%; width: 80%;" alt="Image"></a>
-        <h3 class="text-dark"><a href="{{ asset('affichage/'.$o->id)}}" style="font-size:20px;">{{$o->nom}}</a></h3>
+        <a href="{{ asset('detail/'.$o->id)}}"><img src="{{ asset('storage/'.$o->photo)}}" style="border-style: groove; border-radius: 10px;height:90%; width: 80%;" alt="Image"></a>
+        <h3 class="text-dark"><a href="{{ asset('detail/'.$o->id)}}" style="font-size:20px;">{{$o->nom}}</a></h3>
         <p class="price" style="color : #9068be;">{{$o->prix}} <b>DA</b></p>
       </div>
 

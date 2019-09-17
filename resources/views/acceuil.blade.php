@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');">
+    <div class="site-blocks-cover" style="background-image: url('frontEnd/images/purplePill.jpg');height: calc(90vh);min-height: 300px;">
       <div class="container">
         <div class="row">
           <div class="order-lg-2 align-self-center">

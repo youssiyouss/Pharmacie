@@ -20,7 +20,7 @@
 																	<div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">prix:</span> <span class="pull-right"> {{$medicament->prix}}<strong>DA</strong></span></div>
 																	<div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">mode d'administration :</span> <span class="pull-right">{{$medicament->mode}}</span></div>
                                   <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">composition :</span> <span class="pull-right"> {{$medicament->composition}}</span></div>
-                                  <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600"><a href="{{$medicament->plus}}"><i class="fa fa-plus"  style="color :#b7e778;" aria-hidden="true"> En savoir plus </i></a></span></div>
+                                  <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600"><a href="{{$medicament->plus}}" target="_blank"><i class="fa fa-plus"  style="color :#b7e778;" aria-hidden="true"> En savoir plus </i></a></span></div>
                                   <div class="col-12 p-t-10 p-b-10"><a href="{{ url('medicaments/'.$medicament->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"> Modifier</i></a></div>
 
                                 </div>
