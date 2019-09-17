@@ -91,14 +91,15 @@ Route::resource('pharmaciens','PharmacienController');
 Route::resource('vente','VenteController');
 
 //Achat Route
-// Route::get('achat','AchatController@index');
-// Route::get('achat/create','AchatController@create');
-// Route::post('achat','AchatController@store');
-// Route::get('achat/{id}/edit','AchatController@edit');
-// Route::put('achat/{id}','AchatController@update');
-// Route::delete('achat/{id}','AchatController@destroy');
- Route::get('achat/{id}/detail','AchatController@show');
-Route::resource('achat','AchatController');
+
+Route::get('achat','AchatController@index');
+Route::get('achat/create','AchatController@create');
+Route::post('achat','AchatController@store');
+Route::get('achat/{id}/edit','AchatController@edit');
+Route::put('achat/{id}','AchatController@update');
+Route::delete('achat/{id}','AchatController@destroy');
+Route::get('achat/{id}/detail','AchatController@show');
+//Route::resource('achat','AchatController');
 Route::get('achat/{id}/listAchat','AchatController@ListeAchat');
 Route::get('achat/{id}/listDetail','AchatController@ListeDetail');
 
