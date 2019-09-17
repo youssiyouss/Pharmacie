@@ -35,14 +35,14 @@ $date = trim($date,",");
 $qnt='';
 $months='';
 $annee =  date ("Y", mktime(date("Y")));
-$sql =  "SELECT SUM(qt) ,DATE_FORMAT(DATE,'%M') as M,MONTH(DATE)
+$sql =  "SELECT SUM(prix_total) ,DATE_FORMAT(DATE,'%M') as M,MONTH(DATE)
          FROM `ventes`
          WHERE DATE_FORMAT(DATE,'%Y') ='$annee'
          GROUP BY DATE_FORMAT(DATE,'%M'),MONTH(DATE)
 				 ORDER BY MONTH(DATE)";
 $result = mysqli_query($mysqli, $sql);
 while ($row = mysqli_fetch_array($result)) {
-  $qnt .= $row['SUM(qt)'].',';
+  $qnt .= $row['SUM(prix_total)'].',';
   $months .='"'.$row['M'].'",';
 }
 $qnt = trim($qnt,",");
@@ -63,12 +63,11 @@ while ($row = mysqli_fetch_array($revenueM)) {
 //revenue de l'annee derniere
 $prixA = '';
 
-$anneePasse =   date ("Y", mktime(date("Y")-1));
+$anneePasse =   date ("Y", mktime(date("Y")));
 
-$revenueA =  mysqli_query($mysqli,"SELECT SUM(`lots`.prix * `ventes`.qt) as B
-            FROM `ventes`,`lots`
-            WHERE `ventes`.lot=`lots`.id
-            AND DATE_FORMAT(date,'%Y') = '$anneePasse';");
+$revenueA =  mysqli_query($mysqli,"SELECT SUM(prix_total *qt) as B
+            											 FROM `ventes`
+																	 where DATE_FORMAT(date,'%Y') = '$anneePasse';");
 
 while ($row = mysqli_fetch_array($revenueA)) {
   $prixA.=$row['B'];
@@ -167,7 +166,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
                         <div class="col-xl-12">
                           <div class="card">
                               <div class="card-body">
-                                  <i><h4 class=" card-title text-center bg-primary">Vente de l'année derniere</h4></i>
+                                  <i><h4 class=" card-title text-center bg-primary">Chiffre d'affaire de l'année courante</h4></i>
                                   <div class="f-s-30 f-w-300 text-success">Revenue  total :<br><?php echo $prixA; ?><span class="f-s-16 text-uppercase">DA</span>                                </div>
 
                               </div>
@@ -266,7 +265,7 @@ while ($row = mysqli_fetch_array($revenueA)) {
 			                                    <h6 class="m-t-10 text-muted">{{$top->qt}} <span class="pull-right">{{$top->prix}} DZ ({{$top->pourc}}%)</span></h6>
 																					<p></p>
 																					<div class="progress">
-                                    		<progress  class="progress-bar progress-vertical  bg-primary wow animated progress-animated w-50pc h-6px" value="{{$top->qt}}" max={{$top->qt_stock}}></progress>
+                                    		<progress  class="progress-bar progress-vertical  bg-primary wow animated progress-animated w-50pc h-6px" value="{{$top->qt}}" max={{$top->qnt_total}}></progress>
 
 
 			                                    </div>

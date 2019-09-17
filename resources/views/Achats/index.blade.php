@@ -51,8 +51,10 @@
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
                   <a href="{{ url('achat/'.$a->id.'/detail') }}" class="btn btn-primary" title="Details"><i class="fa fa-align-justify"></i></a>
+                    @can('delete',$a)
                   <a href="{{ url('achat/'.$a->id.'/edit') }}" class="btn btn-info" title="Modifier"><i class="fa fa-pencil-square-o"></i></a>
                   <button type="submit" class="btn btn-danger" title="supprimer"><i class="fa fa-trash-o fa-fw"></i></button>
+                  @endcan
 
 
                 </form>

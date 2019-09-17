@@ -171,9 +171,9 @@
               <h3 class="footer-heading mb-4">Nos réseaux sociaux</h3>
               <div class="wrapper">
                 <div class="dis-flex size1 p-b-47">
-                  &nbsp&nbsp<a href="#" style="text-decoration: none; color:#9068be;"><span class="fa fa-twitter-square twitter" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
-                  <a href="#" style="color:#9068be;"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
-                  <a href="#" style="color:#9068be;"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                  &nbsp&nbsp<a href="#" style="text-decoration: none; color:#9068be;" target="_blank"><span class="fa fa-twitter-square twitter" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                  <a href="https://www.facebook.com/pharm.hamza.cherif/" style="color:#9068be;" target="_blank"><span class="fa fa-facebook-square facebook" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
+                  <a href="https://www.instagram.com/pharmaciehamzacherif/" style="color:#9068be;" target="_blank"><span class="fa fa-instagram instagram" style="font-size:48px"></span></a>&nbsp&nbsp&nbsp
                 </div>
               </div>
           </div>
@@ -183,7 +183,7 @@
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Info Contact</h3>
               <ul class="list-unstyled">
-                <li class="address">203 cite Essalihin imama, Tlemcen, Algeria</li>
+                <li class="address"><a href="https://www.google.com/maps/place/Pharmacie+Hamza+cherif/@34.8828993,-1.3285089,17z/data=!3m1!4b1!4m5!3m4!1s0xd78c97ef6d4772d:0x384c6530d13bbb64!8m2!3d34.8828949!4d-1.3263202" target="_blank">Boulevard Ain Sbaa Ali, Tlemcen, Algeria</a></li>
                 <li class="phone"><a href="tel://043366042">043366042</a></li>
                 <li class="email">pharmaTlem@gmail.com</li>
               </ul>
