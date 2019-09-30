@@ -13,9 +13,7 @@
                         <div class="card">
                             <div class="card-body">
 
-       <div class="pull-right">
-         <a href="{{ url('achat/create')}}" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"> Ajouter </i></a>
-       </div>
+      
        <table class="table">
          <thead>
 

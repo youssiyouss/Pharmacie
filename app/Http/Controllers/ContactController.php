@@ -45,7 +45,7 @@ class ContactController extends Controller
                      FROM ventes V,lots L,medicaments M
                      WHERE V.lot=L.id
                      AND L.medoc=M.id
-                     GROUP BY V.lot
+                     GROUP BY V.lot,M.id,M.nom,M.photo,M.prix
                      ORDER BY SUM(V.qt) DESC
                      LIMIT 0,6");
       $n=DB::select("SELECT M.id, M.nom, M.photo, M.prix, L.created_at

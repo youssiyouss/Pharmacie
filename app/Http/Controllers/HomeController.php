@@ -52,14 +52,15 @@ class HomeController extends Controller
     {
       $msgs =DB::table('contact')
                 ->select('nom','prenom','message','created_at')
-                ->get();
+                ->paginate(5);
       $x=DB::select("SELECT M.nom,M.prix,V.lot ,SUM(V.qt) AS qt,(L.qt_stock*L.nbr_medoc_lot) AS qnt_total,(qt*100/(L.qt_stock*L.nbr_medoc_lot)) pourc
                      FROM `ventes` V,`lots` L,`medicaments` M
                      WHERE V.lot=L.id
                      AND L.medoc=M.id
-                     GROUP BY V.lot,pourc,qnt_total
-                     ORDER BY pourc DESC
-                     LIMIT 0,10;");
+                     GROUP BY V.lot,pourc,M.nom,M.prix,L.qt_stock,qt
+                     ORDER BY SUM(V.qt) DESC
+                     LIMIT 0,10");
+
        return view('home',['msg' => $msgs ,'top' => $x ]);
     }
 

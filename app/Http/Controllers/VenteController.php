@@ -59,8 +59,21 @@ class VenteController extends Controller
      */
     public function store(venteRequest $request)
     {
+      $max=DB::table('lots')->where('Lots.id','=',$request->input('lot'))->first();
+      if($max->qt_stock<$request->input('qt')){
+          return back()->with('danger','quantitée non disponible en stock!');
+      }
+
+      else{
        $v = new Vente();
 
+      $max= DB::table('Lots')->where('Lots.id','=',$request->input('lot'))->first();
+      if ($max->qt_stock<$request->input('qt')) {
+          return back()->with('danger', 'quantitée invalide!');
+      }
+
+      else{
+        $v = new Vente();
        $lott =Lot::where('id', '=', $request->input('lot'))->first();
        $prix_uni = Medicament::where('id', '=', $lott->medoc)->first();
 
@@ -83,7 +96,7 @@ class VenteController extends Controller
 
             if ($medocs->count()  != 0) {
 
-                $user = auth()->User();
+                $user = auth()->User()->all();
             $alerte = collect(['title'=>'Médicaments aux stocks minimum ', 'var' =>'1' ,'nombre liste' => $medocs->count(),'url'=>'achat/create']);
             Notification::send($user,new InvoicePaid($alerte));
             }
@@ -92,7 +105,7 @@ class VenteController extends Controller
 
             if ($medocz->count()  != 0) {
 
-                $user = auth()->User();
+                $user = auth()->User()->all();
             $alerte = collect(['title'=>'Médicaments en ruptures ', 'var' =>'2' ,'nombre liste' => $medocz->count(),'url'=>'achat/create']);
             Notification::send($user,new InvoicePaid($alerte));
             }
@@ -102,8 +115,9 @@ class VenteController extends Controller
        //redirection
        //session()->flash('success','Vente bien effectuée!');
        return redirect('vente')->with('success', 'Vente effectuée!');
-
-
+       }
+      }
+       
     }
 
     /**
